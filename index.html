@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destinazione Mondo — Diari di viaggio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --ink:#211D18; --paper:#ECE3D0; --paper-line:rgba(33,29,24,0.16);
+  --cream:#F6F0E1; --rust:#A93826; --rust-dark:#7E2A1C;
+  --teal:#1F4F55; --gold:#B4872C;
+}
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:'Source Serif 4', Georgia, serif; font-size:18px; line-height:1.65;
+}
+::selection{ background:var(--gold); color:var(--cream); }
+a{ color:var(--teal); }
+.wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
+
+.topnav{ position:sticky; top:0; z-index:80; background:var(--ink); border-bottom:4px solid var(--rust); }
+.topnav .wrap{ display:flex; align-items:center; justify-content:space-between; padding:14px 28px; }
+.brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+.brand-mark{ width:28px; height:auto; flex-shrink:0; display:block; }
+.brand-word{ font-family:'Big Shoulders Display', sans-serif; font-weight:800; font-size:1.35rem; letter-spacing:0.02em; color:var(--cream); white-space:nowrap; }
+.brand-word .accent{ color:var(--rust); }
+.navlinks a{ color:var(--cream); text-decoration:none; font-family:'JetBrains Mono', monospace; font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase; border-bottom:2px solid transparent; white-space:nowrap; }
+.topnav .wrap{ flex-wrap:nowrap; }
+.brand-word{ overflow:hidden; text-overflow:ellipsis; }
+.navlinks a:hover{ border-color:var(--gold); }
+.navlinks{ display:flex; align-items:center; gap:22px; }
+.nav-ig{ display:inline-flex; color:var(--cream); transition:color 0.2s ease; }
+.nav-ig:hover{ color:var(--gold); }
+
+.hero{ background:linear-gradient(180deg, rgba(33,29,24,0) 60%, var(--paper) 100%), var(--ink); color:var(--cream); padding:70px 0 46px; }
+.postmark{ font-family:'JetBrains Mono', monospace; font-size:0.8rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold); border-radius:30px; padding:5px 16px; display:inline-block; margin-bottom:22px; }
+.hero h1{ font-family:'Big Shoulders Display', sans-serif; font-weight:900; font-size:clamp(2.8rem, 9vw, 6rem); line-height:0.94; margin:0 0 20px; text-transform:uppercase; max-width:900px; }
+.hero .lede{ max-width:600px; font-size:1.15rem; color:rgba(246,240,225,0.82); }
+.stats-row{ display:flex; flex-wrap:wrap; gap:28px; margin-top:34px; font-family:'JetBrains Mono', monospace; }
+.stat b{ display:block; font-size:1.6rem; color:var(--gold); font-weight:700; }
+.stat span{ font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(246,240,225,0.65); }
+
+.map-wrap{ margin:-30px 0 60px; }
+.map-frame{ border:6px solid var(--ink); box-shadow:0 20px 50px rgba(33,29,24,0.35); border-radius:4px; overflow:hidden; background:#DCD0AF; }
+.map-caption{ font-family:'JetBrains Mono', monospace; font-size:0.75rem; color:var(--ink); opacity:0.65; margin-top:10px; text-align:right; }
+
+.section-label{ font-family:'JetBrains Mono', monospace; font-size:0.78rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--rust); margin:40px 0 10px; }
+.section-title{ font-family:'Big Shoulders Display', sans-serif; font-weight:800; text-transform:uppercase; font-size:2.4rem; margin:0 0 40px; }
+
+.trip-index{ margin:20px 0 100px; }
+.trip-row{ display:grid; grid-template-columns:110px 1fr 190px; gap:26px; align-items:center; padding:30px 0; border-top:1px solid var(--paper-line); text-decoration:none; color:var(--ink); }
+.trip-row:last-child{ border-bottom:1px solid var(--paper-line); }
+.trip-row .num{ font-family:'Big Shoulders Display', sans-serif; font-weight:800; font-size:3.2rem; -webkit-text-stroke:1.5px var(--rust); color:transparent; line-height:1; }
+.trip-row h3{ font-family:'Big Shoulders Display', sans-serif; font-weight:800; text-transform:uppercase; font-size:1.9rem; margin:0 0 8px; }
+.trip-row p{ margin:0; font-size:0.98rem; color:#3a352b; max-width:520px; }
+.trip-row .meta{ font-family:'JetBrains Mono', monospace; font-size:0.75rem; color:var(--teal); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:8px; display:block; }
+.trip-row .go{ justify-self:end; font-family:'JetBrains Mono', monospace; font-size:0.85rem; font-weight:600; color:var(--rust); display:flex; align-items:center; gap:8px; white-space:nowrap; }
+.trip-row .go svg{ transition:transform 0.2s ease; }
+.trip-row:hover .go svg{ transform:translateX(5px); }
+.trip-row:hover h3{ color:var(--rust); }
+.trip-row.disabled{ opacity:0.5; pointer-events:none; }
+
+footer{ background:var(--ink); color:rgba(246,240,225,0.6); padding:36px 0; font-family:'JetBrains Mono', monospace; font-size:0.8rem; text-align:center; }
+footer a{ color:var(--gold); }
+.footer-row{ display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; }
+.footer-ig{ display:inline-flex; color:var(--gold); transition:color 0.2s ease; }
+.footer-ig:hover{ color:var(--cream); }
+
+@media (max-width:680px){
+  .trip-row{ grid-template-columns:1fr; gap:10px; }
+  .trip-row .num{ font-size:2rem; }
+  .trip-row .go{ justify-self:start; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 400 340" aria-hidden="true"><polygon points="200,40 310,84.4 310,235.6 200,280 90,235.6 90,84.4" fill="#A93826" stroke="#F6F0E1" stroke-width="10"/><path d="M135 250 L195 250 L135 190 L195 190 L135 130 L195 130 L235 88" fill="none" stroke="#F6F0E1" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><circle cx="238" cy="82" r="22" fill="#F6F0E1"/><circle cx="238" cy="82" r="9" fill="#A93826"/></svg><span class="brand-word">Destinazione <span class="accent">Mondo</span></span></a>
+    <div class="navlinks"><a class="nav-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a></div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="postmark">on the road — quaderno di bordo</span>
+    <h1>Ogni strada<br>è stata percorsa. Davvero.</h1>
+    <p class="lede">Itinerari on the road chilometro dopo chilometro: strade, soste, alloggi ed escursioni. Un diario di viaggio snello da seguire o modificare a piacere.</p>
+    <div class="stats-row">
+      <div class="stat"><b>14</b><span>viaggi raccontati</span></div>
+      <div class="stat"><b>6</b><span>continenti</span></div>
+      <div class="stat"><b>206</b><span>giorni on the road</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="map-wrap wrap">
+  <div class="map-frame">
+    <svg viewBox="0 0 1040 420" style="width:100%; display:block;">
+      <defs>
+        <pattern id="contour" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M0 30 Q 15 10, 30 30 T 60 30" fill="none" stroke="#C9BA92" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="1040" height="420" fill="#DCD0AF"/>
+      <rect width="1040" height="420" fill="url(#contour)" opacity="0.5"/>
+
+      <!-- compass -->
+      <g transform="translate(980,50)" opacity="0.7">
+        <circle r="28" fill="none" stroke="#211D18" stroke-width="1.5"/>
+        <path d="M0 -23 L6 0 L0 23 L-6 0 Z" fill="#A93826"/>
+        <text x="0" y="-34" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#211D18">N</text>
+      </g>
+
+      <text x="130" y="30" font-family="'JetBrains Mono',monospace" font-size="13" letter-spacing="3" fill="#1F4F55" opacity="0.55">OVEST</text>
+      <text x="900" y="30" font-family="'JetBrains Mono',monospace" font-size="13" letter-spacing="3" fill="#7E2A1C" opacity="0.55">EST</text>
+
+      <!-- ribbons: west destinations -->
+      <g fill="none" stroke-linecap="round">
+        <path d="M500 210 C 460 190, 435 165, 410 145" stroke="#1F4F55" stroke-width="2.4" stroke-dasharray="2 8"/>
+        <path d="M500 210 C 440 140, 420 90, 400 60" stroke="#5B7A80" stroke-width="2.4" stroke-dasharray="2 8"/>
+        <path d="M500 210 C 420 150, 370 110, 340 90" stroke="#4C6B4A" stroke-width="2.4" stroke-dasharray="2 8"/>
+        <path d="M500 210 C 400 160, 320 130, 260 110" stroke="#8C7A4E" stroke-width="2.4" stroke-dasharray="2 8"/>
+        <path d="M500 210 C 440 250, 410 270, 380 280" stroke="#A93826" stroke-width="2.4" stroke-dasharray="2 8"/>
+        <path d="M500 210 C 430 280, 370 320, 320 340" stroke="#8A5A2E" stroke-width="2.4" stroke-dasharray="2 8"/>
+        <path d="M500 210 C 380 190, 250 180, 180 180" stroke="#1F4F55" stroke-width="2.4" stroke-dasharray="2 8"/>
+        <path d="M500 210 C 360 175, 200 150, 120 140" stroke="#A93826" stroke-width="2.4" stroke-dasharray="2 8"/>
+        <path d="M500 210 C 380 250, 220 280, 140 300" stroke="#5B7A80" stroke-width="2.4" stroke-dasharray="2 8"/>
+        <path d="M500 210 C 350 280, 180 330, 115 358" stroke="#B4872C" stroke-width="2.4" stroke-dasharray="2 8"/>
+      </g>
+
+      <!-- ribbons: east destinations -->
+      <g fill="none" stroke-linecap="round">
+        <path d="M500 210 C 550 260, 610 320, 650 370" stroke="#B4872C" stroke-width="2.4" stroke-dasharray="2 8"/>
+        <path d="M500 210 C 520 160, 540 110, 560 70" stroke="#4C6B4A" stroke-width="2.4" stroke-dasharray="2 8"/>
+        <path d="M500 210 C 600 195, 700 185, 800 180" stroke="#A93826" stroke-width="2.4" stroke-dasharray="2 8"/>
+        <path d="M500 210 C 630 250, 780 300, 900 340" stroke="#5B7A80" stroke-width="2.4" stroke-dasharray="2 8"/>
+      </g>
+
+      <!-- Milano, origin -->
+      <g transform="translate(500,210)">
+        <circle r="9" fill="#211D18" stroke="#F6F0E1" stroke-width="2"/>
+        <text x="0" y="-16" text-anchor="middle" font-family="JetBrains Mono, monospace" font-weight="700" font-size="12" fill="#211D18">MILANO</text>
+      </g>
+
+      <!-- west pins -->
+      <g font-family="'JetBrains Mono', monospace" font-weight="700" font-size="11.5" fill="#211D18">
+        <circle cx="410" cy="145" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+        <text x="398" y="142" text-anchor="end">FRANCIA</text>
+
+        <circle cx="400" cy="60" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+        <text x="388" y="57" text-anchor="end">FAROE</text>
+
+        <circle cx="340" cy="90" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+        <text x="328" y="87" text-anchor="end">ISLANDA</text>
+
+        <circle cx="260" cy="110" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+        <text x="248" y="107" text-anchor="end">CANADA</text>
+
+        <circle cx="380" cy="280" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+        <text x="368" y="298" text-anchor="end">AZZORRE</text>
+
+        <circle cx="320" cy="340" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+        <text x="308" y="358" text-anchor="end">MADEIRA</text>
+
+        <circle cx="180" cy="180" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+        <text x="168" y="177" text-anchor="end">WEST USA</text>
+
+        <circle cx="120" cy="140" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+        <text x="108" y="125" text-anchor="end">BLUES HIGHWAY</text>
+
+        <circle cx="140" cy="300" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+        <text x="128" y="317" text-anchor="end">CUBA</text>
+
+        <circle cx="115" cy="358" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+        <text x="127" y="356" text-anchor="start">PATAGONIA / MIAMI</text>
+      </g>
+
+      <!-- east pins -->
+      <g font-family="'JetBrains Mono', monospace" font-weight="700" font-size="11.5" fill="#211D18">
+        <circle cx="650" cy="370" r="7" fill="#7E2A1C" stroke="#F6F0E1" stroke-width="1.5"/>
+        <text x="662" y="388" text-anchor="start">SUDAFRICA</text>
+
+        <circle cx="560" cy="70" r="6" fill="#7E2A1C" stroke="#F6F0E1" stroke-width="1.5"/>
+        <text x="572" y="67" text-anchor="start">LAPPONIA</text>
+
+        <circle cx="800" cy="180" r="7" fill="#7E2A1C" stroke="#F6F0E1" stroke-width="1.5"/>
+        <text x="812" y="177" text-anchor="start">VIETNAM &amp; CAMBOGIA</text>
+
+        <circle cx="900" cy="340" r="7" fill="#7E2A1C" stroke="#F6F0E1" stroke-width="1.5"/>
+        <text x="912" y="358" text-anchor="start">AUSTRALIA</text>
+      </g>
+    </svg>
+  </div>
+  <p class="map-caption">tutti gli itinerari raccontati in questo diario, in partenza da Milano</p>
+</div>
+
+<main class="wrap">
+  <div id="itinerari"></div>
+  <p class="section-label">Indice</p>
+  <h2 class="section-title">Gli itinerari</h2>
+
+  <section class="trip-index">
+    <a class="trip-row" href="chicago-new-orleans.html">
+      <span class="num">01</span>
+      <div>
+        <span class="meta">Stati Uniti · 20 giorni · Blues &amp; Route 66</span>
+        <h3>Chicago → New Orleans</h3>
+        <p>Dai grattacieli di Chicago al Delta del Mississippi, tra Nashville, Memphis e le paludi della Louisiana, fino al French Quarter.</p>
+      </div>
+      <span class="go">Apri l'itinerario
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+    <a class="trip-row" href="azzorre.html">
+      <span class="num">02</span>
+      <div>
+        <span class="meta">Portogallo · 18 giorni · Vulcani &amp; oceano</span>
+        <h3>Azzorre, Lisbona &amp; Algarve</h3>
+        <p>Da Lisbona all'Algarve, poi il salto nell'Atlantico: São Miguel, São Jorge e Terceira tra laghi vulcanici e faje costiere.</p>
+      </div>
+      <span class="go">Apri l'itinerario
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+    <a class="trip-row" href="sudafrica.html">
+      <span class="num">03</span>
+      <div>
+        <span class="meta">Sudafrica · 19 giorni · Safari &amp; Garden Route</span>
+        <h3>Sudafrica: Safari &amp; Garden Route</h3>
+        <p>Safari nel Kruger, poi la Garden Route fino a Città del Capo: balene, elefanti, vigneti e Robben Island.</p>
+      </div>
+      <span class="go">Apri l'itinerario
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+    <a class="trip-row" href="faroe.html">
+      <span class="num">04</span>
+      <div>
+        <span class="meta">Isole Faroe · 7 giorni · Fiordi &amp; villaggi</span>
+        <h3>Isole Faroe</h3>
+        <p>Traghetti verso isole minuscole, laghi sospesi sull'oceano e villaggi di poche case tra le Faroe.</p>
+      </div>
+      <span class="go">Apri l'itinerario
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+    <a class="trip-row" href="argentina-miami.html">
+      <span class="num">05</span>
+      <div>
+        <span class="meta">Argentina &amp; USA · 19 giorni · Patagonia &amp; Miami</span>
+        <h3>Patagonia &amp; Miami</h3>
+        <p>Buenos Aires, El Chaltén, El Calafate e Ushuaia, poi Miami e le Florida Keys per chiudere l'anno.</p>
+      </div>
+      <span class="go">Apri l'itinerario
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+    <a class="trip-row" href="canada.html">
+      <span class="num">06</span>
+      <div>
+        <span class="meta">Canada · 17 giorni · Rocky Mountains &amp; isole</span>
+        <h3>Canada</h3>
+        <p>Vancouver, i laghi turchesi di Banff e Jasper, l'Icefields Parkway e i traghetti dell'Isola di Vancouver.</p>
+      </div>
+      <span class="go">Apri l'itinerario
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+        <a class="trip-row" href="west-usa.html">
+      <span class="num">07</span>
+      <div>
+        <span class="meta">Stati Uniti · 17 giorni · Deserti &amp; canyon</span>
+        <h3>West USA</h3>
+        <p>Los Angeles, San Diego, Grand Canyon, Las Vegas, Death Valley, Yosemite e San Francisco.</p>
+      </div>
+      <span class="go">Apri l'itinerario
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+        <a class="trip-row" href="madeira.html">
+      <span class="num">08</span>
+      <div>
+        <span class="meta">Portogallo · 4 giorni · Isola verticale</span>
+        <h3>Madeira</h3>
+        <p>Levadas, scogliere a picco sull'oceano e il trekking di Ponta de São Lourenço.</p>
+      </div>
+      <span class="go">Apri l'itinerario
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+    <a class="trip-row" href="islanda.html">
+      <span class="num">09</span>
+      <div>
+        <span class="meta">Islanda · 8 giorni · Circolo d'Oro &amp; ghiacciai</span>
+        <h3>Circolo d'Oro &amp; Ghiacciai</h3>
+        <p>Snæfellsnes, Circolo d'Oro, cascate della costa sud, Jökulsárlón e Blue Lagoon.</p>
+      </div>
+      <span class="go">Apri l'itinerario
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+    <a class="trip-row" href="asia-2015.html">
+      <span class="num">10</span>
+      <div>
+        <span class="meta">Asia · 19 giorni · Singapore, Vietnam &amp; Cambogia</span>
+        <h3>Singapore, Vietnam &amp; Cambogia</h3>
+        <p>Da Singapore al Vietnam da sud a nord, Halong Bay in giunca, fino ai templi di Angkor.</p>
+      </div>
+      <span class="go">Apri l'itinerario
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+    <a class="trip-row" href="cuba.html">
+      <span class="num">11</span>
+      <div>
+        <span class="meta">Cuba · 10 giorni · Città coloniali &amp; cayos</span>
+        <h3>Cuba</h3>
+        <p>L'Avana, le valli di tabacco di Viñales, Trinidad coloniale e le spiagge di Cayo Guillermo.</p>
+      </div>
+      <span class="go">Apri l'itinerario
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+    <a class="trip-row" href="lapponia.html">
+      <span class="num">12</span>
+      <div>
+        <span class="meta">Finlandia · 6 giorni · Circolo Polare Artico</span>
+        <h3>Lapponia</h3>
+        <p>Rovaniemi, motoslitte tra le renne, husky nella foresta e la caccia all'aurora boreale.</p>
+      </div>
+      <span class="go">Apri l'itinerario
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+    <a class="trip-row" href="australia.html">
+      <span class="num">13</span>
+      <div>
+        <span class="meta">Australia · 26 giorni · Da Adelaide a Perth</span>
+        <h3>Australia</h3>
+        <p>Kangaroo Island, il Red Centre di Uluru, la barriera corallina, Sydney, Melbourne, la Great Ocean Road e Perth.</p>
+      </div>
+      <span class="go">Apri l'itinerario
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+    <a class="trip-row" href="francia.html">
+      <span class="num">14</span>
+      <div>
+        <span class="meta">Francia · 16 giorni · Normandia &amp; Bretagna</span>
+        <h3>Normandia &amp; Bretagna</h3>
+        <p>Le falesie di Étretat, le spiagge dello sbarco, Mont Saint Michel e i villaggi di pescatori della Bretagna.</p>
+      </div>
+      <span class="go">Apri l'itinerario
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+  </section>
+</main>
+
+<footer><div class="wrap footer-row">DESTINAZIONE MONDO — Itinerari on the road<a class="footer-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a></div></footer>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "61c36c7662aa44b88df191eaa9928a38"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

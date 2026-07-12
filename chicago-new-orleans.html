@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Da Chicago a New Orleans — Destinazione Mondo</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Caveat:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --ink:#211D18; --paper:#ECE3D0; --paper-line:rgba(33,29,24,0.16);
+  --cream:#F6F0E1; --rust:#A93826; --rust-dark:#7E2A1C;
+  --teal:#1F4F55; --gold:#B4872C;
+}
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:'Source Serif 4', Georgia, serif; font-size:18px; line-height:1.65;
+}
+::selection{ background:var(--gold); color:var(--cream); }
+a{ color:var(--teal); }
+.wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
+
+.topnav{ position:sticky; top:0; z-index:80; background:var(--ink); border-bottom:4px solid var(--rust); }
+.topnav .wrap{ display:flex; align-items:center; justify-content:space-between; padding:14px 28px; }
+.brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+.brand-mark{ width:28px; height:auto; flex-shrink:0; display:block; }
+.brand-word{ font-family:'Big Shoulders Display', sans-serif; font-weight:800; font-size:1.35rem; letter-spacing:0.02em; color:var(--cream); white-space:nowrap; }
+.brand-word .accent{ color:var(--rust); }
+.navlinks a{ color:var(--cream); text-decoration:none; font-family:'JetBrains Mono', monospace; font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase; border-bottom:2px solid transparent; white-space:nowrap; }
+.topnav .wrap{ flex-wrap:nowrap; }
+.brand-word{ overflow:hidden; text-overflow:ellipsis; }
+.navlinks a:hover{ border-color:var(--gold); }
+.navlinks{ display:flex; align-items:center; gap:22px; }
+.nav-ig{ display:inline-flex; color:var(--cream); transition:color 0.2s ease; }
+.nav-ig:hover{ color:var(--gold); }
+
+.hero{ background:linear-gradient(180deg, rgba(33,29,24,0) 60%, var(--paper) 100%), var(--ink); color:var(--cream); padding:64px 0 40px; }
+.postmark{ font-family:'JetBrains Mono', monospace; font-size:0.8rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold); border-radius:30px; padding:5px 16px; display:inline-block; margin-bottom:22px; }
+.hero h1{ font-family:'Big Shoulders Display', sans-serif; font-weight:900; font-size:clamp(2.6rem, 8vw, 5.6rem); line-height:0.94; margin:0 0 20px; text-transform:uppercase; }
+.hero .lede{ max-width:600px; font-size:1.1rem; color:rgba(246,240,225,0.82); }
+.stats-row{ display:flex; flex-wrap:wrap; gap:26px; margin-top:30px; font-family:'JetBrains Mono', monospace; }
+.stat b{ display:block; font-size:1.5rem; color:var(--gold); font-weight:700; }
+.stat span{ font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(246,240,225,0.65); }
+
+/* ---- illustrated route map ---- */
+.map-section{ padding:50px 0 30px; }
+.map-layout{ display:grid; grid-template-columns:1fr 260px; gap:30px; align-items:start; }
+.map-frame{ border:6px solid var(--ink); box-shadow:0 20px 50px rgba(33,29,24,0.35); border-radius:4px; overflow:hidden; background:#DCD0AF; }
+.map-legend{ background:var(--cream); border:1px solid var(--paper-line); border-radius:4px; padding:20px; }
+.map-legend h4{ font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); margin:0 0 14px; }
+.map-legend ol{ margin:0; padding:0 0 0 22px; font-size:0.88rem; }
+.map-legend li{ margin-bottom:7px; }
+.map-caption{ font-family:'JetBrains Mono', monospace; font-size:0.75rem; color:var(--ink); opacity:0.65; margin-top:10px; }
+
+@media (max-width:820px){
+  .map-layout{ grid-template-columns:1fr; }
+}
+
+.section-label{ font-family:'JetBrains Mono', monospace; font-size:0.78rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--rust); margin:0 0 10px; }
+
+.itinerary{ padding:20px 0 90px; }
+.day-entry{ display:grid; grid-template-columns:120px 1fr; gap:30px; padding:34px 0; border-top:1px solid var(--paper-line); }
+.day-entry:last-child{ border-bottom:1px solid var(--paper-line); }
+.shield{ width:92px; height:104px; background:var(--teal); clip-path:polygon(50% 0%, 100% 16%, 100% 74%, 50% 100%, 0% 74%, 0% 16%); color:var(--cream); display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:'JetBrains Mono', monospace; text-align:center; box-shadow:2px 3px 0 rgba(33,29,24,0.25); }
+.shield .d{ font-size:1.5rem; font-weight:700; line-height:1; }
+.shield .m{ font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; margin-top:4px; opacity:0.85; }
+.day-entry.drive .shield{ background:var(--rust); }
+.day-content .drive-tag{ display:inline-block; font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.04em; color:var(--rust-dark); background:rgba(169,56,38,0.1); border:1px solid rgba(169,56,38,0.3); padding:3px 12px; border-radius:20px; margin-bottom:12px; }
+.day-content .city{ font-family:'Big Shoulders Display', sans-serif; font-weight:800; text-transform:uppercase; font-size:1.9rem; color:var(--ink); margin:0 0 12px; }
+.day-content p{ margin:0 0 12px; font-size:1.02rem; }
+.day-content ul{ margin:12px 0 0; padding-left:20px; }
+.day-content li{ margin-bottom:7px; }
+.day-content .highlight{ background:linear-gradient(180deg, transparent 62%, rgba(180,135,44,0.4) 62%); padding:0 2px; }
+.day-content .note{ font-family:'Caveat', cursive; font-size:1.3rem; color:var(--rust-dark); margin-top:14px; display:inline-block; }
+
+footer{ background:var(--ink); color:rgba(246,240,225,0.6); padding:36px 0; font-family:'JetBrains Mono', monospace; font-size:0.8rem; text-align:center; }
+footer a{ color:var(--gold); }
+.footer-row{ display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; }
+.footer-ig{ display:inline-flex; color:var(--gold); transition:color 0.2s ease; }
+.footer-ig:hover{ color:var(--cream); }
+.back-home{ display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono', monospace; font-weight:600; font-size:0.85rem; color:var(--cream); background:var(--teal); padding:12px 22px; border-radius:2px; text-decoration:none; text-transform:uppercase; letter-spacing:0.05em; }
+.back-home:hover{ background:var(--rust); }
+
+@media (max-width:680px){
+  .day-entry{ grid-template-columns:74px 1fr; gap:18px; }
+  .shield{ width:70px; height:80px; }
+  .shield .d{ font-size:1.1rem; }
+  .shield .m{ font-size:0.55rem; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 400 340" aria-hidden="true"><polygon points="200,40 310,84.4 310,235.6 200,280 90,235.6 90,84.4" fill="#A93826" stroke="#F6F0E1" stroke-width="10"/><path d="M135 250 L195 250 L135 190 L195 190 L135 130 L195 130 L235 88" fill="none" stroke="#F6F0E1" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><circle cx="238" cy="82" r="22" fill="#F6F0E1"/><circle cx="238" cy="82" r="9" fill="#A93826"/></svg><span class="brand-word">Destinazione <span class="accent">Mondo</span></span></a>
+    <div class="navlinks"><a class="nav-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a></div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="postmark">28 luglio — 16 agosto 2023</span>
+    <h1>Chicago → New Orleans</h1>
+    <p class="lede">Quasi tremila chilometri lungo il cuore d'America: si scende attraverso Illinois, Missouri, Kentucky e Tennessee fino al Delta del Mississippi, per arrivare al French Quarter. Blues, jazz, barbecue e strade infinite.</p>
+    <div class="stats-row">
+      <div class="stat"><b>20</b><span>giorni</span></div>
+      <div class="stat"><b>8</b><span>stati attraversati</span></div>
+      <div class="stat"><b>~2900</b><span>km guidati</span></div>
+      <div class="stat"><b>10</b><span>tappe on the road</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap map-section">
+  <p class="section-label">La rotta</p>
+  <div class="map-layout">
+    <div>
+      <div class="map-frame">
+        <svg viewBox="0 0 560 820" style="width:100%; display:block;">
+          <defs>
+            <pattern id="contour2" width="50" height="50" patternUnits="userSpaceOnUse">
+              <path d="M0 25 Q 12 10, 25 25 T 50 25" fill="none" stroke="#C9BA92" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="560" height="820" fill="#DCD0AF"/>
+          <rect width="560" height="820" fill="url(#contour2)" opacity="0.5"/>
+
+          <!-- state labels, vintage-map style -->
+          <text x="330" y="100" font-family="'Big Shoulders Display',sans-serif" font-size="22" fill="#211D18" opacity="0.25" transform="rotate(-6 330 100)">ILLINOIS</text>
+          <text x="120" y="300" font-family="'Big Shoulders Display',sans-serif" font-size="22" fill="#211D18" opacity="0.25" transform="rotate(-4 120 300)">MISSOURI</text>
+          <text x="440" y="200" font-family="'Big Shoulders Display',sans-serif" font-size="20" fill="#211D18" opacity="0.25" transform="rotate(4 440 200)">KENTUCKY</text>
+          <text x="380" y="330" font-family="'Big Shoulders Display',sans-serif" font-size="20" fill="#211D18" opacity="0.25" transform="rotate(-3 380 330)">TENNESSEE</text>
+          <text x="70" y="560" font-family="'Big Shoulders Display',sans-serif" font-size="20" fill="#211D18" opacity="0.25" transform="rotate(-8 70 560)">MISSISSIPPI</text>
+          <text x="190" y="710" font-family="'Big Shoulders Display',sans-serif" font-size="20" fill="#211D18" opacity="0.25" transform="rotate(-4 190 710)">LOUISIANA</text>
+
+          <!-- route path -->
+          <path d="M362 47 Q 300 110, 241 173 Q 220 210, 208 242 Q 340 230, 474 265 Q 450 330, 413 390 Q 320 420, 217 451 Q 200 480, 186 508 Q 175 565, 167 619 Q 150 645, 136 666 Q 140 700, 149 733 Q 185 750, 216 763"
+                fill="none" stroke="#A93826" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="2 10"/>
+
+          <!-- compass -->
+          <g transform="translate(500,60)" opacity="0.7">
+            <circle r="26" fill="none" stroke="#211D18" stroke-width="1.3"/>
+            <path d="M0 -21 L5 0 L0 21 L-5 0 Z" fill="#1F4F55"/>
+            <text x="0" y="-30" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#211D18">N</text>
+          </g>
+
+          <!-- city pins -->
+          <g font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#211D18">
+            <circle cx="362" cy="47" r="9" fill="#1F4F55" stroke="#F6F0E1" stroke-width="2"/>
+            <text x="378" y="45">1 Chicago</text>
+
+            <circle cx="241" cy="173" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="255" y="171">2 Springfield</text>
+
+            <circle cx="208" cy="242" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="222" y="240">3 St. Louis</text>
+
+            <circle cx="474" cy="265" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="410" y="248">4 Louisville</text>
+
+            <circle cx="413" cy="390" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="427" y="388">5 Nashville</text>
+
+            <circle cx="217" cy="451" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="231" y="449">6 Memphis</text>
+
+            <circle cx="186" cy="508" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="200" y="506">7 Clarksdale</text>
+
+            <circle cx="167" cy="619" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="181" y="617">8 Vicksburg</text>
+
+            <circle cx="136" cy="666" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="70" y="656">9 Natchez</text>
+
+            <circle cx="149" cy="733" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="20" y="736">10 Baton Rouge</text>
+
+            <circle cx="216" cy="763" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
+            <text x="230" y="762" font-size="13">11 New Orleans</text>
+          </g>
+        </svg>
+      </div>
+      <p class="map-caption">il percorso disegnato in ordine di tappa, dal 1° al 19° giorno</p>
+    </div>
+
+    <div class="map-legend">
+      <h4>Le tappe</h4>
+      <ol>
+        <li>Chicago</li>
+        <li>Springfield</li>
+        <li>St. Louis</li>
+        <li>Louisville</li>
+        <li>Nashville</li>
+        <li>Memphis</li>
+        <li>Clarksdale</li>
+        <li>Vicksburg</li>
+        <li>Natchez → Baton Rouge</li>
+        <li>New Orleans</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <section class="itinerary">
+
+    <div class="day-entry">
+      <div class="shield"><span class="m">DAY</span><span class="d">1</span></div>
+      <div class="day-content">
+        <p class="drive-tag">volo Milano → Dublino → Chicago</p>
+        <p class="city">Arrivo a Chicago</p>
+        <p>Atterraggio in serata a O'Hare. Le quattro notti successive sono dedicate interamente alla città, prima di ritirare l'auto e partire verso sud.</p>
+      </div>
+    </div>
+
+    <div class="day-entry">
+      <div class="shield"><span class="m">DAY</span><span class="d">2–4</span></div>
+      <div class="day-content">
+        <p class="city">Chicago</p>
+        <p>Tre giorni pieni in città. Da non perdere <span class="highlight">Millennium Park con il Cloud Gate</span> (meglio col sole o al tramonto) e il <span class="highlight">Magnificent Mile</span> con la salita all'osservatorio della Willis Tower o del John Hancock Center.</p>
+        <ul>
+          <li>Grant Park e Art Institute of Chicago</li>
+          <li>Navy Pier e crociera lungo il fiume fino allo Shedd Aquarium</li>
+          <li>Imbocco della storica Route 66</li>
+        </ul>
+        <p class="note">consiglio: Willis Tower la mattina, John Hancock nel pomeriggio</p>
+      </div>
+    </div>
+
+    <div class="day-entry drive">
+      <div class="shield"><span class="m">DAY</span><span class="d">5</span></div>
+      <div class="day-content">
+        <p class="drive-tag">ritiro auto a Chicago → guida verso St. Louis</p>
+        <p class="city">Springfield → St. Louis</p>
+        <p>Sosta a Springfield al <span class="highlight">Lincoln Home National Historic Site</span>, la casa di Lincoln prima della presidenza, poi proseguimento fino a St. Louis (2 notti in Airbnb).</p>
+      </div>
+    </div>
+
+    <div class="day-entry">
+      <div class="shield"><span class="m">DAY</span><span class="d">6</span></div>
+      <div class="day-content">
+        <p class="city">St. Louis</p>
+        <ul>
+          <li>Delmar Loop e St. Louis Walk of Fame</li>
+          <li>Pranzo al Blueberry Hill</li>
+          <li>Old Courthouse e museo su Dred e Harriet Scott</li>
+          <li>Salita al St. Louis Gateway Arch</li>
+          <li>Cena e musica blues al BB's Jazz, Blues and Soups</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day-entry drive">
+      <div class="shield"><span class="m">DAY</span><span class="d">7</span></div>
+      <div class="day-content">
+        <p class="drive-tag">guida verso Louisville (+1h fuso)</p>
+        <p class="city">Louisville</p>
+        <p>Visita al <span class="highlight">Muhammad Ali Center</span>, passeggiata a Old Louisville tra St. James Court e Belgravia Court, poi Downtown e Waterfront Park. Notte in Airbnb, tappa obbligata in un bourbon bar del Kentucky.</p>
+      </div>
+    </div>
+
+    <div class="day-entry drive">
+      <div class="shield"><span class="m">DAY</span><span class="d">8</span></div>
+      <div class="day-content">
+        <p class="drive-tag">guida verso Nashville (2h30)</p>
+        <p class="city">Nashville</p>
+        <p>Arrivo nel pomeriggio, prima serata libera per ambientarsi in città.</p>
+      </div>
+    </div>
+
+    <div class="day-entry">
+      <div class="shield"><span class="m">DAY</span><span class="d">9</span></div>
+      <div class="day-content">
+        <p class="city">Nashville</p>
+        <ul>
+          <li>Mattina al Country Music Hall of Fame</li>
+          <li>Passeggiata a Broadway, Riverfront Park e John Seigenthaler Pedestrian Bridge</li>
+          <li>Tour dei murales cittadini</li>
+          <li>Cena a base di musica dal vivo e crocchette di alligatore al Bourbon Street Blues and Boogie Bar</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day-entry drive">
+      <div class="shield"><span class="m">DAY</span><span class="d">10</span></div>
+      <div class="day-content">
+        <p class="drive-tag">Natchez Trace Parkway → Leiper's Fork → Memphis (5h)</p>
+        <p class="city">Memphis</p>
+        <p>Discesa panoramica lungo la storica <span class="highlight">Natchez Trace Parkway</span>, con sosta al villaggio di Leiper's Fork. Arrivo a Memphis: Beale Street, passeggiata lungo il Mississippi e serata al B.B. King's Blues Club.</p>
+      </div>
+    </div>
+
+    <div class="day-entry">
+      <div class="shield"><span class="m">DAY</span><span class="d">11</span></div>
+      <div class="day-content">
+        <p class="city">Memphis</p>
+        <ul>
+          <li>Graceland, la casa di Elvis (apertura 9:00)</li>
+          <li>Sun Studios (10:30–17:15)</li>
+          <li>National Civil Rights Museum (9:00–18:00)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day-entry drive">
+      <div class="shield"><span class="m">DAY</span><span class="d">12</span></div>
+      <div class="day-content">
+        <p class="drive-tag">Route 61 → Clarksdale → Vicksburg (2h30)</p>
+        <p class="city">Clarksdale → Vicksburg</p>
+        <p>Sosta a Clarksdale, patria del Delta Blues e paese natale di Sam Cook, al leggendario <span class="highlight">Devil's Crossroads</span> tra le highway 61 e 49. A Vicksburg passeggiata su Washington St e Levee St, galleria d'arte Attic Gallery e visita al Vicksburg National Military Park.</p>
+      </div>
+    </div>
+
+    <div class="day-entry drive">
+      <div class="shield"><span class="m">DAY</span><span class="d">13</span></div>
+      <div class="day-content">
+        <p class="drive-tag">Natchez (2h) → Baton Rouge (1h30)</p>
+        <p class="city">Natchez → Baton Rouge</p>
+        <p>Ville coloniali lungofiume a Natchez, poi vista spettacolare sulla città e sul fiume dal 27° piano del <span class="highlight">Louisiana State Capitol</span> a Baton Rouge (accesso gratuito).</p>
+      </div>
+    </div>
+
+    <div class="day-entry drive">
+      <div class="shield"><span class="m">DAY</span><span class="d">14</span></div>
+      <div class="day-content">
+        <p class="drive-tag">Oak Alley + Whitney Plantation → New Orleans (via lago Pontchartrain)</p>
+        <p class="city">New Orleans</p>
+        <p>Ultima tappa on the road: due delle piantagioni storiche più visitate della Louisiana, poi arrivo a New Orleans attraversando il Lago Pontchartrain. Quattro notti in città, fine del viaggio in auto.</p>
+      </div>
+    </div>
+
+    <div class="day-entry">
+      <div class="shield"><span class="m">DAY</span><span class="d">15</span></div>
+      <div class="day-content">
+        <p class="city">New Orleans — French Quarter</p>
+        <p>Giornata dedicata alla scoperta a piedi e lenta del <span class="highlight">French Quarter</span>, da Decatur St a Bourbon St, respirando l'atmosfera più bohémien e voodoo della città.</p>
+        <ul>
+          <li>Cattedrale di San Luigi e Jackson Square</li>
+          <li>Royal St e Chartres St, tra balconi in ferro battuto e musica di strada</li>
+          <li>Café du Monde per i beignet</li>
+          <li>French Market e Frenchmen St per la musica live</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day-entry">
+      <div class="shield"><span class="m">DAY</span><span class="d">16</span></div>
+      <div class="day-content">
+        <p class="city">New Orleans — Garden District</p>
+        <p>Passeggiata nel <span class="highlight">Garden District</span> tra le sue dimore storiche, con visita all'inquietante Cimitero di Lafayette. Nel pomeriggio, tour in airboat tra i bayou della Louisiana per avvistare gli alligatori.</p>
+      </div>
+    </div>
+
+    <div class="day-entry">
+      <div class="shield"><span class="m">DAY</span><span class="d">17</span></div>
+      <div class="day-content">
+        <p class="city">New Orleans — sul Mississippi</p>
+        <p>Giro in battello a vapore sul <span class="highlight">Mississippi</span> a bordo dello Steamboat Natchez, shopping su Canal Street e visita allo Sculpture Garden del New Orleans Museum of Art.</p>
+      </div>
+    </div>
+
+    <div class="day-entry drive">
+      <div class="shield"><span class="m">DAY</span><span class="d">18</span></div>
+      <div class="day-content">
+        <p class="drive-tag">volo New Orleans → Chicago</p>
+        <p class="city">Rientro a Chicago</p>
+        <p>Mattina libera a New Orleans prima del volo di ritorno verso Chicago, ultima notte prima del rientro in Italia.</p>
+      </div>
+    </div>
+
+    <div class="day-entry drive">
+      <div class="shield"><span class="m">DAY</span><span class="d">19–20</span></div>
+      <div class="day-content">
+        <p class="drive-tag">volo Chicago → Dublino → Milano</p>
+        <p class="city">Rientro in Italia</p>
+        <p>Chiusura del cerchio: da Chicago via Dublino fino a Milano.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <div style="text-align:center; padding-bottom:80px;">
+    <a class="back-home" href="index.html">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 8H3M8 3L3 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Torna a tutti gli itinerari
+    </a>
+  </div>
+</main>
+
+<footer><div class="wrap footer-row">DESTINAZIONE MONDO — Itinerari on the road<a class="footer-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a></div></footer>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "61c36c7662aa44b88df191eaa9928a38"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

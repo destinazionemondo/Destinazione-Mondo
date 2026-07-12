@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Islanda Tour — Destinazione Mondo</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Caveat:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root{ --ink:#211D18; --paper:#ECE3D0; --paper-line:rgba(33,29,24,0.16); --cream:#F6F0E1; --rust:#A93826; --rust-dark:#7E2A1C; --teal:#1F4F55; --gold:#B4872C; }
+*{ box-sizing:border-box; } html{ scroll-behavior:smooth; }
+body{ margin:0; background:var(--paper); color:var(--ink); font-family:'Source Serif 4', Georgia, serif; font-size:18px; line-height:1.65; }
+::selection{ background:var(--gold); color:var(--cream); }
+a{ color:var(--teal); }
+.wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
+.topnav{ position:sticky; top:0; z-index:80; background:var(--ink); border-bottom:4px solid var(--rust); }
+.topnav .wrap{ display:flex; align-items:center; justify-content:space-between; padding:14px 28px; }
+.brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+.brand-mark{ width:28px; height:auto; flex-shrink:0; display:block; }
+.brand-word{ font-family:'Big Shoulders Display', sans-serif; font-weight:800; font-size:1.35rem; letter-spacing:0.02em; color:var(--cream); white-space:nowrap; }
+.brand-word .accent{ color:var(--rust); }
+.navlinks a{ color:var(--cream); text-decoration:none; font-family:'JetBrains Mono', monospace; font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase; border-bottom:2px solid transparent; white-space:nowrap; }
+.topnav .wrap{ flex-wrap:nowrap; }
+.brand-word{ overflow:hidden; text-overflow:ellipsis; }
+.navlinks a:hover{ border-color:var(--gold); }
+.navlinks{ display:flex; align-items:center; gap:22px; }
+.nav-ig{ display:inline-flex; color:var(--cream); transition:color 0.2s ease; }
+.nav-ig:hover{ color:var(--gold); }
+.hero{ background:linear-gradient(180deg, rgba(33,29,24,0) 60%, var(--paper) 100%), var(--ink); color:var(--cream); padding:64px 0 40px; }
+.postmark{ font-family:'JetBrains Mono', monospace; font-size:0.8rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold); border-radius:30px; padding:5px 16px; display:inline-block; margin-bottom:22px; }
+.hero h1{ font-family:'Big Shoulders Display', sans-serif; font-weight:900; font-size:clamp(2.6rem, 8vw, 5.6rem); line-height:0.98; margin:0 0 20px; text-transform:uppercase; }
+.hero .lede{ max-width:600px; font-size:1.1rem; color:rgba(246,240,225,0.82); }
+.stats-row{ display:flex; flex-wrap:wrap; gap:26px; margin-top:30px; font-family:'JetBrains Mono', monospace; }
+.stat b{ display:block; font-size:1.5rem; color:var(--gold); font-weight:700; }
+.stat span{ font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(246,240,225,0.65); }
+.map-section{ padding:50px 0 30px; }
+.map-layout{ display:grid; grid-template-columns:1fr 260px; gap:30px; align-items:start; }
+.map-frame{ border:6px solid var(--ink); box-shadow:0 20px 50px rgba(33,29,24,0.35); border-radius:4px; overflow:hidden; background:#B8CBCF; }
+.map-legend{ background:var(--cream); border:1px solid var(--paper-line); border-radius:4px; padding:20px; }
+.map-legend h4{ font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); margin:0 0 14px; }
+.map-legend ol{ margin:0; padding:0 0 0 22px; font-size:0.86rem; }
+.map-legend li{ margin-bottom:7px; }
+.map-legend .flight-note{ font-family:'JetBrains Mono', monospace; font-size:0.72rem; color:var(--rust-dark); margin-top:14px; padding-top:14px; border-top:1px solid var(--paper-line); }
+.map-caption{ font-family:'JetBrains Mono', monospace; font-size:0.75rem; color:var(--ink); opacity:0.65; margin-top:10px; }
+@media (max-width:820px){ .map-layout{ grid-template-columns:1fr; } }
+.section-label{ font-family:'JetBrains Mono', monospace; font-size:0.78rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--rust); margin:0 0 10px; }
+.itinerary{ padding:20px 0 90px; }
+.day-entry{ display:grid; grid-template-columns:120px 1fr; gap:30px; padding:34px 0; border-top:1px solid var(--paper-line); }
+.day-entry:last-child{ border-bottom:1px solid var(--paper-line); }
+.shield{ width:92px; height:104px; background:var(--teal); clip-path:polygon(50% 0%, 100% 16%, 100% 74%, 50% 100%, 0% 74%, 0% 16%); color:var(--cream); display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:'JetBrains Mono', monospace; text-align:center; box-shadow:2px 3px 0 rgba(33,29,24,0.25); }
+.shield .d{ font-size:1.5rem; font-weight:700; line-height:1; }
+.shield .m{ font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; margin-top:4px; opacity:0.85; }
+.day-entry.fly .shield{ background:var(--rust); }
+.day-content .drive-tag{ display:inline-block; font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.04em; color:var(--rust-dark); background:rgba(169,56,38,0.1); border:1px solid rgba(169,56,38,0.3); padding:3px 12px; border-radius:20px; margin-bottom:12px; }
+.day-content .city{ font-family:'Big Shoulders Display', sans-serif; font-weight:800; text-transform:uppercase; font-size:1.9rem; color:var(--ink); margin:0 0 12px; }
+.day-content p{ margin:0 0 12px; font-size:1.02rem; }
+.day-content ul{ margin:12px 0 0; padding-left:20px; }
+.day-content li{ margin-bottom:7px; }
+.day-content .highlight{ background:linear-gradient(180deg, transparent 62%, rgba(180,135,44,0.4) 62%); padding:0 2px; }
+.day-content .note{ font-family:'Caveat', cursive; font-size:1.3rem; color:var(--rust-dark); margin-top:14px; display:inline-block; }
+footer{ background:var(--ink); color:rgba(246,240,225,0.6); padding:36px 0; font-family:'JetBrains Mono', monospace; font-size:0.8rem; text-align:center; }
+footer a{ color:var(--gold); }
+.footer-row{ display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; }
+.footer-ig{ display:inline-flex; color:var(--gold); transition:color 0.2s ease; }
+.footer-ig:hover{ color:var(--cream); }
+.back-home{ display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono', monospace; font-weight:600; font-size:0.85rem; color:var(--cream); background:var(--teal); padding:12px 22px; border-radius:2px; text-decoration:none; text-transform:uppercase; letter-spacing:0.05em; }
+.back-home:hover{ background:var(--rust); }
+@media (max-width:680px){ .day-entry{ grid-template-columns:74px 1fr; gap:18px; } .shield{ width:70px; height:80px; } .shield .d{ font-size:1.1rem; } .shield .m{ font-size:0.55rem; } }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 400 340" aria-hidden="true"><polygon points="200,40 310,84.4 310,235.6 200,280 90,235.6 90,84.4" fill="#A93826" stroke="#F6F0E1" stroke-width="10"/><path d="M135 250 L195 250 L135 190 L195 190 L135 130 L195 130 L235 88" fill="none" stroke="#F6F0E1" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><circle cx="238" cy="82" r="22" fill="#F6F0E1"/><circle cx="238" cy="82" r="9" fill="#A93826"/></svg><span class="brand-word">Destinazione <span class="accent">Mondo</span></span></a>
+    <div class="navlinks"><a class="nav-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a></div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="postmark">24 aprile — 1 maggio 2018</span>
+    <h1>Circolo d'Oro &amp; Ghiacciai</h1>
+    <p class="lede">Un anello attorno all'Islanda del sud-ovest: la penisola di Snæfellsnes, il Circolo d'Oro, le cascate della costa sud, la laguna glaciale di Jökulsárlón e la Blue Lagoon per chiudere.</p>
+    <div class="stats-row">
+      <div class="stat"><b>8</b><span>giorni</span></div>
+      <div class="stat"><b>2</b><span>hiking sul ghiaccio</span></div>
+      <div class="stat"><b>1</b><span>laguna glaciale</span></div>
+      <div class="stat"><b>~1200</b><span>km guidati</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap map-section">
+  <p class="section-label">La rotta</p>
+  <div class="map-layout">
+    <div>
+      <div class="map-frame">
+        <svg viewBox="0 0 900 600" style="width:100%; display:block;">
+          <defs>
+            <pattern id="lavaIS" width="50" height="50" patternUnits="userSpaceOnUse">
+              <path d="M0 25 Q 13 12, 25 25 T 50 25" fill="none" stroke="#8FAEB2" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="900" height="600" fill="#B8CBCF"/>
+          <rect width="900" height="600" fill="url(#lavaIS)" opacity="0.5"/>
+
+          <ellipse cx="480" cy="330" rx="420" ry="220" fill="#D9CDA8" opacity="0.85"/>
+
+          <g transform="translate(840,50)" opacity="0.7">
+            <circle r="26" fill="none" stroke="#211D18" stroke-width="1.3"/>
+            <path d="M0 -21 L5 0 L0 21 L-5 0 Z" fill="#A93826"/>
+            <text x="0" y="-30" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#211D18">N</text>
+          </g>
+
+          <path d="M260 345 Q 200 200, 177 60 Q 100 100, 60 135 Q 130 90, 177 60 Q 260 200, 337 306 Q 380 300, 420 291 Q 430 288, 438 285 Q 500 400, 549 558 Q 520 540, 499 525 Q 470 400, 438 285 Q 360 350, 352 405 Q 500 400, 549 558 Q 700 460, 832 369 Q 500 400, 352 405 Q 280 415, 205 420 Q 230 380, 260 345"
+                fill="none" stroke="#1F4F55" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 9"/>
+
+          <g font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#211D18">
+            <circle cx="260" cy="345" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
+            <text x="215" y="330">Reykjavík</text>
+
+            <circle cx="177" cy="60" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="130" y="46">Stykkishólmur</text>
+
+            <circle cx="60" cy="135" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="10" y="120">Snæfellsnes</text>
+
+            <circle cx="337" cy="306" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="270" y="300">Þingvellir</text>
+
+            <circle cx="420" cy="291" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="428" y="278">Geysir</text>
+
+            <circle cx="438" cy="285" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="446" y="300">Gullfoss</text>
+
+            <circle cx="352" cy="405" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="360" y="403">Selfoss</text>
+
+            <circle cx="499" cy="525" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="440" y="540">Skógafoss</text>
+
+            <circle cx="549" cy="558" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="557" y="556">Vík</text>
+
+            <circle cx="832" cy="369" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="720" y="355">Jökulsárlón</text>
+
+            <circle cx="205" cy="420" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="130" y="438">Blue Lagoon</text>
+          </g>
+        </svg>
+      </div>
+      <p class="map-caption">tratteggiato blu = guida su strada</p>
+    </div>
+
+    <div class="map-legend">
+      <h4>Le tappe</h4>
+      <ol>
+        <li>Reykjavík</li>
+        <li>Penisola di Snæfellsnes</li>
+        <li>Circolo d'Oro (Þingvellir, Geysir, Gullfoss)</li>
+        <li>Costa sud (Seljalandsfoss, Skógafoss, Vík)</li>
+        <li>Jökulsárlón</li>
+        <li>Blue Lagoon</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <section class="itinerary">
+
+    <div class="day-entry fly">
+      <div class="shield"><span class="m">DAY</span><span class="d">1</span></div>
+      <div class="day-content">
+        <p class="drive-tag">volo Milano → Copenaghen (20:05 → 22:05)</p>
+        <p class="city">Partenza</p>
+        <p>Primo scalo verso l'Islanda.</p>
+      </div>
+    </div>
+
+    <div class="day-entry fly">
+      <div class="shield"><span class="m">DAY</span><span class="d">2</span></div>
+      <div class="day-content">
+        <p class="drive-tag">volo Copenaghen → Reykjavík (8:30 → 9:45)</p>
+        <p class="city">Reykjavík</p>
+        <p>Visita della città dopo l'arrivo.</p>
+      </div>
+    </div>
+
+    <div class="day-entry drive">
+      <div class="shield"><span class="m">DAY</span><span class="d">3</span></div>
+      <div class="day-content">
+        <p class="drive-tag">tour di 4 ore di guida</p>
+        <p class="city">Penisola di Snæfellsnes</p>
+        <p>Giro della <span class="highlight">penisola di Snæfellsnes</span>, "l'Islanda in miniatura": cascate, colonie di uccelli marini a Hellnar e panorami sul ghiacciaio Snæfellsjökull. Pernottamento a Stykkishólmur.</p>
+      </div>
+    </div>
+
+    <div class="day-entry drive">
+      <div class="shield"><span class="m">DAY</span><span class="d">4</span></div>
+      <div class="day-content">
+        <p class="drive-tag">tour di 4h30 di guida</p>
+        <p class="city">Circolo d'Oro</p>
+        <p>Il classico <span class="highlight">Circolo d'Oro</span>: il parco nazionale di Þingvellir, dove si incontrano le placche tettoniche euroasiatica e nordamericana, i geyser di Geysir e la maestosa cascata Gullfoss. Pernottamento a Selfoss.</p>
+      </div>
+    </div>
+
+    <div class="day-entry drive">
+      <div class="shield"><span class="m">DAY</span><span class="d">5</span></div>
+      <div class="day-content">
+        <p class="drive-tag">Seljalandsfoss (1h) → Skógafoss (25 min) → hiking ghiacciaio (Arcanum Tours, inizio 14:30)</p>
+        <p class="city">Costa sud — cascate e ghiacciaio</p>
+        <p>Le cascate di <span class="highlight">Seljalandsfoss</span> (dove si può camminare dietro il velo d'acqua) e <span class="highlight">Skógafoss</span>, poi un hiking guidato di 2 ore su un ghiacciaio con Arcanum Tours. Pernottamento a Vík.</p>
+      </div>
+    </div>
+
+    <div class="day-entry drive">
+      <div class="shield"><span class="m">DAY</span><span class="d">6</span></div>
+      <div class="day-content">
+        <p class="drive-tag">Jökulsárlón (2h26 di guida)</p>
+        <p class="city">Jökulsárlón e Diamond Beach</p>
+        <p>La spettacolare laguna glaciale di <span class="highlight">Jökulsárlón</span>, con gli iceberg alla deriva, e la vicina Diamond Beach, dove i blocchi di ghiaccio si arenano sulla sabbia nera. Sosta anche a una piccola chiesa col tetto d'erba. Rientro serale a Vík.</p>
+      </div>
+    </div>
+
+    <div class="day-entry drive">
+      <div class="shield"><span class="m">DAY</span><span class="d">7</span></div>
+      <div class="day-content">
+        <p class="drive-tag">guida verso la Blue Lagoon (2h47), ore 11:00</p>
+        <p class="city">Blue Lagoon</p>
+        <p>Ultima tappa alla celebre <span class="highlight">Blue Lagoon</span>, le terme geotermali più famose d'Islanda. Restituzione dell'auto a noleggio in aeroporto, poi navetta verso l'hotel vicino allo scalo.</p>
+      </div>
+    </div>
+
+    <div class="day-entry fly">
+      <div class="shield"><span class="m">DAY</span><span class="d">8</span></div>
+      <div class="day-content">
+        <p class="drive-tag">volo Reykjavík → Copenaghen (7:45 → 12:55), poi Copenaghen → Milano (17:10 → 19:15)</p>
+        <p class="city">Rientro in Italia</p>
+        <p>Doppio volo di ritorno verso Milano.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <div style="text-align:center; padding-bottom:80px;">
+    <a class="back-home" href="index.html">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 8H3M8 3L3 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Torna a tutti gli itinerari
+    </a>
+  </div>
+</main>
+
+<footer><div class="wrap footer-row">DESTINAZIONE MONDO — Itinerari on the road<a class="footer-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a></div></footer>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "61c36c7662aa44b88df191eaa9928a38"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

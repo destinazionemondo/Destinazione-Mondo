@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sudafrica: Kruger &amp; Garden Route — Destinazione Mondo</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Caveat:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --ink:#211D18; --paper:#ECE3D0; --paper-line:rgba(33,29,24,0.16);
+  --cream:#F6F0E1; --rust:#A93826; --rust-dark:#7E2A1C;
+  --teal:#1F4F55; --gold:#B4872C;
+}
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:'Source Serif 4', Georgia, serif; font-size:18px; line-height:1.65;
+}
+::selection{ background:var(--gold); color:var(--cream); }
+a{ color:var(--teal); }
+.wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
+
+.topnav{ position:sticky; top:0; z-index:80; background:var(--ink); border-bottom:4px solid var(--rust); }
+.topnav .wrap{ display:flex; align-items:center; justify-content:space-between; padding:14px 28px; }
+.brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+.brand-mark{ width:28px; height:auto; flex-shrink:0; display:block; }
+.brand-word{ font-family:'Big Shoulders Display', sans-serif; font-weight:800; font-size:1.35rem; letter-spacing:0.02em; color:var(--cream); white-space:nowrap; }
+.brand-word .accent{ color:var(--rust); }
+.navlinks a{ color:var(--cream); text-decoration:none; font-family:'JetBrains Mono', monospace; font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase; border-bottom:2px solid transparent; white-space:nowrap; }
+.topnav .wrap{ flex-wrap:nowrap; }
+.brand-word{ overflow:hidden; text-overflow:ellipsis; }
+.navlinks a:hover{ border-color:var(--gold); }
+.navlinks{ display:flex; align-items:center; gap:22px; }
+.nav-ig{ display:inline-flex; color:var(--cream); transition:color 0.2s ease; }
+.nav-ig:hover{ color:var(--gold); }
+
+.hero{ background:linear-gradient(180deg, rgba(33,29,24,0) 60%, var(--paper) 100%), var(--ink); color:var(--cream); padding:64px 0 40px; }
+.postmark{ font-family:'JetBrains Mono', monospace; font-size:0.8rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold); border-radius:30px; padding:5px 16px; display:inline-block; margin-bottom:22px; }
+.hero h1{ font-family:'Big Shoulders Display', sans-serif; font-weight:900; font-size:clamp(2.4rem, 7.5vw, 5.2rem); line-height:0.98; margin:0 0 20px; text-transform:uppercase; }
+.hero .lede{ max-width:600px; font-size:1.1rem; color:rgba(246,240,225,0.82); }
+.stats-row{ display:flex; flex-wrap:wrap; gap:26px; margin-top:30px; font-family:'JetBrains Mono', monospace; }
+.stat b{ display:block; font-size:1.5rem; color:var(--gold); font-weight:700; }
+.stat span{ font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(246,240,225,0.65); }
+
+.map-section{ padding:50px 0 30px; }
+.map-layout{ display:grid; grid-template-columns:1fr 260px; gap:30px; align-items:start; }
+.map-frame{ border:6px solid var(--ink); box-shadow:0 20px 50px rgba(33,29,24,0.35); border-radius:4px; overflow:hidden; background:#DCC79A; }
+.map-legend{ background:var(--cream); border:1px solid var(--paper-line); border-radius:4px; padding:20px; }
+.map-legend h4{ font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); margin:0 0 14px; }
+.map-legend ol{ margin:0; padding:0 0 0 22px; font-size:0.86rem; }
+.map-legend li{ margin-bottom:7px; }
+.map-legend .flight-note{ font-family:'JetBrains Mono', monospace; font-size:0.72rem; color:var(--rust-dark); margin-top:14px; padding-top:14px; border-top:1px solid var(--paper-line); }
+.map-caption{ font-family:'JetBrains Mono', monospace; font-size:0.75rem; color:var(--ink); opacity:0.65; margin-top:10px; }
+
+@media (max-width:820px){ .map-layout{ grid-template-columns:1fr; } }
+
+.section-label{ font-family:'JetBrains Mono', monospace; font-size:0.78rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--rust); margin:0 0 10px; }
+
+.itinerary{ padding:20px 0 90px; }
+.day-entry{ display:grid; grid-template-columns:120px 1fr; gap:30px; padding:34px 0; border-top:1px solid var(--paper-line); }
+.day-entry:last-child{ border-bottom:1px solid var(--paper-line); }
+.shield{ width:92px; height:104px; background:var(--teal); clip-path:polygon(50% 0%, 100% 16%, 100% 74%, 50% 100%, 0% 74%, 0% 16%); color:var(--cream); display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:'JetBrains Mono', monospace; text-align:center; box-shadow:2px 3px 0 rgba(33,29,24,0.25); }
+.shield .d{ font-size:1.5rem; font-weight:700; line-height:1; }
+.shield .m{ font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; margin-top:4px; opacity:0.85; }
+.day-entry.fly .shield{ background:var(--rust); }
+.day-content .drive-tag{ display:inline-block; font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.04em; color:var(--rust-dark); background:rgba(169,56,38,0.1); border:1px solid rgba(169,56,38,0.3); padding:3px 12px; border-radius:20px; margin-bottom:12px; }
+.day-content .city{ font-family:'Big Shoulders Display', sans-serif; font-weight:800; text-transform:uppercase; font-size:1.9rem; color:var(--ink); margin:0 0 12px; }
+.day-content p{ margin:0 0 12px; font-size:1.02rem; }
+.day-content ul{ margin:12px 0 0; padding-left:20px; }
+.day-content li{ margin-bottom:7px; }
+.day-content .highlight{ background:linear-gradient(180deg, transparent 62%, rgba(180,135,44,0.4) 62%); padding:0 2px; }
+.day-content .note{ font-family:'Caveat', cursive; font-size:1.3rem; color:var(--rust-dark); margin-top:14px; display:inline-block; }
+
+footer{ background:var(--ink); color:rgba(246,240,225,0.6); padding:36px 0; font-family:'JetBrains Mono', monospace; font-size:0.8rem; text-align:center; }
+footer a{ color:var(--gold); }
+.footer-row{ display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; }
+.footer-ig{ display:inline-flex; color:var(--gold); transition:color 0.2s ease; }
+.footer-ig:hover{ color:var(--cream); }
+.back-home{ display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono', monospace; font-weight:600; font-size:0.85rem; color:var(--cream); background:var(--teal); padding:12px 22px; border-radius:2px; text-decoration:none; text-transform:uppercase; letter-spacing:0.05em; }
+.back-home:hover{ background:var(--rust); }
+
+@media (max-width:680px){
+  .day-entry{ grid-template-columns:74px 1fr; gap:18px; }
+  .shield{ width:70px; height:80px; }
+  .shield .d{ font-size:1.1rem; }
+  .shield .m{ font-size:0.55rem; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 400 340" aria-hidden="true"><polygon points="200,40 310,84.4 310,235.6 200,280 90,235.6 90,84.4" fill="#A93826" stroke="#F6F0E1" stroke-width="10"/><path d="M135 250 L195 250 L135 190 L195 190 L135 130 L195 130 L235 88" fill="none" stroke="#F6F0E1" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><circle cx="238" cy="82" r="22" fill="#F6F0E1"/><circle cx="238" cy="82" r="9" fill="#A93826"/></svg><span class="brand-word">Destinazione <span class="accent">Mondo</span></span></a>
+    <div class="navlinks"><a class="nav-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a></div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="postmark">7 — 25 agosto 2024</span>
+    <h1>Sudafrica: Safari &amp; Garden Route</h1>
+    <p class="lede">Safari nel Kruger Park, poi quasi mille chilometri lungo la Garden Route fino a Città del Capo: elefanti, balene, faglie costiere selvagge e vigneti, con Robben Island a chiudere il cerchio.</p>
+    <div class="stats-row">
+      <div class="stat"><b>19</b><span>giorni</span></div>
+      <div class="stat"><b>3</b><span>safari nel Kruger</span></div>
+      <div class="stat"><b>~950</b><span>km di Garden Route</span></div>
+      <div class="stat"><b>4</b><span>voli interni/intercontinentali</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap map-section">
+  <p class="section-label">La rotta</p>
+  <div class="map-layout">
+    <div>
+      <div class="map-frame">
+        <svg viewBox="0 0 850 680" style="width:100%; display:block;">
+          <defs>
+            <pattern id="savanna" width="55" height="55" patternUnits="userSpaceOnUse">
+              <path d="M0 27 Q 14 12, 27 27 T 55 27" fill="none" stroke="#C9A968" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="850" height="680" fill="#DCC79A"/>
+          <rect width="850" height="680" fill="url(#savanna)" opacity="0.5"/>
+
+          <text x="600" y="330" font-family="'Big Shoulders Display',sans-serif" font-size="20" fill="#211D18" opacity="0.25" transform="rotate(3 600 330)">MPUMALANGA</text>
+          <text x="300" y="610" font-family="'Big Shoulders Display',sans-serif" font-size="20" fill="#211D18" opacity="0.25" transform="rotate(-2 300 610)">GARDEN ROUTE</text>
+          <text x="130" y="640" font-family="'Big Shoulders Display',sans-serif" font-size="18" fill="#211D18" opacity="0.25" transform="rotate(-3 130 640)">WESTERN CAPE</text>
+
+          <!-- compass -->
+          <g transform="translate(780,50)" opacity="0.7">
+            <circle r="26" fill="none" stroke="#211D18" stroke-width="1.3"/>
+            <path d="M0 -21 L5 0 L0 21 L-5 0 Z" fill="#1F4F55"/>
+            <text x="0" y="-30" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#211D18">N</text>
+          </g>
+
+          <!-- flight arcs -->
+          <path d="M602 152 Q 700 90, 767 50" fill="none" stroke="#A93826" stroke-width="2.8" stroke-dasharray="1 8"/>
+          <path d="M767 50 Q 650 330, 468 578" fill="none" stroke="#A93826" stroke-width="2.8" stroke-dasharray="1 8"/>
+
+          <!-- garden route drive -->
+          <path d="M468 578 L374 579 Q 360 581, 345 583 Q 335 583, 328 583 Q 315 581, 302 580 Q 296 570, 295 578 Q 288 568, 281 558 Q 230 582, 183 607 Q 150 605, 118 604 Q 96 590, 73 576"
+                fill="none" stroke="#1F4F55" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 9"/>
+
+          <!-- pins -->
+          <g font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="700" fill="#211D18">
+            <circle cx="602" cy="152" r="8" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
+            <text x="500" y="140">Johannesburg</text>
+
+            <circle cx="767" cy="50" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="700" y="35">Hoedspruit / Kruger</text>
+
+            <circle cx="468" cy="578" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="478" y="576">Port Elizabeth</text>
+
+            <circle cx="374" cy="579" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="330" y="565">Tsitsikamma</text>
+
+            <circle cx="328" cy="583" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="336" y="605">Plettenberg/Knysna</text>
+
+            <circle cx="295" cy="578" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="230" y="562">Wilderness/George</text>
+
+            <circle cx="281" cy="558" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="255" y="540">Oudtshoorn</text>
+
+            <circle cx="183" cy="607" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="163" y="628">De Hoop</text>
+
+            <circle cx="118" cy="604" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="98" y="626">Hermanus</text>
+
+            <circle cx="73" cy="576" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
+            <text x="12" y="562">Città del Capo</text>
+          </g>
+        </svg>
+      </div>
+      <p class="map-caption">tratteggiato rosso = voli · tratteggiato blu = guida lungo la Garden Route</p>
+    </div>
+
+    <div class="map-legend">
+      <h4>Le tappe</h4>
+      <ol>
+        <li>Johannesburg</li>
+        <li>Hoedspruit / Kruger Park</li>
+        <li>Port Elizabeth</li>
+        <li>Tsitsikamma</li>
+        <li>Plettenberg Bay / Knysna</li>
+        <li>Wilderness / Oudtshoorn / George</li>
+        <li>De Hoop</li>
+        <li>Hermanus</li>
+        <li>Città del Capo</li>
+      </ol>
+      <p class="flight-note">via Doha in andata e ritorno dall'Italia</p>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <section class="itinerary">
+
+    <div class="day-entry fly">
+      <div class="shield"><span class="m">DAY</span><span class="d">1</span></div>
+      <div class="day-content">
+        <p class="drive-tag">volo Milano → Doha (16:15 → 23:00)</p>
+        <p class="city">Scalo a Doha</p>
+        <p>Notte in hotel vicino all'aeroporto (Oryx Airport Hotel) prima di proseguire verso il Sudafrica.</p>
+      </div>
+    </div>
+
+    <div class="day-entry fly">
+      <div class="shield"><span class="m">DAY</span><span class="d">2</span></div>
+      <div class="day-content">
+        <p class="drive-tag">volo Doha → Johannesburg (8:40 → 16:10)</p>
+        <p class="city">Johannesburg</p>
+        <p>Una notte al Giglio Boutique Hotel prima del volo interno verso il Kruger Park.</p>
+      </div>
+    </div>
+
+    <div class="day-entry fly">
+      <div class="shield"><span class="m">DAY</span><span class="d">3</span></div>
+      <div class="day-content">
+        <p class="drive-tag">volo Johannesburg → Hoedspruit (10:30 → 11:25)</p>
+        <p class="city">Arathusa Safari Lodge</p>
+        <p>Arrivo alla lodge nel <span class="highlight">Sabi Sand</span>, ai confini del Kruger. Primo game drive nel pomeriggio, con partenza alle 15:30.</p>
+      </div>
+    </div>
+
+    <div class="day-entry">
+      <div class="shield"><span class="m">DAY</span><span class="d">4</span></div>
+      <div class="day-content">
+        <p class="city">Safari — Arathusa</p>
+        <p>Giornata tipo in lodge: sveglia alle 5:30, safari mattutino dalle 6:00 alle 9:00, colazione al rientro, passeggiata guidata facoltativa alle 10:15. Mattinata libera in piscina o alla spa, pranzo alle 14:00, tè delle 15:30 e secondo <span class="highlight">game drive</span> serale, cena alle 19:15.</p>
+      </div>
+    </div>
+
+    <div class="day-entry">
+      <div class="shield"><span class="m">DAY</span><span class="d">5</span></div>
+      <div class="day-content">
+        <p class="city">Safari — verso Orpen</p>
+        <p>Game drive mattutino con la guida di Arathusa, poi trasferimento all'Orpen Kruger Lodge nel pomeriggio, con un ulteriore game drive guidato in serata.</p>
+      </div>
+    </div>
+
+    <div class="day-entry">
+      <div class="shield"><span class="m">DAY</span><span class="d">6</span></div>
+      <div class="day-content">
+        <p class="city">Safari — Manyeleti</p>
+        <p>Escursione nella <span class="highlight">Manyeleti Nature Reserve</span>, area meno battuta e più selvaggia adiacente al Kruger.</p>
+      </div>
+    </div>
+
+    <div class="day-entry fly">
+      <div class="shield"><span class="m">DAY</span><span class="d">7</span></div>
+      <div class="day-content">
+        <p class="drive-tag">volo Hoedspruit → Port Elizabeth (12:05 → 17:40, via Johannesburg)</p>
+        <p class="city">Port Elizabeth</p>
+        <p>Notte all'Admiralty Beach House, con ritiro auto a noleggio il giorno seguente per iniziare la Garden Route.</p>
+      </div>
+    </div>
+
+    <div class="day-entry drive">
+      <div class="shield"><span class="m">DAY</span><span class="d">8</span></div>
+      <div class="day-content">
+        <p class="drive-tag">ritiro auto (Hertz) → guida di 2h verso Tsitsikamma</p>
+        <p class="city">Tsitsikamma National Park</p>
+        <p>Sistemazione al The Fernery Lodge &amp; Chalets, nel cuore della foresta lungo la Garden Route.</p>
+      </div>
+    </div>
+
+    <div class="day-entry drive">
+      <div class="shield"><span class="m">DAY</span><span class="d">9</span></div>
+      <div class="day-content">
+        <p class="drive-tag">guida verso Wilderness (2h20)</p>
+        <p class="city">Plettenberg Bay / Knysna</p>
+        <p>Trekking di circa 2 ore nella <span class="highlight">Robberg Nature Reserve</span>, penisola rocciosa con vista sull'oceano e avvistamenti di foche. Notte in Airbnb a Wilderness.</p>
+      </div>
+    </div>
+
+    <div class="day-entry">
+      <div class="shield"><span class="m">DAY</span><span class="d">10</span></div>
+      <div class="day-content">
+        <p class="city">Wilderness / Oudtshoorn / George</p>
+        <p>Elephant Walk &amp; Interaction: passeggiata guidata a contatto con gli elefanti, circa un'ora e mezza incluso il trasferimento (prenotato per le ore 11:00).</p>
+      </div>
+    </div>
+
+    <div class="day-entry drive">
+      <div class="shield"><span class="m">DAY</span><span class="d">11</span></div>
+      <div class="day-content">
+        <p class="drive-tag">guida verso De Hoop (3h10)</p>
+        <p class="city">De Hoop Nature Reserve</p>
+        <p>Una delle zone migliori al mondo per l'avvistamento delle balene da terra, soprattutto tra luglio e ottobre. Riserva naturale con dune bianche altissime e ricca biodiversità: zebre di montagna, bontebok e oltre 260 specie di uccelli.</p>
+      </div>
+    </div>
+
+    <div class="day-entry drive">
+      <div class="shield"><span class="m">DAY</span><span class="d">12</span></div>
+      <div class="day-content">
+        <p class="drive-tag">guida via Capo Agulhas (1h54)</p>
+        <p class="city">Hermanus</p>
+        <p>Tappa a <span class="highlight">Capo Agulhas</span>, il punto più a sud del continente africano, prima di arrivare a Hermanus. Notte in Airbnb.</p>
+      </div>
+    </div>
+
+    <div class="day-entry">
+      <div class="shield"><span class="m">DAY</span><span class="d">13</span></div>
+      <div class="day-content">
+        <p class="city">Hermanus</p>
+        <p>Passeggiata lungo <span class="highlight">The Cliff Path</span>, quasi 5 km di sentiero costiero dall'Old Harbour a Grotto Beach: uno dei migliori punti per l'avvistamento delle balene.</p>
+      </div>
+    </div>
+
+    <div class="day-entry drive">
+      <div class="shield"><span class="m">DAY</span><span class="d">14</span></div>
+      <div class="day-content">
+        <p class="drive-tag">rilascio auto a Hermanus, taxi verso Città del Capo</p>
+        <p class="city">Città del Capo</p>
+        <p>Sistemazione al Queen Victoria Hotel by Newmark, nel V&amp;A Waterfront. Pomeriggio libero per esplorare il <span class="highlight">Waterfront</span>.</p>
+      </div>
+    </div>
+
+    <div class="day-entry">
+      <div class="shield"><span class="m">DAY</span><span class="d">15</span></div>
+      <div class="day-content">
+        <p class="city">Città del Capo — Robben Island</p>
+        <p>Mattina dedicata alla visita di <span class="highlight">Robben Island</span>, con il traghetto in partenza dal Nelson Mandela Gateway al V&amp;A Waterfront. Pomeriggio a Signal Hill per il tramonto sulla città.</p>
+      </div>
+    </div>
+
+    <div class="day-entry">
+      <div class="shield"><span class="m">DAY</span><span class="d">16</span></div>
+      <div class="day-content">
+        <p class="city">Città del Capo — Cape Point</p>
+        <p>Tour di un giorno intero a <span class="highlight">Cape Point e Boulders Beach</span> (dove vivono i pinguini africani), con sosta al quartiere colorato di Bo-Kaap. Partenza alle 8:00.</p>
+      </div>
+    </div>
+
+    <div class="day-entry">
+      <div class="shield"><span class="m">DAY</span><span class="d">17</span></div>
+      <div class="day-content">
+        <p class="city">Città del Capo — Winelands</p>
+        <p>Tour di un giorno nelle <span class="highlight">Winelands</span>, con degustazioni di vino e cibo alla Jordan Wine Estate.</p>
+      </div>
+    </div>
+
+    <div class="day-entry fly">
+      <div class="shield"><span class="m">DAY</span><span class="d">18</span></div>
+      <div class="day-content">
+        <p class="drive-tag">volo Città del Capo → Doha (13:00 → 23:35)</p>
+        <p class="city">Scalo a Doha</p>
+        <p>Notte al Rixos Gulf Hotel Doha prima dell'ultimo volo verso l'Italia.</p>
+      </div>
+    </div>
+
+    <div class="day-entry fly">
+      <div class="shield"><span class="m">DAY</span><span class="d">19</span></div>
+      <div class="day-content">
+        <p class="drive-tag">volo Doha → Milano (15:50 → 21:00)</p>
+        <p class="city">Rientro in Italia</p>
+        <p>Chiusura del viaggio con l'arrivo serale a Milano.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <div style="text-align:center; padding-bottom:80px;">
+    <a class="back-home" href="index.html">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 8H3M8 3L3 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Torna a tutti gli itinerari
+    </a>
+  </div>
+</main>
+
+<footer><div class="wrap footer-row">DESTINAZIONE MONDO — Itinerari on the road<a class="footer-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a></div></footer>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "61c36c7662aa44b88df191eaa9928a38"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
