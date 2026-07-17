@@ -30,7 +30,7 @@ a{ color:var(--teal); }
 .hero h1{ font-family:'Big Shoulders Display', sans-serif; font-weight:900; font-size:clamp(2.2rem, 7vw, 4.8rem); line-height:0.98; margin:0 0 20px; text-transform:uppercase; }
 .hero .lede{ max-width:600px; font-size:1.1rem; color:rgba(246,240,225,0.82); }
 .stats-row{ display:flex; flex-wrap:wrap; gap:26px; margin-top:30px; font-family:'JetBrains Mono', monospace; }
-.stat b{ display:block; font-size:1.5rem; color:var(--gold); font-weight:700; }
+.stat b{ display:block; font-size:1.5rem; color:#D9A94D; font-weight:700; }
 .stat span{ font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(246,240,225,0.65); }
 .map-section{ padding:50px 0 30px; }
 .map-layout{ display:grid; grid-template-columns:1fr 260px; gap:30px; align-items:start; }
@@ -64,6 +64,12 @@ footer a{ color:var(--gold); }
 .footer-ig:hover{ color:var(--cream); }
 .back-home{ display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono', monospace; font-weight:600; font-size:0.85rem; color:var(--cream); background:var(--teal); padding:12px 22px; border-radius:2px; text-decoration:none; text-transform:uppercase; letter-spacing:0.05em; }
 .back-home:hover{ background:var(--rust); }
+.gyg-box{ background:var(--cream); border:1px solid var(--paper-line); border-left:4px solid var(--gold); padding:20px 24px; margin:10px 0 46px; border-radius:2px; }
+.gyg-label{ font-family:'JetBrains Mono', monospace; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:8px; }
+.gyg-box p{ margin:0; font-size:0.98rem; color:var(--ink); }
+.gyg-box a{ color:var(--rust); font-weight:600; text-decoration:none; border-bottom:1px solid var(--rust); }
+.gyg-box a:hover{ color:var(--teal); border-color:var(--teal); }
+.gyg-widget-wrap{ max-width:520px; margin:0 auto; overflow:hidden; }
 @media (max-width:680px){ .day-entry{ grid-template-columns:74px 1fr; gap:18px; } .shield{ width:70px; height:80px; } .shield .d{ font-size:1.1rem; } .shield .m{ font-size:0.55rem; } }
 </style>
 </head>
@@ -338,6 +344,16 @@ footer a{ color:var(--gold); }
     </div>
 
   </section>
+
+  <div class="wrap">
+    <div class="gyg-box">
+      <span class="gyg-label">Esperienze consigliate</span>
+      <div class="gyg-widget-wrap">
+        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="1983" data-gyg-locale-code="it-IT" data-gyg-widget="city" data-gyg-partner-id="TDCBQRE"></div>
+        <script async defer src="https://widget.getyourguide.com/dist/pa.umd.production.min.js" data-gyg-partner-id="TDCBQRE"></script>
+      </div>
+    </div>
+  </div>
 
   <div style="text-align:center; padding-bottom:80px;">
     <a class="back-home" href="index.html">
