@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Home Page -->
+  <url>
+    <loc>https://www.destinazionemondo.it/</loc>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- Argentina & Miami -->
+  <url>
+    <loc>https://www.destinazionemondo.it/argentina-miami.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Asia 2015 -->
+  <url>
+    <loc>https://www.destinazionemondo.it/asia-2015.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Australia -->
+  <url>
+    <loc>https://www.destinazionemondo.it/australia.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Azzorre -->
+  <url>
+    <loc>https://www.destinazionemondo.it/azzorre.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Canada -->
+  <url>
+    <loc>https://www.destinazionemondo.it/canada.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Chicago & New Orleans -->
+  <url>
+    <loc>https://www.destinazionemondo.it/chicago-new-orleans.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Cuba -->
+  <url>
+    <loc>https://www.destinazionemondo.it/cuba.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Isole Faroe -->
+  <url>
+    <loc>https://www.destinazionemondo.it/faroe.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Francia -->
+  <url>
+    <loc>https://www.destinazionemondo.it/francia.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Islanda -->
+  <url>
+    <loc>https://www.destinazionemondo.it/islanda.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Lapponia -->
+  <url>
+    <loc>https://www.destinazionemondo.it/lapponia.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Madeira -->
+  <url>
+    <loc>https://www.destinazionemondo.it/madeira.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Sudafrica -->
+  <url>
+    <loc>https://www.destinazionemondo.it/sudafrica.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Ovest USA -->
+  <url>
+    <loc>https://www.destinazionemondo.it/west-usa.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+</urlset>
