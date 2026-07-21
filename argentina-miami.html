@@ -49,6 +49,8 @@ a{ color:var(--teal); }
 .shield{ width:92px; height:104px; background:var(--teal); clip-path:polygon(50% 0%, 100% 16%, 100% 74%, 50% 100%, 0% 74%, 0% 16%); color:var(--cream); display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:'JetBrains Mono', monospace; text-align:center; box-shadow:2px 3px 0 rgba(33,29,24,0.25); }
 .shield .d{ font-size:1.5rem; font-weight:700; line-height:1; }
 .shield .m{ font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; margin-top:4px; opacity:0.85; }
+.day-photo{ display:block; width:70px; height:70px; margin:14px auto 0; }
+.day-photo img{ width:100%; height:100%; object-fit:cover; border:3px solid var(--cream); outline:1px solid var(--paper-line); box-shadow:0 4px 10px rgba(33,29,24,0.25); transform:rotate(-4deg); filter:sepia(0.55) saturate(1.3) contrast(1.05) brightness(0.97); display:block; }
 .day-entry.fly .shield{ background:var(--rust); }
 .day-content .drive-tag{ display:inline-block; font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.04em; color:var(--rust-dark); background:rgba(169,56,38,0.1); border:1px solid rgba(169,56,38,0.3); padding:3px 12px; border-radius:20px; margin-bottom:12px; }
 .day-content .city{ font-family:'Big Shoulders Display', sans-serif; font-weight:800; text-transform:uppercase; font-size:1.9rem; color:var(--ink); margin:0 0 12px; }
@@ -69,8 +71,8 @@ footer a{ color:var(--gold); }
 .gyg-box p{ margin:0; font-size:0.98rem; color:var(--ink); }
 .gyg-box a{ color:var(--rust); font-weight:600; text-decoration:none; border-bottom:1px solid var(--rust); }
 .gyg-box a:hover{ color:var(--teal); border-color:var(--teal); }
-.gyg-widget-wrap{ max-width:520px; margin:0 auto; overflow:hidden; zoom:0.34; }
-@media (max-width:680px){ .day-entry{ grid-template-columns:74px 1fr; gap:18px; } .shield{ width:70px; height:80px; } .shield .d{ font-size:1.1rem; } .shield .m{ font-size:0.55rem; } }
+.gyg-widget-wrap{ width:320px; aspect-ratio:1/1; margin:0 auto; overflow:hidden; zoom:0.51; }
+@media (max-width:680px){ .day-entry{ grid-template-columns:74px 1fr; gap:18px; } .shield{ width:70px; height:80px; } .shield .d{ font-size:1.1rem; } .shield .m{ font-size:0.55rem; } .day-photo{ width:54px; height:54px; } }
 </style>
 </head>
 <body>
@@ -78,7 +80,7 @@ footer a{ color:var(--gold); }
 <nav class="topnav">
   <div class="wrap">
     <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 400 340" aria-hidden="true"><polygon points="200,40 310,84.4 310,235.6 200,280 90,235.6 90,84.4" fill="#A93826" stroke="#F6F0E1" stroke-width="10"/><path d="M135 250 L195 250 L135 190 L195 190 L135 130 L195 130 L235 88" fill="none" stroke="#F6F0E1" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><circle cx="238" cy="82" r="22" fill="#F6F0E1"/><circle cx="238" cy="82" r="9" fill="#A93826"/></svg><span class="brand-word">Destinazione <span class="accent">Mondo</span></span></a>
-    <div class="navlinks"><a class="nav-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a></div>
+    <div class="navlinks"><a class="nav-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a><a class="nav-ig" href="mailto:destinazionemondo@etik.com" aria-label="Contattami"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 6 L12 13 L20.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
   </div>
 </nav>
 
@@ -185,7 +187,10 @@ footer a{ color:var(--gold); }
     </div>
 
     <div class="day-entry fly">
+      <div class="day-side">
       <div class="shield"><span class="m">DAY</span><span class="d">2</span></div>
+      <span class="day-photo"><img src="https://wsrv.nl/?url=https://i.ibb.co/4gYH0sbt/IMG-4443.jpg&w=200&q=75&output=webp" alt="Day 2" loading="lazy"></span>
+      </div>
       <div class="day-content">
         <p class="drive-tag">volo Miami → Buenos Aires (08:10 → 19:15, diretto)</p>
         <p class="city">Buenos Aires</p>
@@ -194,7 +199,10 @@ footer a{ color:var(--gold); }
     </div>
 
     <div class="day-entry">
+      <div class="day-side">
       <div class="shield"><span class="m">DAY</span><span class="d">3</span></div>
+      <span class="day-photo"><img src="https://wsrv.nl/?url=https://i.ibb.co/C3mzGrmr/IMG-4514.jpg&w=200&q=75&output=webp" alt="Day 3" loading="lazy"></span>
+      </div>
       <div class="day-content">
         <p class="city">Buenos Aires — il cuore storico</p>
         <p><span class="highlight">Plaza de Mayo</span>, centro simbolico della città, con la Casa Rosada, la Catedral Metropolitana e il Cabildo. Passeggiata lungo l'Avenida de Mayo fino al Café Tortoni, il più storico della città.</p>
@@ -225,7 +233,10 @@ footer a{ color:var(--gold); }
     </div>
 
     <div class="day-entry">
+      <div class="day-side">
       <div class="shield"><span class="m">DAY</span><span class="d">6</span></div>
+      <span class="day-photo"><img src="https://wsrv.nl/?url=https://i.ibb.co/m5xG9zxP/GPTemp-Download.jpg&w=200&q=75&output=webp" alt="Day 6" loading="lazy"></span>
+      </div>
       <div class="day-content">
         <p class="city">El Chaltén — trekking</p>
         <p>Diverse opzioni di hiking secondo la giornata: il <span class="highlight">Laguna Capri trail</span> (circa 3-4 ore andata e ritorno) per la vista sul Fitz Roy, oppure il più breve Mirador de los Cóndores e Chorrillo del Salto. Chi vuole qualcosa di più lungo può iniziare il sentiero della Laguna Torre e tornare a metà percorso. Cena alla parrilla La Oveja Negra (niente prenotazioni, arrivare presto).</p>
@@ -241,7 +252,10 @@ footer a{ color:var(--gold); }
     </div>
 
     <div class="day-entry drive">
+      <div class="day-side">
       <div class="shield"><span class="m">DAY</span><span class="d">8</span></div>
+      <span class="day-photo"><img src="https://wsrv.nl/?url=https://i.ibb.co/0pbJjvbd/IMG-4807.jpg&w=200&q=75&output=webp" alt="Day 8" loading="lazy"></span>
+      </div>
       <div class="day-content">
         <p class="drive-tag">guida verso El Calafate (3h35)</p>
         <p class="city">El Calafate — Perito Moreno</p>
@@ -250,7 +264,10 @@ footer a{ color:var(--gold); }
     </div>
 
     <div class="day-entry">
+      <div class="day-side">
       <div class="shield"><span class="m">DAY</span><span class="d">9</span></div>
+      <span class="day-photo"><img src="https://wsrv.nl/?url=https://i.ibb.co/S4S8sKkw/IMG-4777.jpg&w=200&q=75&output=webp" alt="Day 9" loading="lazy"></span>
+      </div>
       <div class="day-content">
         <p class="city">Lago Argentino — Estancia Cristina</p>
         <p>Imbarco alle 8:30 da Puerto Punta Bandera per l'escursione al <span class="highlight">Mirador Glaciar Upsala</span> con Estancia Cristina, navigando il Lago Argentino tra iceberg alla deriva.</p>
@@ -258,7 +275,10 @@ footer a{ color:var(--gold); }
     </div>
 
     <div class="day-entry fly">
+      <div class="day-side">
       <div class="shield"><span class="m">DAY</span><span class="d">10</span></div>
+      <span class="day-photo"><img src="https://wsrv.nl/?url=https://i.ibb.co/Mkkr6Tkc/IMG-5063.jpg&w=200&q=75&output=webp" alt="Day 10" loading="lazy"></span>
+      </div>
       <div class="day-content">
         <p class="drive-tag">volo El Calafate → Ushuaia (15:30 → 16:50)</p>
         <p class="city">Ushuaia</p>
@@ -267,7 +287,10 @@ footer a{ color:var(--gold); }
     </div>
 
     <div class="day-entry">
+      <div class="day-side">
       <div class="shield"><span class="m">DAY</span><span class="d">11</span></div>
+      <span class="day-photo"><img src="https://wsrv.nl/?url=https://i.ibb.co/DDVV91CL/IMG-5122.jpg&w=200&q=75&output=webp" alt="Day 11" loading="lazy"></span>
+      </div>
       <div class="day-content">
         <p class="city">Ushuaia — a cavallo e Canale di Beagle</p>
         <p>Passeggiata a cavallo sulla natura fueguina (partenza 9:30, rientro alle 13:00). Nel pomeriggio, escursione in barca al <span class="highlight">Canale di Beagle e Isola dei Pinguini</span> (partenza ore 15:00, circa 5 ore).</p>
@@ -301,7 +324,10 @@ footer a{ color:var(--gold); }
     </div>
 
     <div class="day-entry">
+      <div class="day-side">
       <div class="shield"><span class="m">DAY</span><span class="d">15</span></div>
+      <span class="day-photo"><img src="https://wsrv.nl/?url=https://i.ibb.co/rKfn5sTK/IMG-5633.jpg&w=200&q=75&output=webp" alt="Day 15" loading="lazy"></span>
+      </div>
       <div class="day-content">
         <p class="city">Miami — South Beach</p>
         <p>Passeggiata lungo <span class="highlight">Ocean Drive</span> e Lummus Park, tra palme e architettura Art Deco color pastello. Pranzo al Time Out Market, pomeriggio in bici o e-scooter sulla Miami Beach Boardwalk fino alla 41st Street. Cena da Gianni's, nella ex villa di Versace (prenotazione ore 19:30).</p>
@@ -318,7 +344,10 @@ footer a{ color:var(--gold); }
     </div>
 
     <div class="day-entry">
+      <div class="day-side">
       <div class="shield"><span class="m">DAY</span><span class="d">17</span></div>
+      <span class="day-photo"><img src="https://wsrv.nl/?url=https://i.ibb.co/qLp5twqP/IMG-5553.jpg&w=200&q=75&output=webp" alt="Day 17" loading="lazy"></span>
+      </div>
       <div class="day-content">
         <p class="city">Miami — Wynwood</p>
         <p>Mattina tra i murales del <span class="highlight">Wynwood Walls</span> e il Wynwood Arts District. Pomeriggio al Miami Design District, con l'installazione "Fly's Eye Dome" di Buckminster Fuller e l'Institute of Contemporary Art. In serata, Miami Heat vs Minnesota Timberwolves (NBA) al Kaseya Center (ore 17:00).</p>
