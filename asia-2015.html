@@ -34,7 +34,7 @@ a{ color:var(--teal); }
 .stat span{ font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(246,240,225,0.65); }
 .map-section{ padding:50px 0 30px; }
 .map-layout{ display:grid; grid-template-columns:1fr 260px; gap:30px; align-items:start; }
-.map-frame{ border:6px solid var(--ink); box-shadow:0 20px 50px rgba(33,29,24,0.35); border-radius:4px; overflow:hidden; background:#B8D0C4; }
+.map-frame{ border:6px solid var(--ink); box-shadow:0 20px 50px rgba(33,29,24,0.35); border-radius:4px; overflow:hidden; margin-left:16px; background:#B8D0C4; }
 .map-legend{ background:var(--cream); border:1px solid var(--paper-line); border-radius:4px; padding:20px; }
 .map-legend h4{ font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); margin:0 0 14px; }
 .map-legend ol{ margin:0; padding:0 0 0 22px; font-size:0.86rem; }
@@ -62,6 +62,12 @@ footer a{ color:var(--gold); }
 .footer-row{ display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; }
 .footer-ig{ display:inline-flex; color:var(--gold); transition:color 0.2s ease; }
 .footer-ig:hover{ color:var(--cream); }
+.gyg-box{ background:var(--cream); border:1px solid var(--paper-line); border-left:4px solid var(--gold); padding:20px 24px; margin:10px 0 46px; border-radius:2px; }
+.gyg-label{ font-family:'JetBrains Mono', monospace; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:8px; }
+.gyg-box p{ margin:0; font-size:0.98rem; color:var(--ink); }
+.gyg-box a{ color:var(--rust); font-weight:600; text-decoration:none; border-bottom:1px solid var(--rust); }
+.gyg-box a:hover{ color:var(--teal); border-color:var(--teal); }
+.gyg-widget-wrap{ max-width:420px; margin:0 auto; zoom:0.55; }
 .back-home{ display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono', monospace; font-weight:600; font-size:0.85rem; color:var(--cream); background:var(--teal); padding:12px 22px; border-radius:2px; text-decoration:none; text-transform:uppercase; letter-spacing:0.05em; }
 .back-home:hover{ background:var(--rust); }
 @media (max-width:680px){ .day-entry{ grid-template-columns:74px 1fr; gap:18px; } .shield{ width:70px; height:80px; } .shield .d{ font-size:1.1rem; } .shield .m{ font-size:0.55rem; } }
@@ -72,7 +78,7 @@ footer a{ color:var(--gold); }
 <nav class="topnav">
   <div class="wrap">
     <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 400 340" aria-hidden="true"><polygon points="200,40 310,84.4 310,235.6 200,280 90,235.6 90,84.4" fill="#A93826" stroke="#F6F0E1" stroke-width="10"/><path d="M135 250 L195 250 L135 190 L195 190 L135 130 L195 130 L235 88" fill="none" stroke="#F6F0E1" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><circle cx="238" cy="82" r="22" fill="#F6F0E1"/><circle cx="238" cy="82" r="9" fill="#A93826"/></svg><span class="brand-word">Destinazione <span class="accent">Mondo</span></span></a>
-    <div class="navlinks"><a class="nav-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a></div>
+    <div class="navlinks"><a class="nav-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a><a class="nav-ig" href="mailto:destinazionemondo@etik.com" aria-label="Contattami"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 6 L12 13 L20.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
   </div>
 </nav>
 
@@ -331,6 +337,16 @@ footer a{ color:var(--gold); }
 
   </section>
 
+  <div class="wrap">
+    <div class="gyg-box">
+      <span class="gyg-label">Esperienze consigliate</span>
+      <div class="gyg-widget-wrap">
+        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="169193" data-gyg-locale-code="it-IT" data-gyg-widget="city" data-gyg-partner-id="TDCBQRE"></div>
+        <script async defer src="https://widget.getyourguide.com/dist/pa.umd.production.min.js" data-gyg-partner-id="TDCBQRE"></script>
+      </div>
+    </div>
+  </div>
+
   <div style="text-align:center; padding-bottom:80px;">
     <a class="back-home" href="index.html">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 8H3M8 3L3 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -339,7 +355,7 @@ footer a{ color:var(--gold); }
   </div>
 </main>
 
-<footer><div class="wrap footer-row">DESTINAZIONE MONDO — Itinerari on the road<a class="footer-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a></div></footer>
+<footer><div class="wrap footer-row">DESTINAZIONE MONDO — Itinerari on the road<a class="footer-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a><a class="footer-ig" href="mailto:destinazionemondo@etik.com" aria-label="Contattami"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 6 L12 13 L20.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></footer>
 
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "61c36c7662aa44b88df191eaa9928a38"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
