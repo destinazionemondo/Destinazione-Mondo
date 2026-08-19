@@ -67,9 +67,8 @@ a{ color:var(--teal); }
 .trip-row h3{ font-family:'Big Shoulders Display', sans-serif; font-weight:800; text-transform:uppercase; font-size:1.9rem; margin:0 0 8px; }
 .trip-row p{ margin:0; font-size:0.98rem; color:#3a352b; max-width:520px; }
 .trip-row .meta{ font-family:'JetBrains Mono', monospace; font-size:0.75rem; color:var(--teal); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:8px; display:block; }
-.trip-row .go{ justify-self:end; align-self:end; font-family:'JetBrains Mono', monospace; font-size:0.85rem; font-weight:600; color:var(--rust); display:flex; align-items:center; gap:8px; white-space:nowrap; }
-.trip-row .go svg{ transition:transform 0.2s ease; }
-.trip-row:hover .go svg{ transform:translateX(5px); }
+.trip-row .go{ justify-self:end; align-self:end; color:var(--rust); display:flex; align-items:center; justify-content:center; width:36px; height:36px; border:1.5px solid var(--rust); border-radius:50%; transition:background 0.2s ease, color 0.2s ease; }
+.trip-row:hover .go{ background:var(--rust); color:var(--cream); }
 .trip-row:hover h3{ color:var(--rust); }
 .trip-row.disabled{ opacity:0.5; pointer-events:none; }
 
@@ -252,8 +251,8 @@ footer a{ color:var(--gold); }
         <h3>Chicago → New Orleans</h3>
         <p>Dai grattacieli di Chicago al Delta del Mississippi, tra Nashville, Memphis e le paludi della Louisiana, fino al French Quarter.</p>
       </div>
-      <span class="go">Apri l'itinerario
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="go" aria-label="Apri l'itinerario">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
     </a>
     <a class="trip-row" href="azzorre.html">
@@ -263,8 +262,8 @@ footer a{ color:var(--gold); }
         <h3>Azzorre, Lisbona &amp; Algarve</h3>
         <p>Da Lisbona all'Algarve, poi il salto nell'Atlantico: São Miguel, São Jorge e Terceira tra laghi vulcanici e faje costiere.</p>
       </div>
-      <span class="go">Apri l'itinerario
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="go" aria-label="Apri l'itinerario">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
     </a>
     <a class="trip-row" href="sudafrica.html">
@@ -274,8 +273,8 @@ footer a{ color:var(--gold); }
         <h3>Sudafrica: Safari &amp; Garden Route</h3>
         <p>Safari nel Kruger, poi la Garden Route fino a Città del Capo: balene, elefanti, vigneti e Robben Island.</p>
       </div>
-      <span class="go">Apri l'itinerario
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="go" aria-label="Apri l'itinerario">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
     </a>
     <a class="trip-row" href="faroe.html">
@@ -285,8 +284,8 @@ footer a{ color:var(--gold); }
         <h3>Isole Faroe</h3>
         <p>Traghetti verso isole minuscole, laghi sospesi sull'oceano e villaggi di poche case tra le Faroe.</p>
       </div>
-      <span class="go">Apri l'itinerario
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="go" aria-label="Apri l'itinerario">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
     </a>
     <a class="trip-row" href="argentina-miami.html">
@@ -296,8 +295,8 @@ footer a{ color:var(--gold); }
         <h3>Patagonia &amp; Miami</h3>
         <p>Buenos Aires, El Chaltén, El Calafate e Ushuaia, poi Miami e le Florida Keys per chiudere l'anno.</p>
       </div>
-      <span class="go">Apri l'itinerario
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="go" aria-label="Apri l'itinerario">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
     </a>
     <a class="trip-row" href="canada.html">
@@ -307,8 +306,8 @@ footer a{ color:var(--gold); }
         <h3>Canada</h3>
         <p>Vancouver, i laghi turchesi di Banff e Jasper, l'Icefields Parkway e i traghetti dell'Isola di Vancouver.</p>
       </div>
-      <span class="go">Apri l'itinerario
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="go" aria-label="Apri l'itinerario">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
     </a>
         <a class="trip-row" href="west-usa.html">
@@ -318,8 +317,8 @@ footer a{ color:var(--gold); }
           <h3>West USA</h3>
           <p>Los Angeles, San Diego, Grand Canyon, Las Vegas, Death Valley, Yosemite e San Francisco.</p>
       </div>
-      <span class="go">Apri l'itinerario
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="go" aria-label="Apri l'itinerario">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
     </a>
         <a class="trip-row" href="madeira.html">
@@ -329,8 +328,8 @@ footer a{ color:var(--gold); }
         <h3>Madeira</h3>
         <p>Levadas, scogliere a picco sull'oceano e il trekking di Ponta de São Lourenço.</p>
       </div>
-      <span class="go">Apri l'itinerario
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="go" aria-label="Apri l'itinerario">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
     </a>
     <a class="trip-row" href="islanda.html">
@@ -340,8 +339,8 @@ footer a{ color:var(--gold); }
         <h3>Circolo d'Oro &amp; Ghiacciai</h3>
         <p>Snæfellsnes, Circolo d'Oro, cascate della costa sud, Jökulsárlón e Blue Lagoon.</p>
       </div>
-      <span class="go">Apri l'itinerario
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="go" aria-label="Apri l'itinerario">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
     </a>
     <a class="trip-row" href="asia-2015.html">
@@ -351,8 +350,8 @@ footer a{ color:var(--gold); }
         <h3>Singapore, Vietnam &amp; Cambogia</h3>
         <p>Da Singapore al Vietnam da sud a nord, Halong Bay in giunca, fino ai templi di Angkor.</p>
       </div>
-      <span class="go">Apri l'itinerario
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="go" aria-label="Apri l'itinerario">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
     </a>
     <a class="trip-row" href="cuba.html">
@@ -362,8 +361,8 @@ footer a{ color:var(--gold); }
         <h3>Cuba</h3>
         <p>L'Avana, le valli di tabacco di Viñales, Trinidad coloniale e le spiagge di Cayo Guillermo.</p>
       </div>
-      <span class="go">Apri l'itinerario
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="go" aria-label="Apri l'itinerario">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
     </a>
     <a class="trip-row" href="lapponia.html">
@@ -373,8 +372,8 @@ footer a{ color:var(--gold); }
         <h3>Lapponia</h3>
         <p>Rovaniemi, motoslitte tra le renne, husky nella foresta e la caccia all'aurora boreale.</p>
       </div>
-      <span class="go">Apri l'itinerario
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="go" aria-label="Apri l'itinerario">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
     </a>
     <a class="trip-row" href="australia.html">
@@ -384,8 +383,8 @@ footer a{ color:var(--gold); }
         <h3>Australia</h3>
         <p>Kangaroo Island, il Red Centre di Uluru, la barriera corallina, Sydney, Melbourne, la Great Ocean Road e Perth.</p>
       </div>
-      <span class="go">Apri l'itinerario
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="go" aria-label="Apri l'itinerario">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
     </a>
     <a class="trip-row" href="francia.html">
@@ -395,8 +394,8 @@ footer a{ color:var(--gold); }
         <h3>Normandia &amp; Bretagna</h3>
         <p>Le falesie di Étretat, le spiagge dello sbarco, Mont Saint Michel e i villaggi di pescatori della Bretagna.</p>
       </div>
-      <span class="go">Apri l'itinerario
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="go" aria-label="Apri l'itinerario">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
     </a>
   </section>
