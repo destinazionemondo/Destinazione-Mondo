@@ -72,6 +72,11 @@ footer a{ color:var(--gold); }
 .back-home{ display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono', monospace; font-weight:600; font-size:0.85rem; color:var(--cream); background:var(--teal); padding:12px 22px; border-radius:2px; text-decoration:none; text-transform:uppercase; letter-spacing:0.05em; }
 .back-home:hover{ background:var(--rust); }
 @media (max-width:680px){ .day-entry{ grid-template-columns:74px 1fr; gap:18px; } .shield{ width:70px; height:80px; } .shield .d{ font-size:1.1rem; } .shield .m{ font-size:0.55rem; } }
+
+.map-pin-link{ cursor:pointer; }
+.map-pin-link circle{ transition:r 0.15s ease; }
+.map-pin-link:hover circle{ r:9; }
+.map-pin-link:hover text{ text-decoration:underline; }
 </style>
 </head>
 <body>
@@ -126,20 +131,20 @@ footer a{ color:var(--gold); }
                 fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
 
           <g font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#211D18">
-            <circle cx="350" cy="300" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
-            <text x="362" y="298">Rovaniemi</text>
+            <a href="#day2" class="map-pin-link"><circle cx="350" cy="300" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
+            <text x="362" y="298">Rovaniemi</text></a>
 
-            <circle cx="390" cy="175" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="398" y="172">Santa Claus Village</text>
+            <a href="#day2" class="map-pin-link"><circle cx="390" cy="175" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="398" y="172">Santa Claus Village</text></a>
 
-            <circle cx="200" cy="385" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="110" y="405">Fattoria renne</text>
+            <a href="#day3" class="map-pin-link"><circle cx="200" cy="385" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="110" y="405">Fattoria renne</text></a>
 
-            <circle cx="505" cy="205" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="515" y="203">Fattoria husky</text>
+            <a href="#day4" class="map-pin-link"><circle cx="505" cy="205" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="515" y="203">Fattoria husky</text></a>
 
-            <circle cx="170" cy="145" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="20" y="130">Arctic Snow Hotel</text>
+            <a href="#day5" class="map-pin-link"><circle cx="170" cy="145" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="20" y="130">Arctic Snow Hotel</text></a>
           </g>
         </svg>
       </div>
@@ -162,7 +167,7 @@ footer a{ color:var(--gold); }
 <main class="wrap">
   <section class="itinerary">
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day1">
       <div class="shield"><span class="m">DAY</span><span class="d">1</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Milano → Helsinki (18:55 → 23:00)</p>
@@ -171,7 +176,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day2">
       <div class="shield"><span class="m">DAY</span><span class="d">2</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Helsinki → Rovaniemi (12:20 → 13:50)</p>
@@ -180,7 +185,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day3">
       <div class="shield"><span class="m">DAY</span><span class="d">3</span></div>
       <div class="day-content">
         <p class="drive-tag">Safartica · 294€ · 3 ore, partenza ore 13:00</p>
@@ -189,7 +194,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day4">
       <div class="shield"><span class="m">DAY</span><span class="d">4</span></div>
       <div class="day-content">
         <p class="drive-tag">HuskyPoint · 310€ · pick-up ore 12:30</p>
@@ -198,7 +203,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day5">
       <div class="shield"><span class="m">DAY</span><span class="d">5</span></div>
       <div class="day-content">
         <p class="drive-tag">Safartica · 364€ · 5-6 ore, partenza ore 10:00</p>
@@ -208,7 +213,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day6">
       <div class="shield"><span class="m">DAY</span><span class="d">6</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Rovaniemi → Milano via Helsinki (13:50 → 18:05)</p>

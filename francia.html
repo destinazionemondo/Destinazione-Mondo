@@ -72,6 +72,11 @@ footer a{ color:var(--gold); }
 .back-home{ display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono', monospace; font-weight:600; font-size:0.85rem; color:var(--cream); background:var(--teal); padding:12px 22px; border-radius:2px; text-decoration:none; text-transform:uppercase; letter-spacing:0.05em; }
 .back-home:hover{ background:var(--rust); }
 @media (max-width:680px){ .day-entry{ grid-template-columns:74px 1fr; gap:18px; } .shield{ width:70px; height:80px; } .shield .d{ font-size:1.1rem; } .shield .m{ font-size:0.55rem; } }
+
+.map-pin-link{ cursor:pointer; }
+.map-pin-link circle{ transition:r 0.15s ease; }
+.map-pin-link:hover circle{ r:9; }
+.map-pin-link:hover text{ text-decoration:underline; }
 </style>
 </head>
 <body>
@@ -124,53 +129,53 @@ footer a{ color:var(--gold); }
                 fill="none" stroke="#1F4F55" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 9"/>
 
           <g font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700" fill="#211D18">
-            <circle cx="825" cy="213" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
-            <text x="800" y="196">Parigi</text>
+            <a href="#day13" class="map-pin-link"><circle cx="825" cy="213" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
+            <text x="800" y="196">Parigi</text></a>
 
-            <circle cx="736" cy="173" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="710" y="160">Giverny</text>
+            <a href="#day1" class="map-pin-link"><circle cx="736" cy="173" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="710" y="160">Giverny</text></a>
 
-            <circle cx="723" cy="145" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="700" y="132">Les Andelys</text>
+            <a href="#day2" class="map-pin-link"><circle cx="723" cy="145" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="700" y="132">Les Andelys</text></a>
 
-            <circle cx="690" cy="109" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="695" y="107">Rouen</text>
+            <a href="#day2" class="map-pin-link"><circle cx="690" cy="109" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="695" y="107">Rouen</text></a>
 
-            <circle cx="592" cy="60" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="565" y="45">Étretat</text>
+            <a href="#day3" class="map-pin-link"><circle cx="592" cy="60" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="565" y="45">Étretat</text></a>
 
-            <circle cx="596" cy="112" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="603" y="110">Honfleur</text>
+            <a href="#day4" class="map-pin-link"><circle cx="596" cy="112" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="603" y="110">Honfleur</text></a>
 
-            <circle cx="495" cy="137" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="460" y="155">Bayeux / D-Day</text>
+            <a href="#day5" class="map-pin-link"><circle cx="495" cy="137" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="460" y="155">Bayeux / D-Day</text></a>
 
-            <circle cx="408" cy="253" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="415" y="271">Mont Saint Michel</text>
+            <a href="#day7" class="map-pin-link"><circle cx="408" cy="253" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="415" y="271">Mont Saint Michel</text></a>
 
-            <circle cx="349" cy="287" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="356" y="305">Dinan</text>
+            <a href="#day7" class="map-pin-link"><circle cx="349" cy="287" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="356" y="305">Dinan</text></a>
 
-            <circle cx="352" cy="251" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="358" y="238">Saint Malo</text>
+            <a href="#day8" class="map-pin-link"><circle cx="352" cy="251" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="358" y="238">Saint Malo</text></a>
 
-            <circle cx="319" cy="242" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="265" y="228">Cap Fréhel</text>
+            <a href="#day9" class="map-pin-link"><circle cx="319" cy="242" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="265" y="228">Cap Fréhel</text></a>
 
-            <circle cx="198" cy="222" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="130" y="208">Côte de Granite Rose</text>
+            <a href="#day9" class="map-pin-link"><circle cx="198" cy="222" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="130" y="208">Côte de Granite Rose</text></a>
 
-            <circle cx="86" cy="323" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="20" y="310">Crozon</text>
+            <a href="#day10" class="map-pin-link"><circle cx="86" cy="323" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="20" y="310">Crozon</text></a>
 
-            <circle cx="128" cy="368" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="105" y="390">Quimper</text>
+            <a href="#day10" class="map-pin-link"><circle cx="128" cy="368" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="105" y="390">Quimper</text></a>
 
-            <circle cx="60" cy="361" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="10" y="378">Pointe du Raz</text>
+            <a href="#day11" class="map-pin-link"><circle cx="60" cy="361" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="10" y="378">Pointe du Raz</text></a>
 
-            <circle cx="273" cy="429" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="255" y="450">Vannes</text>
+            <a href="#day12" class="map-pin-link"><circle cx="273" cy="429" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="255" y="450">Vannes</text></a>
           </g>
         </svg>
       </div>
@@ -198,7 +203,7 @@ footer a{ color:var(--gold); }
 <main class="wrap">
   <section class="itinerary">
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day1">
       <div class="shield"><span class="m">DAY</span><span class="d">1</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Milano → Parigi (9:50 → 11:25), poi 30 min di guida</p>
@@ -207,7 +212,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day2">
       <div class="shield"><span class="m">DAY</span><span class="d">2</span></div>
       <div class="day-content">
         <p class="drive-tag">Les Andelys (30 min) → Rouen (1 ora)</p>
@@ -216,16 +221,17 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day3">
       <div class="shield"><span class="m">DAY</span><span class="d">3</span></div>
       <div class="day-content">
         <p class="drive-tag">guida verso Étretat (1 ora)</p>
         <p class="city">Étretat</p>
         <p>Le celebri <span class="highlight">falesie di Étretat</span>, tra i panorami più fotografati della costa normanna. Notte in Airbnb a Benouville.</p>
+        <p class="note">alloggio consigliato: <a href="https://www.airbnb.it/rooms/19834323" target="_blank" rel="noopener">Les Embruns d'Etretat</a>, una suite con sauna finlandese a Bénouville, a un passo dalle scogliere</p>
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day4">
       <div class="shield"><span class="m">DAY</span><span class="d">4</span></div>
       <div class="day-content">
         <p class="drive-tag">Honfleur (45 min) → Côte Fleurie (45 min)</p>
@@ -234,7 +240,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day5">
       <div class="shield"><span class="m">DAY</span><span class="d">5</span></div>
       <div class="day-content">
         <p class="drive-tag">guida verso Bayeux (45 min)</p>
@@ -243,7 +249,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day6">
       <div class="shield"><span class="m">DAY</span><span class="d">6</span></div>
       <div class="day-content">
         <p class="drive-tag">pomeriggio, guida di 1h40 verso Mont Saint Michel</p>
@@ -252,7 +258,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day7">
       <div class="shield"><span class="m">DAY</span><span class="d">7</span></div>
       <div class="day-content">
         <p class="drive-tag">pomeriggio, guida di 1 ora verso Dinan</p>
@@ -261,7 +267,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day8">
       <div class="shield"><span class="m">DAY</span><span class="d">8</span></div>
       <div class="day-content">
         <p class="drive-tag">Saint Malo (40 min) → Dinard (20 min)</p>
@@ -270,7 +276,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day9">
       <div class="shield"><span class="m">DAY</span><span class="d">9</span></div>
       <div class="day-content">
         <p class="drive-tag">Cap Fréhel (45 min) → Côte de Granite Rose (1h30)</p>
@@ -279,7 +285,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day10">
       <div class="shield"><span class="m">DAY</span><span class="d">10</span></div>
       <div class="day-content">
         <p class="drive-tag">Crozon (2 ore) → Quimper (1 ora)</p>
@@ -288,7 +294,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day11">
       <div class="shield"><span class="m">DAY</span><span class="d">11</span></div>
       <div class="day-content">
         <p class="drive-tag">Locronan (20 min) → Pointe du Raz (50 min)</p>
@@ -297,7 +303,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day12">
       <div class="shield"><span class="m">DAY</span><span class="d">12</span></div>
       <div class="day-content">
         <p class="drive-tag">guida verso Vannes (1 ora)</p>
@@ -306,7 +312,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day13">
       <div class="shield"><span class="m">DAY</span><span class="d">13</span></div>
       <div class="day-content">
         <p class="drive-tag">guida verso Parigi (5h30)</p>
@@ -315,7 +321,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day14">
       <div class="shield"><span class="m">DAY</span><span class="d">14</span></div>
       <div class="day-content">
         <p class="city">Parigi</p>
@@ -323,7 +329,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day15">
       <div class="shield"><span class="m">DAY</span><span class="d">15</span></div>
       <div class="day-content">
         <p class="city">Parigi</p>
@@ -331,7 +337,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day16">
       <div class="shield"><span class="m">DAY</span><span class="d">16</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Parigi → Milano (14:50 → 16:15)</p>

@@ -53,8 +53,6 @@ a{ color:var(--teal); }
 .day-photo{ display:block; width:105px; height:105px; margin:14px auto 0; }
 .day-photo img{ width:100%; height:100%; object-fit:cover; border:3px solid var(--cream); outline:1px solid var(--paper-line); box-shadow:0 4px 10px rgba(33,29,24,0.25); transform:rotate(-4deg); filter:sepia(0.55) saturate(1.3) contrast(1.05) brightness(0.97); display:block; }
 .day-side{ display:flex; flex-direction:column; align-items:center; }
-.day-photo-large{ display:block; width:230px; max-width:100%; background:var(--cream); padding:10px 10px 26px; margin:16px 0 18px; box-shadow:0 10px 24px rgba(33,29,24,0.3); transform:rotate(-2deg); }
-.day-photo-large img{ width:100%; aspect-ratio:4/3; object-fit:cover; display:block; filter:sepia(0.35) saturate(1.2) contrast(1.05); }
 .day-entry.fly .shield{ background:var(--rust); }
 .day-content .drive-tag{ display:inline-block; font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.04em; color:var(--rust-dark); background:rgba(169,56,38,0.1); border:1px solid rgba(169,56,38,0.3); padding:3px 12px; border-radius:20px; margin-bottom:12px; }
 .day-content .city{ font-family:'Big Shoulders Display', sans-serif; font-weight:800; text-transform:uppercase; font-size:1.9rem; color:var(--ink); margin:0 0 12px; }
@@ -77,6 +75,11 @@ footer a{ color:var(--gold); }
 .gyg-box a:hover{ color:var(--teal); border-color:var(--teal); }
 .gyg-widget-wrap{ max-width:420px; margin:0 auto; zoom:0.55; }
 @media (max-width:680px){ .day-entry{ grid-template-columns:100px 1fr; gap:18px; } .shield{ width:70px; height:80px; } .shield .d{ font-size:1.1rem; } .shield .m{ font-size:0.55rem; } .day-photo{ width:88px; height:88px; } }
+
+.map-pin-link{ cursor:pointer; }
+.map-pin-link circle{ transition:r 0.15s ease; }
+.map-pin-link:hover circle{ r:9; }
+.map-pin-link:hover text{ text-decoration:underline; }
 </style>
 </head>
 <body>
@@ -136,26 +139,26 @@ footer a{ color:var(--gold); }
           <path d="M280 180 Q 290 205, 300 230" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-dasharray="2 7"/>
 
           <g font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#211D18">
-            <circle cx="860" cy="70" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
-            <text x="800" y="52">Milano</text>
+            <a href="#day1" class="map-pin-link"><circle cx="860" cy="70" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
+            <text x="800" y="52">Milano</text></a>
 
-            <circle cx="280" cy="180" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="205" y="165">Miami</text>
+            <a href="#day1" class="map-pin-link"><circle cx="280" cy="180" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="205" y="165">Miami</text></a>
 
-            <circle cx="300" cy="230" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="230" y="245">Florida Keys</text>
+            <a href="#day16" class="map-pin-link"><circle cx="300" cy="230" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="230" y="245">Florida Keys</text></a>
 
-            <circle cx="520" cy="380" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="530" y="378">Buenos Aires</text>
+            <a href="#day4" class="map-pin-link"><circle cx="520" cy="380" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="530" y="378">Buenos Aires</text></a>
 
-            <circle cx="430" cy="470" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="330" y="472">El Chaltén</text>
+            <a href="#day5" class="map-pin-link"><circle cx="430" cy="470" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="330" y="472">El Chaltén</text></a>
 
-            <circle cx="460" cy="490" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="380" y="512">El Calafate</text>
+            <a href="#day5" class="map-pin-link"><circle cx="460" cy="490" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="380" y="512">El Calafate</text></a>
 
-            <circle cx="500" cy="540" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="510" y="538">Ushuaia</text>
+            <a href="#day13" class="map-pin-link"><circle cx="500" cy="540" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="510" y="538">Ushuaia</text></a>
           </g>
         </svg>
       </div>
@@ -181,7 +184,7 @@ footer a{ color:var(--gold); }
 <main class="wrap">
   <section class="itinerary">
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day1">
       <div class="shield"><span class="m">DAY</span><span class="d">1</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Milano → Istanbul → Miami (06:55 → 20:35)</p>
@@ -193,11 +196,11 @@ footer a{ color:var(--gold); }
     <div class="day-entry fly">
       <div class="day-side">
       <div class="shield"><span class="m">DAY</span><span class="d">2</span></div>
+      <span class="day-photo"><img src="https://wsrv.nl/?url=https://i.ibb.co/4gYH0sbt/IMG-4443.jpg&w=200&q=75&output=webp" alt="Day 2" loading="lazy"></span>
       </div>
       <div class="day-content">
         <p class="drive-tag">volo Miami → Buenos Aires (08:10 → 19:15, diretto)</p>
         <p class="city">Buenos Aires</p>
-        <span class="day-photo-large"><img src="https://wsrv.nl/?url=https://i.ibb.co/4gYH0sbt/IMG-4443.jpg&w=440&q=75&output=webp" alt="Day 2 — Buenos Aires" loading="lazy"></span>
         <p>Sistemazione al 1828 Smart Hotel Boutique, nel quartiere di Palermo, per tre notti.</p>
       </div>
     </div>
@@ -218,7 +221,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day4">
       <div class="shield"><span class="m">DAY</span><span class="d">4</span></div>
       <div class="day-content">
         <p class="city">Buenos Aires — Recoleta e Palermo</p>
@@ -227,12 +230,13 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day5">
       <div class="shield"><span class="m">DAY</span><span class="d">5</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Buenos Aires → El Calafate (09:20 → 12:40), poi 2h di guida</p>
         <p class="city">El Chaltén</p>
         <p>Ritiro auto a noleggio (Renault Logan) e trasferimento a El Chaltén, capitale nazionale del trekking. Tre notti in alloggio locale. Cena da La Vinería Grill (prenotazione ore 19:00).</p>
+        <p class="note">alloggio consigliato: <a href="https://www.airbnb.it/rooms/1273792357214186725" target="_blank" rel="noopener">4 Huemul</a>, tiny house moderna e accogliente nel centro di El Chaltén, a pochi isolati dai sentieri per Laguna Capri e Laguna Torre</p>
       </div>
     </div>
 
@@ -247,7 +251,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day7">
       <div class="shield"><span class="m">DAY</span><span class="d">7</span></div>
       <div class="day-content">
         <p class="city">El Chaltén — giornata libera</p>
@@ -264,6 +268,7 @@ footer a{ color:var(--gold); }
         <p class="drive-tag">guida verso El Calafate (3h35)</p>
         <p class="city">El Calafate — Perito Moreno</p>
         <p>Pranzo alle 13:30 a El Resto del Glaciar, poi escursione al <span class="highlight">Ghiacciaio Perito Moreno</span>, una delle attrazioni naturali più spettacolari della Patagonia. Due notti in alloggio a El Calafate.</p>
+        <p class="note">alloggio consigliato: <a href="https://www.airbnb.it/rooms/755763655120534907" target="_blank" rel="noopener">Pachagonia Loft</a>, loft dal fascino rustico con grandi finestre e vista sul cielo della Patagonia</p>
       </div>
     </div>
 
@@ -301,7 +306,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day12">
       <div class="shield"><span class="m">DAY</span><span class="d">12</span></div>
       <div class="day-content">
         <p class="city">Parco Nazionale Tierra del Fuego</p>
@@ -309,7 +314,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day13">
       <div class="shield"><span class="m">DAY</span><span class="d">13</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Ushuaia → Buenos Aires (12:20 → 15:50)</p>
@@ -318,12 +323,13 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day14">
       <div class="shield"><span class="m">DAY</span><span class="d">14</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Buenos Aires → Miami (08:00 → 15:15, diretto)</p>
         <p class="city">Miami</p>
         <p>Rientro nell'emisfero nord: alloggio a Miami per i giorni successivi, capodanno compreso.</p>
+        <p class="note">alloggio consigliato: <a href="https://www.airbnb.it/rooms/1258118675681090492" target="_blank" rel="noopener">Attico con vista sulla baia</a>, al 50° piano nel centro di Miami, con piscina, palestra e balcone panoramico</p>
       </div>
     </div>
 
@@ -338,7 +344,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day16">
       <div class="shield"><span class="m">DAY</span><span class="d">16</span></div>
       <div class="day-content">
         <p class="drive-tag">auto a noleggio (Turo), giornata intera</p>
@@ -358,7 +364,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day18">
       <div class="shield"><span class="m">DAY</span><span class="d">18</span></div>
       <div class="day-content">
         <p class="drive-tag">volo serale Miami → Istanbul → Milano</p>
@@ -367,7 +373,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day19">
       <div class="shield"><span class="m">DAY</span><span class="d">19</span></div>
       <div class="day-content">
         <p class="drive-tag">arrivo Milano (21:40)</p>

@@ -72,6 +72,11 @@ footer a{ color:var(--gold); }
 .back-home{ display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono', monospace; font-weight:600; font-size:0.85rem; color:var(--cream); background:var(--teal); padding:12px 22px; border-radius:2px; text-decoration:none; text-transform:uppercase; letter-spacing:0.05em; }
 .back-home:hover{ background:var(--rust); }
 @media (max-width:680px){ .day-entry{ grid-template-columns:74px 1fr; gap:18px; } .shield{ width:70px; height:80px; } .shield .d{ font-size:1.1rem; } .shield .m{ font-size:0.55rem; } }
+
+.map-pin-link{ cursor:pointer; }
+.map-pin-link circle{ transition:r 0.15s ease; }
+.map-pin-link:hover circle{ r:9; }
+.map-pin-link:hover text{ text-decoration:underline; }
 </style>
 </head>
 <body>
@@ -140,41 +145,41 @@ footer a{ color:var(--gold); }
           <path d="M107 501 L100 503" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
 
           <g font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#211D18">
-            <circle cx="550" cy="584" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="560" y="582">Adelaide</text>
+            <a href="#day3" class="map-pin-link"><circle cx="550" cy="584" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="560" y="582">Adelaide</text></a>
 
-            <circle cx="533" cy="605" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="480" y="626">Kangaroo Island</text>
+            <a href="#day4" class="map-pin-link"><circle cx="533" cy="605" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="480" y="626">Kangaroo Island</text></a>
 
-            <circle cx="458" cy="270" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="466" y="268">Alice Springs</text>
+            <a href="#day7" class="map-pin-link"><circle cx="458" cy="270" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="466" y="268">Alice Springs</text></a>
 
-            <circle cx="413" cy="286" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="340" y="278">Kings Canyon</text>
+            <a href="#day9" class="map-pin-link"><circle cx="413" cy="286" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="340" y="278">Kings Canyon</text></a>
 
-            <circle cx="403" cy="316" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="360" y="336">Uluru</text>
+            <a href="#day9" class="map-pin-link"><circle cx="403" cy="316" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="360" y="336">Uluru</text></a>
 
-            <circle cx="690" cy="80" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="698" y="78">Cairns</text>
+            <a href="#day10" class="map-pin-link"><circle cx="690" cy="80" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="698" y="78">Cairns</text></a>
 
-            <circle cx="796" cy="555" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="720" y="540">Sydney</text>
+            <a href="#day13" class="map-pin-link"><circle cx="796" cy="555" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="720" y="540">Sydney</text></a>
 
-            <circle cx="778" cy="550" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="700" y="570">Blue Mountains</text>
+            <a href="#day15" class="map-pin-link"><circle cx="778" cy="550" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="700" y="570">Blue Mountains</text></a>
 
-            <circle cx="674" cy="665" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="600" y="650">Melbourne</text>
+            <a href="#day16" class="map-pin-link"><circle cx="674" cy="665" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="600" y="650">Melbourne</text></a>
 
-            <circle cx="649" cy="692" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="560" y="712">Great Ocean Road</text>
+            <a href="#day19" class="map-pin-link"><circle cx="649" cy="692" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="560" y="712">Great Ocean Road</text></a>
 
-            <circle cx="107" cy="501" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="20" y="486">Perth</text>
+            <a href="#day22" class="map-pin-link"><circle cx="107" cy="501" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="20" y="486">Perth</text></a>
 
-            <circle cx="100" cy="503" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="10" y="525">Rottnest</text>
+            <a href="#day25" class="map-pin-link"><circle cx="100" cy="503" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="10" y="525">Rottnest</text></a>
           </g>
         </svg>
       </div>
@@ -202,7 +207,7 @@ footer a{ color:var(--gold); }
 <main class="wrap">
   <section class="itinerary">
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day1">
       <div class="shield"><span class="m">DAY</span><span class="d">1</span></div>
       <div class="day-content">
         <p class="drive-tag">arrivo a Doha, ore 23:50</p>
@@ -211,7 +216,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day2">
       <div class="shield"><span class="m">DAY</span><span class="d">2</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Doha → Adelaide, ore 20:50</p>
@@ -220,7 +225,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day3">
       <div class="shield"><span class="m">DAY</span><span class="d">3</span></div>
       <div class="day-content">
         <p class="drive-tag">arrivo ad Adelaide, ore 16:25</p>
@@ -229,7 +234,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day4">
       <div class="shield"><span class="m">DAY</span><span class="d">4</span></div>
       <div class="day-content">
         <p class="drive-tag">traghetto ore 9:00 (45 min), partenza da Adelaide alle 6:30</p>
@@ -238,7 +243,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day5">
       <div class="shield"><span class="m">DAY</span><span class="d">5</span></div>
       <div class="day-content">
         <p class="city">Kangaroo Island — giro dell'isola</p>
@@ -246,7 +251,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day6">
       <div class="shield"><span class="m">DAY</span><span class="d">6</span></div>
       <div class="day-content">
         <p class="drive-tag">traghetto di ritorno ore 16:30 da Penneshaw</p>
@@ -255,7 +260,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day7">
       <div class="shield"><span class="m">DAY</span><span class="d">7</span></div>
       <div class="day-content">
         <p class="drive-tag">arrivo ad Alice Springs, ore 11:30</p>
@@ -264,7 +269,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day8">
       <div class="shield"><span class="m">DAY</span><span class="d">8</span></div>
       <div class="day-content">
         <p class="drive-tag">Mereenie Loop: 3-4 ore, 230 km di sterrato</p>
@@ -273,7 +278,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day9">
       <div class="shield"><span class="m">DAY</span><span class="d">9</span></div>
       <div class="day-content">
         <p class="drive-tag">partire entro le 14:00 per Uluru (3 ore di guida)</p>
@@ -282,7 +287,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day10">
       <div class="shield"><span class="m">DAY</span><span class="d">10</span></div>
       <div class="day-content">
         <p class="drive-tag">partenza ore 15:25</p>
@@ -291,7 +296,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day11">
       <div class="shield"><span class="m">DAY</span><span class="d">11</span></div>
       <div class="day-content">
         <p class="drive-tag">traghetto Big Cat, partenza ore 9:00, rientro a Cairns ore 17:00</p>
@@ -300,7 +305,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day12">
       <div class="shield"><span class="m">DAY</span><span class="d">12</span></div>
       <div class="day-content">
         <p class="drive-tag">andata con Kuranda Scenic Railway, ritorno con Skyrail Rainforest Cableway (15:45)</p>
@@ -309,7 +314,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day13">
       <div class="shield"><span class="m">DAY</span><span class="d">13</span></div>
       <div class="day-content">
         <p class="drive-tag">arrivo a Sydney, ore 13:05</p>
@@ -318,7 +323,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day14">
       <div class="shield"><span class="m">DAY</span><span class="d">14</span></div>
       <div class="day-content">
         <p class="city">Sydney — Downtown</p>
@@ -327,7 +332,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day15">
       <div class="shield"><span class="m">DAY</span><span class="d">15</span></div>
       <div class="day-content">
         <p class="drive-tag">treno da Central Sydney a Katoomba (circa 2 ore)</p>
@@ -336,7 +341,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day16">
       <div class="shield"><span class="m">DAY</span><span class="d">16</span></div>
       <div class="day-content">
         <p class="drive-tag">giro in barca whale watching (2h30), poi volo per Melbourne (15:30 → 17:05)</p>
@@ -345,7 +350,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day17">
       <div class="shield"><span class="m">DAY</span><span class="d">17</span></div>
       <div class="day-content">
         <p class="city">Melbourne — Downtown</p>
@@ -353,7 +358,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day18">
       <div class="shield"><span class="m">DAY</span><span class="d">18</span></div>
       <div class="day-content">
         <p class="city">St. Kilda o Phillip Island</p>
@@ -361,7 +366,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day19">
       <div class="shield"><span class="m">DAY</span><span class="d">19</span></div>
       <div class="day-content">
         <p class="drive-tag">ritiro auto Hertz a Melbourne Downtown</p>
@@ -370,7 +375,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day20">
       <div class="shield"><span class="m">DAY</span><span class="d">20</span></div>
       <div class="day-content">
         <p class="drive-tag">Dodici Apostoli aperti dalle 9:00 alle 16:00</p>
@@ -379,7 +384,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day21">
       <div class="shield"><span class="m">DAY</span><span class="d">21</span></div>
       <div class="day-content">
         <p class="drive-tag">rientro via autostrada A1 fino a Geelong, poi M1</p>
@@ -388,7 +393,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day22">
       <div class="shield"><span class="m">DAY</span><span class="d">22</span></div>
       <div class="day-content">
         <p class="drive-tag">consegna auto in aeroporto, volo per Perth, arrivo ore 16:20</p>
@@ -397,7 +402,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day23">
       <div class="shield"><span class="m">DAY</span><span class="d">23</span></div>
       <div class="day-content">
         <p class="city">Perth — Downtown</p>
@@ -405,7 +410,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day24">
       <div class="shield"><span class="m">DAY</span><span class="d">24</span></div>
       <div class="day-content">
         <p class="city">Fremantle e Cottesloe Beach</p>
@@ -413,7 +418,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day25">
       <div class="shield"><span class="m">DAY</span><span class="d">25</span></div>
       <div class="day-content">
         <p class="city">Rottnest Island</p>
@@ -421,7 +426,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day26">
       <div class="shield"><span class="m">DAY</span><span class="d">26</span></div>
       <div class="day-content">
         <p class="drive-tag">arrivo a Dubai ore 5:00, volo per Milano ore 15:45</p>

@@ -94,6 +94,11 @@ footer a{ color:var(--gold); }
   .shield .d{ font-size:1.1rem; }
   .shield .m{ font-size:0.55rem; }
 }
+
+.map-pin-link{ cursor:pointer; }
+.map-pin-link circle{ transition:r 0.15s ease; }
+.map-pin-link:hover circle{ r:9; }
+.map-pin-link:hover text{ text-decoration:underline; }
 </style>
 </head>
 <body>
@@ -155,35 +160,35 @@ footer a{ color:var(--gold); }
 
           <!-- pins -->
           <g font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="700" fill="#211D18">
-            <circle cx="602" cy="152" r="8" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
-            <text x="500" y="140">Johannesburg</text>
+            <a href="#day2" class="map-pin-link"><circle cx="602" cy="152" r="8" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
+            <text x="500" y="140">Johannesburg</text></a>
 
-            <circle cx="767" cy="50" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="700" y="35">Hoedspruit / Kruger</text>
+            <a href="#day3" class="map-pin-link"><circle cx="767" cy="50" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="700" y="35">Hoedspruit / Kruger</text></a>
 
-            <circle cx="468" cy="578" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="478" y="576">Port Elizabeth</text>
+            <a href="#day7" class="map-pin-link"><circle cx="468" cy="578" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="478" y="576">Port Elizabeth</text></a>
 
-            <circle cx="374" cy="579" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="330" y="565">Tsitsikamma</text>
+            <a href="#day8" class="map-pin-link"><circle cx="374" cy="579" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="330" y="565">Tsitsikamma</text></a>
 
-            <circle cx="328" cy="583" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="336" y="605">Plettenberg/Knysna</text>
+            <a href="#day9" class="map-pin-link"><circle cx="328" cy="583" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="336" y="605">Plettenberg/Knysna</text></a>
 
-            <circle cx="295" cy="578" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="230" y="562">Wilderness/George</text>
+            <a href="#day10" class="map-pin-link"><circle cx="295" cy="578" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="230" y="562">Wilderness/George</text></a>
 
-            <circle cx="281" cy="558" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="255" y="540">Oudtshoorn</text>
+            <a href="#day10" class="map-pin-link"><circle cx="281" cy="558" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="255" y="540">Oudtshoorn</text></a>
 
-            <circle cx="183" cy="607" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="163" y="628">De Hoop</text>
+            <a href="#day11" class="map-pin-link"><circle cx="183" cy="607" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="163" y="628">De Hoop</text></a>
 
-            <circle cx="118" cy="604" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="98" y="626">Hermanus</text>
+            <a href="#day12" class="map-pin-link"><circle cx="118" cy="604" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="98" y="626">Hermanus</text></a>
 
-            <circle cx="73" cy="576" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
-            <text x="12" y="562">Città del Capo</text>
+            <a href="#day14" class="map-pin-link"><circle cx="73" cy="576" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
+            <text x="12" y="562">Città del Capo</text></a>
           </g>
         </svg>
       </div>
@@ -211,7 +216,7 @@ footer a{ color:var(--gold); }
 <main class="wrap">
   <section class="itinerary">
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day1">
       <div class="shield"><span class="m">DAY</span><span class="d">1</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Milano → Doha (16:15 → 23:00)</p>
@@ -220,7 +225,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day2">
       <div class="shield"><span class="m">DAY</span><span class="d">2</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Doha → Johannesburg (8:40 → 16:10)</p>
@@ -229,7 +234,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day3">
       <div class="shield"><span class="m">DAY</span><span class="d">3</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Johannesburg → Hoedspruit (10:30 → 11:25)</p>
@@ -238,7 +243,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day4">
       <div class="shield"><span class="m">DAY</span><span class="d">4</span></div>
       <div class="day-content">
         <p class="city">Safari — Arathusa</p>
@@ -246,7 +251,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day5">
       <div class="shield"><span class="m">DAY</span><span class="d">5</span></div>
       <div class="day-content">
         <p class="city">Safari — verso Orpen</p>
@@ -254,7 +259,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day6">
       <div class="shield"><span class="m">DAY</span><span class="d">6</span></div>
       <div class="day-content">
         <p class="city">Safari — Manyeleti</p>
@@ -262,7 +267,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day7">
       <div class="shield"><span class="m">DAY</span><span class="d">7</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Hoedspruit → Port Elizabeth (12:05 → 17:40, via Johannesburg)</p>
@@ -271,7 +276,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day8">
       <div class="shield"><span class="m">DAY</span><span class="d">8</span></div>
       <div class="day-content">
         <p class="drive-tag">ritiro auto (Hertz) → guida di 2h verso Tsitsikamma</p>
@@ -280,7 +285,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day9">
       <div class="shield"><span class="m">DAY</span><span class="d">9</span></div>
       <div class="day-content">
         <p class="drive-tag">guida verso Wilderness (2h20)</p>
@@ -289,7 +294,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day10">
       <div class="shield"><span class="m">DAY</span><span class="d">10</span></div>
       <div class="day-content">
         <p class="city">Wilderness / Oudtshoorn / George</p>
@@ -297,7 +302,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day11">
       <div class="shield"><span class="m">DAY</span><span class="d">11</span></div>
       <div class="day-content">
         <p class="drive-tag">guida verso De Hoop (3h10)</p>
@@ -306,7 +311,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day12">
       <div class="shield"><span class="m">DAY</span><span class="d">12</span></div>
       <div class="day-content">
         <p class="drive-tag">guida via Capo Agulhas (1h54)</p>
@@ -315,7 +320,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day13">
       <div class="shield"><span class="m">DAY</span><span class="d">13</span></div>
       <div class="day-content">
         <p class="city">Hermanus</p>
@@ -323,7 +328,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day14">
       <div class="shield"><span class="m">DAY</span><span class="d">14</span></div>
       <div class="day-content">
         <p class="drive-tag">rilascio auto a Hermanus, taxi verso Città del Capo</p>
@@ -332,7 +337,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day15">
       <div class="shield"><span class="m">DAY</span><span class="d">15</span></div>
       <div class="day-content">
         <p class="city">Città del Capo — Robben Island</p>
@@ -340,7 +345,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day16">
       <div class="shield"><span class="m">DAY</span><span class="d">16</span></div>
       <div class="day-content">
         <p class="city">Città del Capo — Cape Point</p>
@@ -348,7 +353,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day17">
       <div class="shield"><span class="m">DAY</span><span class="d">17</span></div>
       <div class="day-content">
         <p class="city">Città del Capo — Winelands</p>
@@ -356,7 +361,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day18">
       <div class="shield"><span class="m">DAY</span><span class="d">18</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Città del Capo → Doha (13:00 → 23:35)</p>
@@ -365,7 +370,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day19">
       <div class="shield"><span class="m">DAY</span><span class="d">19</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Doha → Milano (15:50 → 21:00)</p>

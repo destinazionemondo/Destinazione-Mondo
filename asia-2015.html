@@ -72,6 +72,11 @@ footer a{ color:var(--gold); }
 .back-home{ display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono', monospace; font-weight:600; font-size:0.85rem; color:var(--cream); background:var(--teal); padding:12px 22px; border-radius:2px; text-decoration:none; text-transform:uppercase; letter-spacing:0.05em; }
 .back-home:hover{ background:var(--rust); }
 @media (max-width:680px){ .day-entry{ grid-template-columns:74px 1fr; gap:18px; } .shield{ width:70px; height:80px; } .shield .d{ font-size:1.1rem; } .shield .m{ font-size:0.55rem; } }
+
+.map-pin-link{ cursor:pointer; }
+.map-pin-link circle{ transition:r 0.15s ease; }
+.map-pin-link:hover circle{ r:9; }
+.map-pin-link:hover text{ text-decoration:underline; }
 </style>
 </head>
 <body>
@@ -128,29 +133,29 @@ footer a{ color:var(--gold); }
           <path d="M63 367 Q 62 600, 60 847" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 8"/>
 
           <g font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="700" fill="#211D18">
-            <circle cx="60" cy="847" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
-            <text x="70" y="845">Singapore</text>
+            <a href="#day2" class="map-pin-link"><circle cx="60" cy="847" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
+            <text x="70" y="845">Singapore</text></a>
 
-            <circle cx="296" cy="468" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="230" y="452">Ho Chi Minh</text>
+            <a href="#day3" class="map-pin-link"><circle cx="296" cy="468" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="230" y="452">Ho Chi Minh</text></a>
 
-            <circle cx="377" cy="243" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="385" y="240">Hue</text>
+            <a href="#day6" class="map-pin-link"><circle cx="377" cy="243" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="385" y="240">Hue</text></a>
 
-            <circle cx="440" cy="266" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="420" y="290">Hoi An</text>
+            <a href="#day8" class="map-pin-link"><circle cx="440" cy="266" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="420" y="290">Hoi An</text></a>
 
-            <circle cx="230" cy="60" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="165" y="45">Hanoi</text>
+            <a href="#day10" class="map-pin-link"><circle cx="230" cy="60" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="165" y="45">Hanoi</text></a>
 
-            <circle cx="342" cy="65" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="350" y="50">Halong Bay</text>
+            <a href="#day11" class="map-pin-link"><circle cx="342" cy="65" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="350" y="50">Halong Bay</text></a>
 
-            <circle cx="152" cy="439" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="30" y="425">Phnom Penh</text>
+            <a href="#day13" class="map-pin-link"><circle cx="152" cy="439" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="30" y="425">Phnom Penh</text></a>
 
-            <circle cx="63" cy="367" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="20" y="352">Siem Reap</text>
+            <a href="#day14" class="map-pin-link"><circle cx="63" cy="367" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="20" y="352">Siem Reap</text></a>
           </g>
         </svg>
       </div>
@@ -176,7 +181,7 @@ footer a{ color:var(--gold); }
 <main class="wrap">
   <section class="itinerary">
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day1">
       <div class="shield"><span class="m">DAY</span><span class="d">1</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Milano → Francoforte → Singapore (18:35 → 16:25 +1)</p>
@@ -185,7 +190,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day2">
       <div class="shield"><span class="m">DAY</span><span class="d">2</span></div>
       <div class="day-content">
         <p class="city">Singapore</p>
@@ -193,7 +198,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day3">
       <div class="shield"><span class="m">DAY</span><span class="d">3</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Singapore → Ho Chi Minh (19:15 → 20:25)</p>
@@ -202,7 +207,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day4">
       <div class="shield"><span class="m">DAY</span><span class="d">4</span></div>
       <div class="day-content">
         <p class="city">Ho Chi Minh City</p>
@@ -210,7 +215,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day5">
       <div class="shield"><span class="m">DAY</span><span class="d">5</span></div>
       <div class="day-content">
         <p class="city">Delta del Mekong</p>
@@ -218,7 +223,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day6">
       <div class="shield"><span class="m">DAY</span><span class="d">6</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Ho Chi Minh → Da Nang (15:50 → 17:05)</p>
@@ -227,7 +232,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day7">
       <div class="shield"><span class="m">DAY</span><span class="d">7</span></div>
       <div class="day-content">
         <p class="city">Hue</p>
@@ -235,7 +240,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day8">
       <div class="shield"><span class="m">DAY</span><span class="d">8</span></div>
       <div class="day-content">
         <p class="city">Hue → Hoi An</p>
@@ -243,7 +248,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day9">
       <div class="shield"><span class="m">DAY</span><span class="d">9</span></div>
       <div class="day-content">
         <p class="city">Hoi An</p>
@@ -251,7 +256,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day10">
       <div class="shield"><span class="m">DAY</span><span class="d">10</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Da Nang → Hanoi (9:00 → 10:15)</p>
@@ -260,7 +265,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day11">
       <div class="shield"><span class="m">DAY</span><span class="d">11</span></div>
       <div class="day-content">
         <p class="city">Halong Bay — crociera in giunca</p>
@@ -268,7 +273,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day12">
       <div class="shield"><span class="m">DAY</span><span class="d">12</span></div>
       <div class="day-content">
         <p class="city">Halong Bay → Hanoi</p>
@@ -276,7 +281,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day13">
       <div class="shield"><span class="m">DAY</span><span class="d">13</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Hanoi → Phnom Penh (10:00 → 13:15)</p>
@@ -285,7 +290,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day14">
       <div class="shield"><span class="m">DAY</span><span class="d">14</span></div>
       <div class="day-content">
         <p class="city">Phnom Penh → Angkor Wat</p>
@@ -293,7 +298,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day15">
       <div class="shield"><span class="m">DAY</span><span class="d">15</span></div>
       <div class="day-content">
         <p class="city">Angkor Wat</p>
@@ -301,7 +306,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day16">
       <div class="shield"><span class="m">DAY</span><span class="d">16</span></div>
       <div class="day-content">
         <p class="city">Angkor Wat</p>
@@ -309,7 +314,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day17">
       <div class="shield"><span class="m">DAY</span><span class="d">17</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Siem Reap → Singapore (16:15 → 19:35)</p>
@@ -318,7 +323,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day18">
       <div class="shield"><span class="m">DAY</span><span class="d">18</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Singapore → Francoforte (23:05 → 5:40 +1)</p>
@@ -327,7 +332,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day19">
       <div class="shield"><span class="m">DAY</span><span class="d">19</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Francoforte → Milano (10:50 → 12:00)</p>

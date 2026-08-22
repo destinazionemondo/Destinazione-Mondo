@@ -96,6 +96,11 @@ footer a{ color:var(--gold); }
   .shield .d{ font-size:1.1rem; }
   .shield .m{ font-size:0.55rem; }
 }
+
+.map-pin-link{ cursor:pointer; }
+.map-pin-link circle{ transition:r 0.15s ease; }
+.map-pin-link:hover circle{ r:9; }
+.map-pin-link:hover text{ text-decoration:underline; }
 </style>
 </head>
 <body>
@@ -158,38 +163,38 @@ footer a{ color:var(--gold); }
 
           <!-- city pins -->
           <g font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#211D18">
-            <circle cx="362" cy="47" r="9" fill="#1F4F55" stroke="#F6F0E1" stroke-width="2"/>
-            <text x="378" y="45">1 Chicago</text>
+            <a href="#day1" class="map-pin-link"><circle cx="362" cy="47" r="9" fill="#1F4F55" stroke="#F6F0E1" stroke-width="2"/>
+            <text x="378" y="45">1 Chicago</text></a>
 
-            <circle cx="241" cy="173" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="255" y="171">2 Springfield</text>
+            <a href="#day5" class="map-pin-link"><circle cx="241" cy="173" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="255" y="171">2 Springfield</text></a>
 
-            <circle cx="208" cy="242" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="222" y="240">3 St. Louis</text>
+            <a href="#day5" class="map-pin-link"><circle cx="208" cy="242" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="222" y="240">3 St. Louis</text></a>
 
-            <circle cx="474" cy="265" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="410" y="248">4 Louisville</text>
+            <a href="#day7" class="map-pin-link"><circle cx="474" cy="265" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="410" y="248">4 Louisville</text></a>
 
-            <circle cx="413" cy="390" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="427" y="388">5 Nashville</text>
+            <a href="#day8" class="map-pin-link"><circle cx="413" cy="390" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="427" y="388">5 Nashville</text></a>
 
-            <circle cx="217" cy="451" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="231" y="449">6 Memphis</text>
+            <a href="#day10" class="map-pin-link"><circle cx="217" cy="451" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="231" y="449">6 Memphis</text></a>
 
-            <circle cx="186" cy="508" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="200" y="506">7 Clarksdale</text>
+            <a href="#day12" class="map-pin-link"><circle cx="186" cy="508" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="200" y="506">7 Clarksdale</text></a>
 
-            <circle cx="167" cy="619" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="181" y="617">8 Vicksburg</text>
+            <a href="#day12" class="map-pin-link"><circle cx="167" cy="619" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="181" y="617">8 Vicksburg</text></a>
 
-            <circle cx="136" cy="666" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="70" y="656">9 Natchez</text>
+            <a href="#day13" class="map-pin-link"><circle cx="136" cy="666" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="70" y="656">9 Natchez</text></a>
 
-            <circle cx="149" cy="733" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="20" y="736">10 Baton Rouge</text>
+            <a href="#day13" class="map-pin-link"><circle cx="149" cy="733" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="20" y="736">10 Baton Rouge</text></a>
 
-            <circle cx="216" cy="763" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
-            <text x="230" y="762" font-size="13">11 New Orleans</text>
+            <a href="#day14" class="map-pin-link"><circle cx="216" cy="763" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
+            <text x="230" y="762" font-size="13">11 New Orleans</text></a>
           </g>
         </svg>
       </div>
@@ -217,7 +222,7 @@ footer a{ color:var(--gold); }
 <main class="wrap">
   <section class="itinerary">
 
-    <div class="day-entry">
+    <div class="day-entry" id="day1">
       <div class="shield"><span class="m">DAY</span><span class="d">1</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Milano → Dublino → Chicago</p>
@@ -226,7 +231,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day2">
       <div class="shield"><span class="m">DAY</span><span class="d">2–4</span></div>
       <div class="day-content">
         <p class="city">Chicago</p>
@@ -240,16 +245,17 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day5">
       <div class="shield"><span class="m">DAY</span><span class="d">5</span></div>
       <div class="day-content">
         <p class="drive-tag">ritiro auto a Chicago → guida verso St. Louis</p>
         <p class="city">Springfield → St. Louis</p>
         <p>Sosta a Springfield al <span class="highlight">Lincoln Home National Historic Site</span>, la casa di Lincoln prima della presidenza, poi proseguimento fino a St. Louis (2 notti in Airbnb).</p>
+        <p class="note">alloggio consigliato: <a href="https://www.airbnb.it/rooms/23712178" target="_blank" rel="noopener">Koi Cottage Garden</a>, un bungalow con giardino paesaggistico e laghetto di koi in un quartiere tranquillo di St. Louis</p>
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day6">
       <div class="shield"><span class="m">DAY</span><span class="d">6</span></div>
       <div class="day-content">
         <p class="city">St. Louis</p>
@@ -263,7 +269,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day7">
       <div class="shield"><span class="m">DAY</span><span class="d">7</span></div>
       <div class="day-content">
         <p class="drive-tag">guida verso Louisville (+1h fuso)</p>
@@ -272,16 +278,17 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day8">
       <div class="shield"><span class="m">DAY</span><span class="d">8</span></div>
       <div class="day-content">
         <p class="drive-tag">guida verso Nashville (2h30)</p>
         <p class="city">Nashville</p>
         <p>Arrivo nel pomeriggio, prima serata libera per ambientarsi in città.</p>
+        <p class="note">alloggio consigliato: <a href="https://www.airbnb.it/rooms/22532050" target="_blank" rel="noopener">Nash Casita</a>, una casita privata con portico coperto nel quartiere creativo di East Nashville</p>
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day9">
       <div class="shield"><span class="m">DAY</span><span class="d">9</span></div>
       <div class="day-content">
         <p class="city">Nashville</p>
@@ -294,7 +301,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day10">
       <div class="shield"><span class="m">DAY</span><span class="d">10</span></div>
       <div class="day-content">
         <p class="drive-tag">Natchez Trace Parkway → Leiper's Fork → Memphis (5h)</p>
@@ -303,7 +310,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day11">
       <div class="shield"><span class="m">DAY</span><span class="d">11</span></div>
       <div class="day-content">
         <p class="city">Memphis</p>
@@ -315,7 +322,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day12">
       <div class="shield"><span class="m">DAY</span><span class="d">12</span></div>
       <div class="day-content">
         <p class="drive-tag">Route 61 → Clarksdale → Vicksburg (2h30)</p>
@@ -324,16 +331,17 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day13">
       <div class="shield"><span class="m">DAY</span><span class="d">13</span></div>
       <div class="day-content">
         <p class="drive-tag">Natchez (2h) → Baton Rouge (1h30)</p>
         <p class="city">Natchez → Baton Rouge</p>
         <p>Ville coloniali lungofiume a Natchez, poi vista spettacolare sulla città e sul fiume dal 27° piano del <span class="highlight">Louisiana State Capitol</span> a Baton Rouge (accesso gratuito).</p>
+        <p class="note">alloggio consigliato: <a href="https://www.airbnb.it/rooms/649871678488372683" target="_blank" rel="noopener">Blue Heron Guest House</a>, una dependance su 6 acri lungo il Bayou Manchac a Prairieville, con canoa inclusa</p>
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day14">
       <div class="shield"><span class="m">DAY</span><span class="d">14</span></div>
       <div class="day-content">
         <p class="drive-tag">Oak Alley + Whitney Plantation → New Orleans (via lago Pontchartrain)</p>
@@ -342,7 +350,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day15">
       <div class="shield"><span class="m">DAY</span><span class="d">15</span></div>
       <div class="day-content">
         <p class="city">New Orleans — French Quarter</p>
@@ -356,7 +364,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day16">
       <div class="shield"><span class="m">DAY</span><span class="d">16</span></div>
       <div class="day-content">
         <p class="city">New Orleans — Garden District</p>
@@ -364,7 +372,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day17">
       <div class="shield"><span class="m">DAY</span><span class="d">17</span></div>
       <div class="day-content">
         <p class="city">New Orleans — sul Mississippi</p>
@@ -372,7 +380,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day18">
       <div class="shield"><span class="m">DAY</span><span class="d">18</span></div>
       <div class="day-content">
         <p class="drive-tag">volo New Orleans → Chicago</p>
@@ -381,7 +389,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day19">
       <div class="shield"><span class="m">DAY</span><span class="d">19–20</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Chicago → Dublino → Milano</p>

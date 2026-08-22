@@ -72,6 +72,11 @@ footer a{ color:var(--gold); }
 .back-home{ display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono', monospace; font-weight:600; font-size:0.85rem; color:var(--cream); background:var(--teal); padding:12px 22px; border-radius:2px; text-decoration:none; text-transform:uppercase; letter-spacing:0.05em; }
 .back-home:hover{ background:var(--rust); }
 @media (max-width:680px){ .day-entry{ grid-template-columns:74px 1fr; gap:18px; } .shield{ width:70px; height:80px; } .shield .d{ font-size:1.1rem; } .shield .m{ font-size:0.55rem; } }
+
+.map-pin-link{ cursor:pointer; }
+.map-pin-link circle{ transition:r 0.15s ease; }
+.map-pin-link:hover circle{ r:9; }
+.map-pin-link:hover text{ text-decoration:underline; }
 </style>
 </head>
 <body>
@@ -122,20 +127,20 @@ footer a{ color:var(--gold); }
                 fill="none" stroke="#1F4F55" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 9"/>
 
           <g font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#211D18">
-            <circle cx="266" cy="60" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
-            <text x="276" y="58">L'Avana</text>
+            <a href="#day2" class="map-pin-link"><circle cx="266" cy="60" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
+            <text x="276" y="58">L'Avana</text></a>
 
-            <circle cx="60" cy="137" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="15" y="122">Viñales</text>
+            <a href="#day4" class="map-pin-link"><circle cx="60" cy="137" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="15" y="122">Viñales</text></a>
 
-            <circle cx="638" cy="260" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="605" y="282">Trinidad</text>
+            <a href="#day5" class="map-pin-link"><circle cx="638" cy="260" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="605" y="282">Trinidad</text></a>
 
-            <circle cx="641" cy="168" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="650" y="166">Santa Clara</text>
+            <a href="#day6" class="map-pin-link"><circle cx="641" cy="168" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="650" y="166">Santa Clara</text></a>
 
-            <circle cx="830" cy="144" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="720" y="130">Cayo Guillermo</text>
+            <a href="#day7" class="map-pin-link"><circle cx="830" cy="144" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="720" y="130">Cayo Guillermo</text></a>
           </g>
         </svg>
       </div>
@@ -160,7 +165,7 @@ footer a{ color:var(--gold); }
 <main class="wrap">
   <section class="itinerary">
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day1">
       <div class="shield"><span class="m">DAY</span><span class="d">1</span></div>
       <div class="day-content">
         <p class="drive-tag">Milano → Francoforte (11:05 → 12:25), Francoforte → Toronto (14:10 → 16:40)</p>
@@ -169,7 +174,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day2">
       <div class="shield"><span class="m">DAY</span><span class="d">2</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Toronto → L'Avana (8:50 → 12:15)</p>
@@ -178,7 +183,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day3">
       <div class="shield"><span class="m">DAY</span><span class="d">3</span></div>
       <div class="day-content">
         <p class="city">L'Avana</p>
@@ -186,7 +191,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day4">
       <div class="shield"><span class="m">DAY</span><span class="d">4</span></div>
       <div class="day-content">
         <p class="drive-tag">guida verso Viñales</p>
@@ -195,7 +200,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day5">
       <div class="shield"><span class="m">DAY</span><span class="d">5</span></div>
       <div class="day-content">
         <p class="drive-tag">guida verso Trinidad (circa 4 ore)</p>
@@ -204,7 +209,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day6">
       <div class="shield"><span class="m">DAY</span><span class="d">6</span></div>
       <div class="day-content">
         <p class="city">Trinidad → Santa Clara</p>
@@ -212,7 +217,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day7">
       <div class="shield"><span class="m">DAY</span><span class="d">7</span></div>
       <div class="day-content">
         <p class="city">Cayo Guillermo (Playa Pilar)</p>
@@ -220,7 +225,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day8">
       <div class="shield"><span class="m">DAY</span><span class="d">8</span></div>
       <div class="day-content">
         <p class="city">Cayo Guillermo (Playa Pilar)</p>
@@ -228,7 +233,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day9">
       <div class="shield"><span class="m">DAY</span><span class="d">9</span></div>
       <div class="day-content">
         <p class="drive-tag">volo L'Avana → Toronto (13:15 → 16:45)</p>
@@ -237,7 +242,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day10">
       <div class="shield"><span class="m">DAY</span><span class="d">10</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Toronto → Francoforte (16:30 → 06:10 +1), poi Francoforte → Milano (7:45 → 8:55)</p>

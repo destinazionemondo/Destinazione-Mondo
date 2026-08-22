@@ -94,6 +94,11 @@ footer a{ color:var(--gold); }
   .shield .d{ font-size:1.1rem; }
   .shield .m{ font-size:0.55rem; }
 }
+
+.map-pin-link{ cursor:pointer; }
+.map-pin-link circle{ transition:r 0.15s ease; }
+.map-pin-link:hover circle{ r:9; }
+.map-pin-link:hover text{ text-decoration:underline; }
 </style>
 </head>
 <body>
@@ -159,26 +164,26 @@ footer a{ color:var(--gold); }
 
           <!-- pins -->
           <g font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#211D18">
-            <circle cx="60" cy="90" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="30" y="76">São Jorge</text>
+            <a href="#day10" class="map-pin-link"><circle cx="60" cy="90" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="30" y="76">São Jorge</text></a>
 
-            <circle cx="89" cy="92" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="72" y="112">Terceira</text>
+            <a href="#day13" class="map-pin-link"><circle cx="89" cy="92" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="72" y="112">Terceira</text></a>
 
-            <circle cx="136" cy="183" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="110" y="204">São Miguel</text>
+            <a href="#day6" class="map-pin-link"><circle cx="136" cy="183" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="110" y="204">São Miguel</text></a>
 
-            <circle cx="645" cy="70" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="600" y="58">Cascais</text>
+            <a href="#day5" class="map-pin-link"><circle cx="645" cy="70" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="600" y="58">Cascais</text></a>
 
-            <circle cx="655" cy="90" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
-            <text x="662" y="88">Lisbona</text>
+            <a href="#day1" class="map-pin-link"><circle cx="655" cy="90" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
+            <text x="662" y="88">Lisbona</text></a>
 
-            <circle cx="660" cy="130" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="668" y="132">Lagos</text>
+            <a href="#day2" class="map-pin-link"><circle cx="660" cy="130" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="668" y="132">Lagos</text></a>
 
-            <circle cx="635" cy="118" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="588" y="140">São Brás</text>
+            <a href="#day3" class="map-pin-link"><circle cx="635" cy="118" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="588" y="140">São Brás</text></a>
           </g>
         </svg>
       </div>
@@ -205,7 +210,7 @@ footer a{ color:var(--gold); }
 <main class="wrap">
   <section class="itinerary">
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day1">
       <div class="shield"><span class="m">DAY</span><span class="d">1</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Milano → Lisbona (11:50 → 13:45)</p>
@@ -214,7 +219,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day2">
       <div class="shield"><span class="m">DAY</span><span class="d">2</span></div>
       <div class="day-content">
         <p class="drive-tag">guida verso Lagos, poi São Brás de Alportel</p>
@@ -223,7 +228,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day3">
       <div class="shield"><span class="m">DAY</span><span class="d">3</span></div>
       <div class="day-content">
         <p class="city">São Brás de Alportel</p>
@@ -231,7 +236,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day4">
       <div class="shield"><span class="m">DAY</span><span class="d">4</span></div>
       <div class="day-content">
         <p class="drive-tag">partenza presto, scarpe da trekking</p>
@@ -240,7 +245,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day5">
       <div class="shield"><span class="m">DAY</span><span class="d">5</span></div>
       <div class="day-content">
         <p class="drive-tag">guida verso Cascais/Estoril (2h51)</p>
@@ -249,7 +254,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day6">
       <div class="shield"><span class="m">DAY</span><span class="d">6</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Lisbona → Ponta Delgada (14:10 → 15:40)</p>
@@ -258,7 +263,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day7">
       <div class="shield"><span class="m">DAY</span><span class="d">7</span></div>
       <div class="day-content">
         <p class="city">São Miguel — Sete Cidades</p>
@@ -271,7 +276,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day8">
       <div class="shield"><span class="m">DAY</span><span class="d">8</span></div>
       <div class="day-content">
         <p class="city">São Miguel — Furnas</p>
@@ -285,7 +290,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day9">
       <div class="shield"><span class="m">DAY</span><span class="d">9</span></div>
       <div class="day-content">
         <p class="city">São Miguel — Lagoa do Fogo</p>
@@ -299,16 +304,17 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day10">
       <div class="shield"><span class="m">DAY</span><span class="d">10</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Ponta Delgada → São Jorge (14:10 → 15:05)</p>
         <p class="city">São Jorge</p>
         <p>Sistemazione a Manadas, passeggiata e spesa serale a Velas.</p>
+        <p class="note">alloggio consigliato: <a href="https://www.airbnb.it/rooms/1182684284505828630" target="_blank" rel="noopener">Balcone del canale</a>, casa di famiglia ristrutturata a Manadas con vista sul canale e sulle isole di Pico e Faial</p>
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day11">
       <div class="shield"><span class="m">DAY</span><span class="d">11</span></div>
       <div class="day-content">
         <p class="city">São Jorge — Fajãs</p>
@@ -317,7 +323,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day12">
       <div class="shield"><span class="m">DAY</span><span class="d">12</span></div>
       <div class="day-content">
         <p class="city">São Jorge — costa nord</p>
@@ -326,16 +332,17 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day13">
       <div class="shield"><span class="m">DAY</span><span class="d">13</span></div>
       <div class="day-content">
         <p class="drive-tag">volo São Jorge → Terceira (11:10 → 11:40)</p>
         <p class="city">Terceira</p>
         <p>Sistemazione in un loft ad Angra do Heroísmo.</p>
+        <p class="note">alloggio consigliato: <a href="https://www.airbnb.it/rooms/13727974" target="_blank" rel="noopener">Blue House</a>, un rifugio immerso nella natura con piscina e vista sul mare e sulle isole vicine</p>
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day14">
       <div class="shield"><span class="m">DAY</span><span class="d">14</span></div>
       <div class="day-content">
         <p class="city">Terceira — giro dell'isola</p>
@@ -343,7 +350,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day15">
       <div class="shield"><span class="m">DAY</span><span class="d">15</span></div>
       <div class="day-content">
         <p class="city">Terceira — Mistérios Negros</p>
@@ -351,7 +358,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day16">
       <div class="shield"><span class="m">DAY</span><span class="d">16</span></div>
       <div class="day-content">
         <p class="city">Terceira — costa sud</p>
@@ -359,7 +366,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day17">
       <div class="shield"><span class="m">DAY</span><span class="d">17</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Terceira → Lisbona (13:40 → 17:00)</p>
@@ -368,7 +375,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day18">
       <div class="shield"><span class="m">DAY</span><span class="d">18</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Lisbona → Milano (15:45 → 19:25)</p>

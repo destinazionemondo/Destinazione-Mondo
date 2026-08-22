@@ -72,6 +72,11 @@ footer a{ color:var(--gold); }
 .back-home{ display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono', monospace; font-weight:600; font-size:0.85rem; color:var(--cream); background:var(--teal); padding:12px 22px; border-radius:2px; text-decoration:none; text-transform:uppercase; letter-spacing:0.05em; }
 .back-home:hover{ background:var(--rust); }
 @media (max-width:680px){ .day-entry{ grid-template-columns:74px 1fr; gap:18px; } .shield{ width:70px; height:80px; } .shield .d{ font-size:1.1rem; } .shield .m{ font-size:0.55rem; } }
+
+.map-pin-link{ cursor:pointer; }
+.map-pin-link circle{ transition:r 0.15s ease; }
+.map-pin-link:hover circle{ r:9; }
+.map-pin-link:hover text{ text-decoration:underline; }
 </style>
 </head>
 <body>
@@ -125,23 +130,23 @@ footer a{ color:var(--gold); }
             <circle cx="60" cy="204" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
             <text x="15" y="222">Hotel (Calheta)</text>
 
-            <circle cx="385" cy="60" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="360" y="46">Santana</text>
+            <a href="#day1" class="map-pin-link"><circle cx="385" cy="60" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="360" y="46">Santana</text></a>
 
-            <circle cx="198" cy="330" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="130" y="352">Cabo Girão</text>
+            <a href="#day1" class="map-pin-link"><circle cx="198" cy="330" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="130" y="352">Cabo Girão</text></a>
 
-            <circle cx="635" cy="150" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="540" y="135">Ponta de São Lourenço</text>
+            <a href="#day2" class="map-pin-link"><circle cx="635" cy="150" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="540" y="135">Ponta de São Lourenço</text></a>
 
-            <circle cx="348" cy="330" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="325" y="352">Funchal</text>
+            <a href="#day3" class="map-pin-link"><circle cx="348" cy="330" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="325" y="352">Funchal</text></a>
 
-            <circle cx="398" cy="186" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="405" y="184">Ribeiro Frio</text>
+            <a href="#day4" class="map-pin-link"><circle cx="398" cy="186" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="405" y="184">Ribeiro Frio</text></a>
 
-            <circle cx="323" cy="186" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="240" y="200">Pico do Areeiro</text>
+            <a href="#day4" class="map-pin-link"><circle cx="323" cy="186" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="240" y="200">Pico do Areeiro</text></a>
           </g>
         </svg>
       </div>
@@ -163,7 +168,7 @@ footer a{ color:var(--gold); }
 <main class="wrap">
   <section class="itinerary">
 
-    <div class="day-entry">
+    <div class="day-entry" id="day1">
       <div class="shield"><span class="m">DAY</span><span class="d">1</span></div>
       <div class="day-content">
         <p class="city">Santana e Cabo Girão</p>
@@ -171,7 +176,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day2">
       <div class="shield"><span class="m">DAY</span><span class="d">2</span></div>
       <div class="day-content">
         <p class="drive-tag">anello completo, 7,6 km, circa 3 ore, difficoltà facile</p>
@@ -180,7 +185,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day3">
       <div class="shield"><span class="m">DAY</span><span class="d">3</span></div>
       <div class="day-content">
         <p class="city">Funchal</p>
@@ -188,7 +193,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day4">
       <div class="shield"><span class="m">DAY</span><span class="d">4</span></div>
       <div class="day-content">
         <p class="drive-tag">trekking 1,5 km (+1,5 km di ritorno) (3 km totali), circa 1h30, difficoltà facile</p>

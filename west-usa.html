@@ -74,6 +74,11 @@ footer a{ color:var(--gold); }
 .back-home{ display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono', monospace; font-weight:600; font-size:0.85rem; color:var(--cream); background:var(--teal); padding:12px 22px; border-radius:2px; text-decoration:none; text-transform:uppercase; letter-spacing:0.05em; }
 .back-home:hover{ background:var(--rust); }
 @media (max-width:680px){ .day-entry{ grid-template-columns:74px 1fr; gap:18px; } .shield{ width:70px; height:80px; } .shield .d{ font-size:1.1rem; } .shield .m{ font-size:0.55rem; } }
+
+.map-pin-link{ cursor:pointer; }
+.map-pin-link circle{ transition:r 0.15s ease; }
+.map-pin-link:hover circle{ r:9; }
+.map-pin-link:hover text{ text-decoration:underline; }
 </style>
 </head>
 <body>
@@ -128,44 +133,44 @@ footer a{ color:var(--gold); }
                 fill="none" stroke="#1F4F55" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 9"/>
 
           <g font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#211D18">
-            <circle cx="334" cy="402" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
-            <text x="290" y="388">Los Angeles</text>
+            <a href="#day1" class="map-pin-link"><circle cx="334" cy="402" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
+            <text x="290" y="388">Los Angeles</text></a>
 
-            <circle cx="408" cy="522" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="418" y="520">San Diego</text>
+            <a href="#day2" class="map-pin-link"><circle cx="408" cy="522" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="418" y="520">San Diego</text></a>
 
-            <circle cx="789" cy="460" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="700" y="445">Apache Junction</text>
+            <a href="#day4" class="map-pin-link"><circle cx="789" cy="460" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="700" y="445">Apache Junction</text></a>
 
-            <circle cx="775" cy="328" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="783" y="326">Sedona</text>
+            <a href="#day5" class="map-pin-link"><circle cx="775" cy="328" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="783" y="326">Sedona</text></a>
 
-            <circle cx="746" cy="294" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="695" y="285">Williams</text>
+            <a href="#day5" class="map-pin-link"><circle cx="746" cy="294" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="695" y="285">Williams</text></a>
 
-            <circle cx="749" cy="221" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="757" y="219">Grand Canyon</text>
+            <a href="#day6" class="map-pin-link"><circle cx="749" cy="221" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="757" y="219">Grand Canyon</text></a>
 
-            <circle cx="795" cy="145" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="803" y="143">Page</text>
+            <a href="#day7" class="map-pin-link"><circle cx="795" cy="145" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="803" y="143">Page</text></a>
 
-            <circle cx="545" cy="211" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="500" y="197">Las Vegas</text>
+            <a href="#day9" class="map-pin-link"><circle cx="545" cy="211" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="500" y="197">Las Vegas</text></a>
 
-            <circle cx="427" cy="179" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="360" y="167">Death Valley</text>
+            <a href="#day10" class="map-pin-link"><circle cx="427" cy="179" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="360" y="167">Death Valley</text></a>
 
-            <circle cx="281" cy="283" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="185" y="280">Bakersfield</text>
+            <a href="#day10" class="map-pin-link"><circle cx="281" cy="283" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="185" y="280">Bakersfield</text></a>
 
-            <circle cx="274" cy="50" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="282" y="48">Yosemite</text>
+            <a href="#day11" class="map-pin-link"><circle cx="274" cy="50" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="282" y="48">Yosemite</text></a>
 
-            <circle cx="50" cy="67" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="10" y="50">San Francisco</text>
+            <a href="#day13" class="map-pin-link"><circle cx="50" cy="67" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="10" y="50">San Francisco</text></a>
 
-            <circle cx="304" cy="404" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="230" y="420">Malibu</text>
+            <a href="#day16" class="map-pin-link"><circle cx="304" cy="404" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="230" y="420">Malibu</text></a>
           </g>
         </svg>
       </div>
@@ -193,7 +198,7 @@ footer a{ color:var(--gold); }
 <main class="wrap">
   <section class="itinerary">
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day1">
       <div class="shield"><span class="m">DAY</span><span class="d">1</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Milano → Los Angeles, arrivo 23:09</p>
@@ -202,7 +207,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day2">
       <div class="shield"><span class="m">DAY</span><span class="d">2</span></div>
       <div class="day-content">
         <p class="drive-tag">guida verso San Diego (2h30)</p>
@@ -212,7 +217,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day3">
       <div class="shield"><span class="m">DAY</span><span class="d">3</span></div>
       <div class="day-content">
         <p class="city">San Diego</p>
@@ -220,7 +225,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day4">
       <div class="shield"><span class="m">DAY</span><span class="d">4</span></div>
       <div class="day-content">
         <p class="drive-tag">guida verso Apache Junction (5h45, partenza entro le 12:00)</p>
@@ -229,7 +234,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day5">
       <div class="shield"><span class="m">DAY</span><span class="d">5</span></div>
       <div class="day-content">
         <p class="drive-tag">Goldfield (apertura 10:00) → Sedona (2h30) → Williams (1h15)</p>
@@ -238,7 +243,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day6">
       <div class="shield"><span class="m">DAY</span><span class="d">6</span></div>
       <div class="day-content">
         <p class="drive-tag">guida verso il Grand Canyon (1h)</p>
@@ -247,7 +252,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day7">
       <div class="shield"><span class="m">DAY</span><span class="d">7</span></div>
       <div class="day-content">
         <p class="drive-tag">guida verso Page (2h20, arrivo confermato ore 19)</p>
@@ -256,7 +261,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day8">
       <div class="shield"><span class="m">DAY</span><span class="d">8</span></div>
       <div class="day-content">
         <p class="drive-tag">guida verso Las Vegas (4h30)</p>
@@ -265,7 +270,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day9">
       <div class="shield"><span class="m">DAY</span><span class="d">9</span></div>
       <div class="day-content">
         <p class="city">Las Vegas</p>
@@ -273,7 +278,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day10">
       <div class="shield"><span class="m">DAY</span><span class="d">10</span></div>
       <div class="day-content">
         <p class="drive-tag">Death Valley (2h15) → Bakersfield (4h)</p>
@@ -282,7 +287,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day11">
       <div class="shield"><span class="m">DAY</span><span class="d">11</span></div>
       <div class="day-content">
         <p class="drive-tag">Tioga Road, Route 120 (3h)</p>
@@ -291,7 +296,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day12">
       <div class="shield"><span class="m">DAY</span><span class="d">12</span></div>
       <div class="day-content">
         <p class="city">Yosemite</p>
@@ -299,7 +304,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day13">
       <div class="shield"><span class="m">DAY</span><span class="d">13</span></div>
       <div class="day-content">
         <p class="drive-tag">guida verso San Francisco (4h)</p>
@@ -308,7 +313,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day14">
       <div class="shield"><span class="m">DAY</span><span class="d">14</span></div>
       <div class="day-content">
         <p class="city">San Francisco</p>
@@ -316,7 +321,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry">
+    <div class="day-entry" id="day15">
       <div class="shield"><span class="m">DAY</span><span class="d">15</span></div>
       <div class="day-content">
         <p class="city">San Francisco</p>
@@ -324,7 +329,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry drive">
+    <div class="day-entry drive" id="day16">
       <div class="shield"><span class="m">DAY</span><span class="d">16</span></div>
       <div class="day-content">
         <p class="drive-tag">guida verso Malibu (6h)</p>
@@ -333,7 +338,7 @@ footer a{ color:var(--gold); }
       </div>
     </div>
 
-    <div class="day-entry fly">
+    <div class="day-entry fly" id="day17">
       <div class="shield"><span class="m">DAY</span><span class="d">17</span></div>
       <div class="day-content">
         <p class="drive-tag">volo Los Angeles → Milano (ore 11:45, partenza dall'hotel ore 8)</p>
