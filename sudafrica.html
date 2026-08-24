@@ -47,7 +47,7 @@ a{ color:var(--teal); }
 
 .map-section{ padding:50px 0 30px; }
 .map-layout{ display:grid; grid-template-columns:1fr 260px; gap:30px; align-items:start; }
-.map-frame{ border:6px solid var(--ink); box-shadow:0 20px 50px rgba(33,29,24,0.35); border-radius:4px; overflow:hidden; margin-left:16px; background:#DCC79A; }
+.map-frame{ border:2px solid var(--ink); box-shadow:0 12px 30px rgba(33,29,24,0.25); border-radius:4px; overflow:hidden; margin-left:16px; background:#C9DCC6; }
 .map-legend{ background:var(--cream); border:1px solid var(--paper-line); border-radius:4px; padding:20px; }
 .map-legend h4{ font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); margin:0 0 14px; }
 .map-legend ol{ margin:0; padding:0 0 0 22px; font-size:0.86rem; }
@@ -129,13 +129,13 @@ footer a{ color:var(--gold); }
   <div class="map-layout">
     <div>
       <div class="map-frame">
-        <svg viewBox="0 0 850 680" style="width:100%; display:block;">
+        <svg viewBox="0 0 850 680" style="width:100%; display:block; max-height:480px; margin:0 auto;">
           <defs>
             <pattern id="savanna" width="55" height="55" patternUnits="userSpaceOnUse">
               <path d="M0 27 Q 14 12, 27 27 T 55 27" fill="none" stroke="#C9A968" stroke-width="1"/>
             </pattern>
           </defs>
-          <rect width="850" height="680" fill="#DCC79A"/>
+          <rect width="850" height="680" fill="#C9DCC6"/>
           <rect width="850" height="680" fill="url(#savanna)" opacity="0.5"/>
           <path d="M0 615 Q 35 580, 75 592 Q 100 610, 140 608 Q 170 610, 200 608 Q 250 603, 300 608 Q 340 610, 374 612 Q 420 588, 468 590 Q 520 605, 600 618 Q 700 632, 850 605 L850 680 L0 680 Z" fill="#A9C6CC"/>
 

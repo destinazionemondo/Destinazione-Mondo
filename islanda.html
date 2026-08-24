@@ -35,7 +35,7 @@ a{ color:var(--teal); }
 .stat span{ font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(246,240,225,0.65); }
 .map-section{ padding:50px 0 30px; }
 .map-layout{ display:grid; grid-template-columns:1fr 260px; gap:30px; align-items:start; }
-.map-frame{ border:6px solid var(--ink); box-shadow:0 20px 50px rgba(33,29,24,0.35); border-radius:4px; overflow:hidden; margin-left:16px; background:#B8CBCF; }
+.map-frame{ border:2px solid var(--ink); box-shadow:0 12px 30px rgba(33,29,24,0.25); border-radius:4px; overflow:hidden; margin-left:16px; background:#B8CBCF; }
 .map-legend{ background:var(--cream); border:1px solid var(--paper-line); border-radius:4px; padding:20px; }
 .map-legend h4{ font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); margin:0 0 14px; }
 .map-legend ol{ margin:0; padding:0 0 0 22px; font-size:0.86rem; }
@@ -107,7 +107,7 @@ footer a{ color:var(--gold); }
   <div class="map-layout">
     <div>
       <div class="map-frame">
-        <svg viewBox="0 0 900 600" style="width:100%; display:block;">
+        <svg viewBox="0 0 900 600" style="width:100%; display:block; max-height:480px; margin:0 auto;">
           <defs>
             <pattern id="lavaIS" width="50" height="50" patternUnits="userSpaceOnUse">
               <path d="M0 25 Q 13 12, 25 25 T 50 25" fill="none" stroke="#8FAEB2" stroke-width="1"/>
@@ -117,9 +117,9 @@ footer a{ color:var(--gold); }
           <rect width="900" height="600" fill="url(#lavaIS)" opacity="0.5"/>
 
           <!-- terraferma ritagliata sulla sola area visitata (SW/S Islanda), non l'isola intera -->
-          <path d="M120 150 L245 270 L220 370 L175 460 L140 520 L270 440 L300 420 L352 440 L400 420 L410 310 L440 300 L400 380 L430 450 L430 480 L510 565 L560 585 L650 540 L750 460 L800 410 L860 395 L900 340 L900 0 L120 0 Z" fill="#D9CDA8" opacity="0.85"/>
+          <path d="M120 150 L245 270 L220 370 L175 460 L140 520 L270 440 L300 420 L352 440 L400 420 L410 310 L440 300 L400 380 L430 450 L430 480 L510 565 L560 585 L650 540 L750 460 L800 410 L860 395 L900 340 L900 0 L120 0 Z" fill="#C9DCC6" opacity="0.85"/>
           <!-- penisola di Snæfellsnes, a parte -->
-          <path d="M30 180 L90 70 L177 25 L230 100 L190 160 L100 190 Z" fill="#D9CDA8" opacity="0.85"/>
+          <path d="M30 180 L90 70 L177 25 L230 100 L190 160 L100 190 Z" fill="#C9DCC6" opacity="0.85"/>
 
           <text x="700" y="60" font-family="'Big Shoulders Display',sans-serif" font-size="15" fill="#211D18" opacity="0.3">SOLO IL SUD-OVEST →</text>
 

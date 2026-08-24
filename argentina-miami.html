@@ -35,7 +35,7 @@ a{ color:var(--teal); }
 .stat span{ font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(246,240,225,0.65); }
 .map-section{ padding:50px 0 30px; }
 .map-layout{ display:grid; grid-template-columns:1fr 260px; gap:30px; align-items:start; }
-.map-frame{ border:6px solid var(--ink); box-shadow:0 20px 50px rgba(33,29,24,0.35); border-radius:4px; overflow:hidden; margin-left:16px; background:#DCD0AF; }
+.map-frame{ border:2px solid var(--ink); box-shadow:0 12px 30px rgba(33,29,24,0.25); border-radius:4px; overflow:hidden; margin-left:16px; background:#C9DCC6; }
 .map-legend{ background:var(--cream); border:1px solid var(--paper-line); border-radius:4px; padding:20px; }
 .map-legend h4{ font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); margin:0 0 14px; }
 .map-legend ol{ margin:0; padding:0 0 0 22px; font-size:0.86rem; }
@@ -110,7 +110,7 @@ footer a{ color:var(--gold); }
   <div class="map-layout">
     <div>
       <div class="map-frame">
-        <svg viewBox="0 0 420 700" style="width:100%; display:block;">
+        <svg viewBox="0 0 420 700" style="width:100%; display:block; max-height:480px; margin:0 auto;">
           <defs>
             <pattern id="wavesAM" width="36" height="36" patternUnits="userSpaceOnUse">
               <path d="M0 18 Q 9 8, 18 18 T 36 18" fill="none" stroke="#9CC0C2" stroke-width="1"/>
@@ -128,15 +128,15 @@ footer a{ color:var(--gold); }
           </g>
 
           <!-- Florida: sagoma separata, in alto -->
-          <path d="M140 15 L200 10 L250 35 L265 65 L245 100 L225 130 L190 110 L160 80 L130 45 Z" fill="#DCD0AF" opacity="0.9"/>
+          <path d="M140 15 L200 10 L250 35 L265 65 L245 100 L225 130 L190 110 L160 80 L130 45 Z" fill="#C9DCC6" opacity="0.9"/>
 
           <!-- Florida Keys: isole vere e proprie, ben distaccate nel mare a sud della penisola -->
-          <ellipse cx="210" cy="150" rx="9" ry="4" fill="#DCD0AF" opacity="0.9" transform="rotate(-35 210 150)"/>
-          <ellipse cx="190" cy="168" rx="8" ry="3.5" fill="#DCD0AF" opacity="0.9" transform="rotate(-35 190 168)"/>
-          <ellipse cx="172" cy="185" rx="7" ry="3" fill="#DCD0AF" opacity="0.9" transform="rotate(-35 172 185)"/>
+          <ellipse cx="210" cy="150" rx="9" ry="4" fill="#C9DCC6" opacity="0.9" transform="rotate(-35 210 150)"/>
+          <ellipse cx="190" cy="168" rx="8" ry="3.5" fill="#C9DCC6" opacity="0.9" transform="rotate(-35 190 168)"/>
+          <ellipse cx="172" cy="185" rx="7" ry="3" fill="#C9DCC6" opacity="0.9" transform="rotate(-35 172 185)"/>
 
           <!-- Argentina / Patagonia: sagoma separata, in basso, fino a Ushuaia -->
-          <path d="M255 275 L300 300 L318 350 L300 400 L275 440 L255 490 L235 540 L218 585 L203 625 L188 663 L155 628 L140 580 L128 525 L120 460 L125 400 L145 345 L170 300 L210 280 Z" fill="#DCD0AF" opacity="0.9"/>
+          <path d="M255 275 L300 300 L318 350 L300 400 L275 440 L255 490 L235 540 L218 585 L203 625 L188 663 L155 628 L140 580 L128 525 L120 460 L125 400 L145 345 L170 300 L210 280 Z" fill="#C9DCC6" opacity="0.9"/>
 
           <text x="205" y="55" font-family="'Big Shoulders Display',sans-serif" font-size="13" fill="#211D18" opacity="0.3">FLORIDA</text>
           <text x="225" y="410" font-family="'Big Shoulders Display',sans-serif" font-size="14" fill="#211D18" opacity="0.3" transform="rotate(10 225 410)">ARGENTINA</text>

@@ -47,7 +47,7 @@ a{ color:var(--teal); }
 
 .map-section{ padding:50px 0 30px; }
 .map-layout{ display:grid; grid-template-columns:1fr 260px; gap:30px; align-items:start; }
-.map-frame{ border:6px solid var(--ink); box-shadow:0 20px 50px rgba(33,29,24,0.35); border-radius:4px; overflow:hidden; margin-left:16px; background:#B8D4D6; }
+.map-frame{ border:2px solid var(--ink); box-shadow:0 12px 30px rgba(33,29,24,0.25); border-radius:4px; overflow:hidden; margin-left:16px; background:#B8D4D6; }
 .map-legend{ background:var(--cream); border:1px solid var(--paper-line); border-radius:4px; padding:20px; }
 .map-legend h4{ font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); margin:0 0 14px; }
 .map-legend ol{ margin:0; padding:0 0 0 22px; font-size:0.86rem; }
@@ -129,7 +129,7 @@ footer a{ color:var(--gold); }
   <div class="map-layout">
     <div>
       <div class="map-frame">
-        <svg viewBox="0 0 800 320" style="width:100%; display:block;">
+        <svg viewBox="0 0 800 320" style="width:100%; display:block; max-height:480px; margin:0 auto;">
           <defs>
             <pattern id="waves" width="40" height="40" patternUnits="userSpaceOnUse">
               <path d="M0 20 Q 10 10, 20 20 T 40 20" fill="none" stroke="#9CC0C2" stroke-width="1"/>
@@ -148,10 +148,10 @@ footer a{ color:var(--gold); }
           </g>
 
           <!-- island cluster land shapes (decorative), ingrandite -->
-          <ellipse cx="70" cy="80" rx="32" ry="14" fill="#DCD0AF" opacity="0.9"/>
-          <ellipse cx="145" cy="88" rx="28" ry="14" fill="#DCD0AF" opacity="0.9"/>
-          <ellipse cx="235" cy="195" rx="44" ry="19" fill="#DCD0AF" opacity="0.9"/>
-          <path d="M800 -20 Q 750 -10, 720 10 Q 680 30, 650 65 Q 630 90, 660 95 Q 690 100, 655 135 Q 620 165, 605 185 Q 592 205, 585 235 Q 580 260, 605 265 Q 630 270, 610 295 Q 640 315, 800 320 Z" fill="#DCD0AF" opacity="0.9"/>
+          <ellipse cx="70" cy="80" rx="32" ry="14" fill="#C9DCC6" opacity="0.9"/>
+          <ellipse cx="145" cy="88" rx="28" ry="14" fill="#C9DCC6" opacity="0.9"/>
+          <ellipse cx="235" cy="195" rx="44" ry="19" fill="#C9DCC6" opacity="0.9"/>
+          <path d="M800 -20 Q 750 -10, 720 10 Q 680 30, 650 65 Q 630 90, 660 95 Q 690 100, 655 135 Q 620 165, 605 185 Q 592 205, 585 235 Q 580 260, 605 265 Q 630 270, 610 295 Q 640 315, 800 320 Z" fill="#C9DCC6" opacity="0.9"/>
 
           <!-- flight arcs -->
           <path d="M235 195 Q 450 260, 688 88" fill="none" stroke="#A93826" stroke-width="2.5" stroke-dasharray="1 8"/>

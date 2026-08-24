@@ -35,7 +35,7 @@ a{ color:var(--teal); }
 .stat span{ font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(246,240,225,0.65); }
 .map-section{ padding:50px 0 30px; }
 .map-layout{ display:grid; grid-template-columns:1fr 260px; gap:30px; align-items:start; }
-.map-frame{ border:6px solid var(--ink); box-shadow:0 20px 50px rgba(33,29,24,0.35); border-radius:4px; overflow:hidden; margin-left:16px; background:#DCC998; }
+.map-frame{ border:2px solid var(--ink); box-shadow:0 12px 30px rgba(33,29,24,0.25); border-radius:4px; overflow:hidden; margin-left:16px; background:#C9DCC6; }
 .map-legend{ background:var(--cream); border:1px solid var(--paper-line); border-radius:4px; padding:20px; }
 .map-legend h4{ font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); margin:0 0 14px; }
 .map-legend ol{ margin:0; padding:0 0 0 22px; font-size:0.86rem; }
@@ -107,7 +107,7 @@ footer a{ color:var(--gold); }
   <div class="map-layout">
     <div>
       <div class="map-frame">
-        <svg viewBox="0 0 880 700" style="width:100%; display:block;">
+        <svg viewBox="0 0 880 700" style="width:100%; display:block; max-height:480px; margin:0 auto;">
           <defs>
             <pattern id="outbackAU" width="55" height="55" patternUnits="userSpaceOnUse">
               <path d="M0 27 Q 14 12, 27 27 T 55 27" fill="none" stroke="#C9A968" stroke-width="1"/>
@@ -115,13 +115,13 @@ footer a{ color:var(--gold); }
           </defs>
           <rect width="880" height="700" fill="#A9C6CC"/>
           <!-- Australia: sagoma con Golfo di Carpentaria, Bight, Capo York e costa occidentale -->
-          <path d="M620 40 Q 655 95, 665 150 Q 670 200, 675 250 Q 685 300, 700 340 Q 718 380, 730 420 Q 745 450, 755 475 Q 740 510, 720 540 Q 690 575, 650 600 Q 615 608, 580 610 Q 540 608, 500 600 Q 478 593, 455 585 Q 428 588, 400 590 Q 350 578, 300 560 Q 250 542, 200 520 Q 160 502, 120 480 Q 100 430, 90 380 Q 92 330, 100 280 Q 112 228, 130 180 Q 152 148, 180 120 Q 212 102, 250 90 Q 300 72, 350 60 Q 400 52, 450 50 Q 478 68, 500 90 Q 525 82, 550 70 Q 565 58, 580 50 Q 600 44, 620 40 Z" fill="#DCC998"/>
+          <path d="M620 40 Q 655 95, 665 150 Q 670 200, 675 250 Q 685 300, 700 340 Q 718 380, 730 420 Q 745 450, 755 475 Q 740 510, 720 540 Q 690 575, 650 600 Q 615 608, 580 610 Q 540 608, 500 600 Q 478 593, 455 585 Q 428 588, 400 590 Q 350 578, 300 560 Q 250 542, 200 520 Q 160 502, 120 480 Q 100 430, 90 380 Q 92 330, 100 280 Q 112 228, 130 180 Q 152 148, 180 120 Q 212 102, 250 90 Q 300 72, 350 60 Q 400 52, 450 50 Q 478 68, 500 90 Q 525 82, 550 70 Q 565 58, 580 50 Q 600 44, 620 40 Z" fill="#C9DCC6"/>
           <!-- Tasmania -->
-          <path d="M620 650 Q 650 640, 675 655 Q 685 675, 668 695 Q 645 700, 625 688 Q 612 668, 620 650 Z" fill="#DCC998"/>
+          <path d="M620 650 Q 650 640, 675 655 Q 685 675, 668 695 Q 645 700, 625 688 Q 612 668, 620 650 Z" fill="#C9DCC6"/>
           <!-- Kangaroo Island -->
-          <ellipse cx="430" cy="638" rx="18" ry="8" fill="#DCC998" transform="rotate(-10 430 638)"/>
+          <ellipse cx="430" cy="638" rx="18" ry="8" fill="#C9DCC6" transform="rotate(-10 430 638)"/>
           <!-- Rottnest Island -->
-          <ellipse cx="80" cy="500" rx="8" ry="5" fill="#DCC998"/>
+          <ellipse cx="80" cy="500" rx="8" ry="5" fill="#C9DCC6"/>
 
           <rect width="880" height="700" fill="url(#outbackAU)" opacity="0.3"/>
 

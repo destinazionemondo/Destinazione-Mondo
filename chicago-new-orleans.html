@@ -48,7 +48,7 @@ a{ color:var(--teal); }
 /* ---- illustrated route map ---- */
 .map-section{ padding:50px 0 30px; }
 .map-layout{ display:grid; grid-template-columns:1fr 260px; gap:30px; align-items:start; }
-.map-frame{ border:6px solid var(--ink); box-shadow:0 20px 50px rgba(33,29,24,0.35); border-radius:4px; overflow:hidden; margin-left:16px; background:#DCD0AF; }
+.map-frame{ border:2px solid var(--ink); box-shadow:0 12px 30px rgba(33,29,24,0.25); border-radius:4px; overflow:hidden; margin-left:16px; background:#C9DCC6; }
 .map-legend{ background:var(--cream); border:1px solid var(--paper-line); border-radius:4px; padding:20px; }
 .map-legend h4{ font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); margin:0 0 14px; }
 .map-legend ol{ margin:0; padding:0 0 0 22px; font-size:0.88rem; }
@@ -131,13 +131,13 @@ footer a{ color:var(--gold); }
   <div class="map-layout">
     <div>
       <div class="map-frame">
-        <svg viewBox="0 0 560 820" style="width:100%; display:block;">
+        <svg viewBox="0 0 560 820" style="width:100%; display:block; max-height:480px; margin:0 auto;">
           <defs>
             <pattern id="contour2" width="50" height="50" patternUnits="userSpaceOnUse">
               <path d="M0 25 Q 12 10, 25 25 T 50 25" fill="none" stroke="#C9BA92" stroke-width="1"/>
             </pattern>
           </defs>
-          <rect width="560" height="820" fill="#DCD0AF"/>
+          <rect width="560" height="820" fill="#C9DCC6"/>
           <rect width="560" height="820" fill="url(#contour2)" opacity="0.5"/>
           <ellipse cx="430" cy="60" rx="65" ry="100" fill="#A9C6CC"/>
           <path d="M0 790 Q 140 760, 280 795 Q 420 815, 560 780 L560 820 L0 820 Z" fill="#A9C6CC"/>
