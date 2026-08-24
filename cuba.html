@@ -106,24 +106,28 @@ footer a{ color:var(--gold); }
   <div class="map-layout">
     <div>
       <div class="map-frame">
-        <svg viewBox="0 0 900 320" style="width:100%; display:block;">
+        <svg viewBox="0 0 1500 320" style="width:100%; display:block;">
           <defs>
             <pattern id="palmCU" width="45" height="45" patternUnits="userSpaceOnUse">
               <path d="M0 22 Q 11 10, 22 22 T 45 22" fill="none" stroke="#8FB4BB" stroke-width="1"/>
             </pattern>
           </defs>
-          <rect width="900" height="320" fill="#A9C6CC"/>
-          <rect width="900" height="320" fill="url(#palmCU)" opacity="0.5"/>
+          <rect width="1500" height="320" fill="#A9C6CC"/>
+          <rect width="1500" height="320" fill="url(#palmCU)" opacity="0.5"/>
 
-          <path d="M30 140 Q 80 90, 150 75 Q 220 60, 270 50 Q 350 55, 450 85 Q 550 100, 620 105 Q 720 110, 800 125 Q 850 132, 870 140 Q 830 155, 750 175 Q 700 195, 660 230 Q 630 275, 600 285 Q 520 260, 450 235 Q 350 210, 250 185 Q 150 165, 90 155 Q 50 148, 30 140 Z" fill="#DCD0AF" opacity="0.9"/>
+          <!-- Cuba: isola intera, stesso colore uniforme -->
+          <path d="M30 140 Q 80 90, 150 75 Q 220 60, 270 50 Q 350 55, 450 85 Q 550 100, 620 105 Q 720 110, 800 125 Q 850 132, 900 128 Q 1000 120, 1100 115 Q 1200 118, 1300 128 Q 1380 138, 1420 155 Q 1400 175, 1300 190 Q 1200 200, 1080 205 Q 950 200, 830 185 Q 750 175, 700 195 Q 630 275, 600 285 Q 520 260, 450 235 Q 350 210, 250 185 Q 150 165, 90 155 Q 50 148, 30 140 Z" fill="#DCD0AF" opacity="0.9"/>
+          <!-- Cayo Guillermo: cayo collegato alla costa dal pedraplén (causeway) -->
+          <path d="M845 95 L868 90 L878 103 L860 112 L840 106 Z" fill="#DCD0AF" opacity="0.9"/>
+          <path d="M820 128 L845 100" stroke="#C9A968" stroke-width="2.5" fill="none"/>
 
-          <g transform="translate(840,50)" opacity="0.7">
+          <g transform="translate(1440,50)" opacity="0.7">
             <circle r="22" fill="none" stroke="#211D18" stroke-width="1.3"/>
             <path d="M0 -18 L4 0 L0 18 L-4 0 Z" fill="#A93826"/>
             <text x="0" y="-26" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#211D18">N</text>
           </g>
 
-          <path d="M266 60 L60 137 M266 60 L638 260 L641 168 L830 144 L266 60"
+          <path d="M266 60 L60 137 M266 60 L638 260 L641 168 L858 101 L266 60"
                 fill="none" stroke="#1F4F55" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 9"/>
 
           <g font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#211D18">
@@ -139,12 +143,12 @@ footer a{ color:var(--gold); }
             <a href="#day6" class="map-pin-link"><circle cx="641" cy="168" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
             <text x="650" y="166">Santa Clara</text></a>
 
-            <a href="#day7" class="map-pin-link"><circle cx="830" cy="144" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="720" y="130">Cayo Guillermo</text></a>
+            <a href="#day7" class="map-pin-link"><circle cx="858" cy="101" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="740" y="88">Cayo Guillermo</text></a>
           </g>
         </svg>
       </div>
-      <p class="map-caption">tratteggiato blu = guida su strada</p>
+      <p class="map-caption">tratteggiato blu = guida su strada · linea gialla = pedraplén (causeway)</p>
     </div>
 
     <div class="map-legend">

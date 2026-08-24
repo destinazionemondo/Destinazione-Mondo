@@ -107,17 +107,26 @@ footer a{ color:var(--gold); }
   <div class="map-layout">
     <div>
       <div class="map-frame">
-        <svg viewBox="0 0 880 760" style="width:100%; display:block;">
+        <svg viewBox="0 0 880 700" style="width:100%; display:block;">
           <defs>
             <pattern id="outbackAU" width="55" height="55" patternUnits="userSpaceOnUse">
               <path d="M0 27 Q 14 12, 27 27 T 55 27" fill="none" stroke="#C9A968" stroke-width="1"/>
             </pattern>
           </defs>
-          <rect width="880" height="760" fill="#A9C6CC"/>
-          <path d="M650 30 Q 735 45, 795 105 Q 832 155, 836 225 L 840 480 Q 838 570, 812 625 Q 772 675, 700 720 Q 600 745, 480 740 Q 350 738, 225 695 Q 120 655, 65 565 Q 35 480, 42 385 Q 48 245, 85 155 Q 135 80, 225 50 Q 350 25, 470 25 Q 570 25, 650 30 Z" fill="#DCC998"/>
-          <rect width="880" height="760" fill="url(#outbackAU)" opacity="0.3"/>
+          <rect width="880" height="700" fill="#A9C6CC"/>
+          <!-- Australia: sagoma con Golfo di Carpentaria, Bight, Capo York e costa occidentale -->
+          <path d="M620 40 Q 655 95, 665 150 Q 670 200, 675 250 Q 685 300, 700 340 Q 718 380, 730 420 Q 745 450, 755 475 Q 740 510, 720 540 Q 690 575, 650 600 Q 615 608, 580 610 Q 540 608, 500 600 Q 478 593, 455 585 Q 428 588, 400 590 Q 350 578, 300 560 Q 250 542, 200 520 Q 160 502, 120 480 Q 100 430, 90 380 Q 92 330, 100 280 Q 112 228, 130 180 Q 152 148, 180 120 Q 212 102, 250 90 Q 300 72, 350 60 Q 400 52, 450 50 Q 478 68, 500 90 Q 525 82, 550 70 Q 565 58, 580 50 Q 600 44, 620 40 Z" fill="#DCC998"/>
+          <!-- Tasmania -->
+          <path d="M620 650 Q 650 640, 675 655 Q 685 675, 668 695 Q 645 700, 625 688 Q 612 668, 620 650 Z" fill="#DCC998"/>
+          <!-- Kangaroo Island -->
+          <ellipse cx="430" cy="638" rx="18" ry="8" fill="#DCC998" transform="rotate(-10 430 638)"/>
+          <!-- Rottnest Island -->
+          <ellipse cx="80" cy="500" rx="8" ry="5" fill="#DCC998"/>
 
-          <text x="420" y="330" font-family="'Big Shoulders Display',sans-serif" font-size="26" fill="#211D18" opacity="0.2" transform="rotate(-3 420 330)">OUTBACK</text>
+          <rect width="880" height="700" fill="url(#outbackAU)" opacity="0.3"/>
+
+          <text x="420" y="330" font-family="'Big Shoulders Display',sans-serif" font-size="24" fill="#211D18" opacity="0.2" transform="rotate(-3 420 330)">OUTBACK</text>
+          <text x="240" y="470" font-family="'Big Shoulders Display',sans-serif" font-size="13" fill="#1F4F55" opacity="0.4" transform="rotate(6 240 470)">GRANDE BAIA AUSTRALIANA</text>
 
           <g transform="translate(820,50)" opacity="0.7">
             <circle r="26" fill="none" stroke="#211D18" stroke-width="1.3"/>
@@ -125,61 +134,61 @@ footer a{ color:var(--gold); }
             <text x="0" y="-30" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#211D18">N</text>
           </g>
 
-          <!-- off-map connections: Doha and Dubai -->
-          <path d="M60 40 Q 300 200, 550 584" fill="none" stroke="#A93826" stroke-width="2.2" stroke-dasharray="1 7"/>
+          <!-- off-map connections: Doha e Dubai -->
+          <path d="M60 40 Q 260 250, 465 585" fill="none" stroke="#A93826" stroke-width="2.2" stroke-dasharray="1 7"/>
           <text x="20" y="30" font-family="'Caveat',cursive" font-size="18" fill="#A93826">da Doha</text>
-          <path d="M60 90 Q 90 300, 107 501" fill="none" stroke="#A93826" stroke-width="2.2" stroke-dasharray="1 7"/>
+          <path d="M60 90 Q 90 280, 120 460" fill="none" stroke="#A93826" stroke-width="2.2" stroke-dasharray="1 7"/>
           <text x="20" y="80" font-family="'Caveat',cursive" font-size="18" fill="#A93826">verso Dubai</text>
 
           <!-- flight legs -->
-          <path d="M550 584 Q 500 420, 458 270" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 8"/>
-          <path d="M403 316 Q 550 200, 690 80" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 8"/>
-          <path d="M690 80 Q 750 300, 796 555" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 8"/>
-          <path d="M674 665 Q 400 600, 107 501" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 8"/>
+          <path d="M465 585 Q 440 450, 420 300" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 8"/>
+          <path d="M360 330 Q 500 220, 650 105" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 8"/>
+          <path d="M650 105 Q 700 290, 750 470" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 8"/>
+          <path d="M645 600 Q 380 560, 120 460" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 8"/>
 
-          <!-- drive/ferry legs -->
-          <path d="M550 584 L533 605" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path d="M458 270 Q 435 278, 413 286 Q 408 300, 403 316" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path d="M796 555 L778 550" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path d="M674 665 L649 692 Q 660 680, 674 665" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path d="M107 501 L100 503" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <!-- drive/ferry/train legs -->
+          <path d="M465 585 L430 638" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <path d="M420 300 Q 395 305, 370 310 Q 365 320, 360 330" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <path d="M750 470 L720 458" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <path d="M645 600 Q 610 630, 578 612" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <path d="M120 460 L80 500" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
 
           <g font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#211D18">
-            <a href="#day3" class="map-pin-link"><circle cx="550" cy="584" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="560" y="582">Adelaide</text></a>
+            <a href="#day3" class="map-pin-link"><circle cx="465" cy="585" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="475" y="583">Adelaide</text></a>
 
-            <a href="#day4" class="map-pin-link"><circle cx="533" cy="605" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="480" y="626">Kangaroo Island</text></a>
+            <a href="#day4" class="map-pin-link"><circle cx="430" cy="638" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="380" y="658">Kangaroo Island</text></a>
 
-            <a href="#day7" class="map-pin-link"><circle cx="458" cy="270" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="466" y="268">Alice Springs</text></a>
+            <a href="#day7" class="map-pin-link"><circle cx="420" cy="300" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="428" y="298">Alice Springs</text></a>
 
-            <a href="#day9" class="map-pin-link"><circle cx="413" cy="286" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="340" y="278">Kings Canyon</text></a>
+            <a href="#day9" class="map-pin-link"><circle cx="370" cy="310" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="290" y="302">Kings Canyon</text></a>
 
-            <a href="#day9" class="map-pin-link"><circle cx="403" cy="316" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="360" y="336">Uluru</text></a>
+            <a href="#day9" class="map-pin-link"><circle cx="360" cy="330" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="310" y="352">Uluru</text></a>
 
-            <a href="#day10" class="map-pin-link"><circle cx="690" cy="80" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="698" y="78">Cairns</text></a>
+            <a href="#day10" class="map-pin-link"><circle cx="650" cy="105" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="658" y="103">Cairns</text></a>
 
-            <a href="#day13" class="map-pin-link"><circle cx="796" cy="555" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="720" y="540">Sydney</text></a>
+            <a href="#day13" class="map-pin-link"><circle cx="750" cy="470" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="760" y="468">Sydney</text></a>
 
-            <a href="#day15" class="map-pin-link"><circle cx="778" cy="550" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="700" y="570">Blue Mountains</text></a>
+            <a href="#day15" class="map-pin-link"><circle cx="720" cy="458" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="650" y="440">Blue Mountains</text></a>
 
-            <a href="#day16" class="map-pin-link"><circle cx="674" cy="665" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="600" y="650">Melbourne</text></a>
+            <a href="#day16" class="map-pin-link"><circle cx="645" cy="600" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="600" y="590">Melbourne</text></a>
 
-            <a href="#day19" class="map-pin-link"><circle cx="649" cy="692" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="560" y="712">Great Ocean Road</text></a>
+            <a href="#day19" class="map-pin-link"><circle cx="578" cy="612" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="500" y="632">Great Ocean Road</text></a>
 
-            <a href="#day22" class="map-pin-link"><circle cx="107" cy="501" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="20" y="486">Perth</text></a>
+            <a href="#day22" class="map-pin-link"><circle cx="120" cy="460" r="8" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="30" y="445">Perth</text></a>
 
-            <a href="#day25" class="map-pin-link"><circle cx="100" cy="503" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="10" y="525">Rottnest</text></a>
+            <a href="#day25" class="map-pin-link"><circle cx="80" cy="500" r="5" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="15" y="522">Rottnest</text></a>
           </g>
         </svg>
       </div>
