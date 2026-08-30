@@ -58,6 +58,8 @@ a{ color:var(--teal); }
 .day-content li{ margin-bottom:7px; }
 .day-content .highlight{ background:linear-gradient(180deg, transparent 62%, rgba(180,135,44,0.4) 62%); padding:0 2px; }
 .day-content .note{ font-family:'Caveat', cursive; font-size:1.3rem; color:var(--rust-dark); margin-top:14px; display:inline-block; }
+.day-photo{ display:block; width:170px; margin:16px 0 8px; }
+.day-photo img{ width:100%; display:block; border:4px solid var(--cream); outline:1px solid var(--paper-line); box-shadow:0 6px 14px rgba(33,29,24,0.3); transform:rotate(-3deg); filter:sepia(0.35) saturate(1.2) contrast(1.05); }
 footer{ background:var(--ink); color:rgba(246,240,225,0.6); padding:36px 0; font-family:'JetBrains Mono', monospace; font-size:0.8rem; text-align:center; }
 footer a{ color:var(--gold); }
 .footer-row{ display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; }
@@ -113,9 +115,9 @@ footer a{ color:var(--gold); }
               <path d="M0 25 Q 13 10, 25 25 T 50 25" fill="none" stroke="#A9C4A4" stroke-width="1"/>
             </pattern>
           </defs>
-          <rect width="800" height="520" fill="#A9C6CC"/>
-          <path d="M260 520 L230 460 Q210 400 190 373 Q175 350 190 320 Q210 280 240 250 L260 200 Q320 100 420 50 L800 0 L800 520 Z"
-                fill="#C9DCC6"/>
+          <rect width="800" height="520" fill="#C9DCC6"/>
+          <path d="M0 255 L100 245 L160 270 L185 320 L195 360 L185 400 L228 455 L180 490 L130 510 L0 520 Z"
+                fill="#A9C6CC"/>
           <path d="M30 270 L90 290 L130 340 L170 400 L210 460 L160 490 L100 460 L60 400 L20 340 Z"
                 fill="#C9DCC6"/>
           <rect width="800" height="520" fill="url(#forestCA)" opacity="0.5"/>
@@ -129,7 +131,7 @@ footer a{ color:var(--gold); }
             <text x="0" y="-30" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#211D18">N</text>
           </g>
 
-          <path d="M198 373 Q 300 320, 393 247 Q 470 150, 551 50 Q 620 115, 684 181 Q 705 192, 727 202 Q 635 210, 543 219 Q 505 250, 468 284 Q 320 370, 181 450 Q 115 380, 50 307 Q 95 345, 141 384 Q 170 379, 198 373"
+          <path d="M198 373 Q 300 320, 393 247 Q 460 190, 551 120 Q 620 150, 684 181 Q 705 192, 727 202 Q 635 210, 543 219 Q 505 250, 468 284 Q 320 370, 181 450 Q 115 380, 50 307 Q 95 345, 141 384 Q 170 379, 198 373"
                 fill="none" stroke="#1F4F55" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 9"/>
           <path d="M181 450 L50 307" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 7"/>
           <path d="M141 384 Q 175 370, 198 373" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 7"/>
@@ -141,8 +143,8 @@ footer a{ color:var(--gold); }
             <a href="#day4" class="map-pin-link"><circle cx="393" cy="247" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
             <text x="400" y="245">Kamloops</text></a>
 
-            <a href="#day5" class="map-pin-link"><circle cx="551" cy="50" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
-            <text x="500" y="35">Jasper</text></a>
+            <a href="#day5" class="map-pin-link"><circle cx="551" cy="120" r="7" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
+            <text x="500" y="118">Jasper</text></a>
 
             <a href="#day8" class="map-pin-link"><circle cx="684" cy="181" r="6" fill="#1F4F55" stroke="#F6F0E1" stroke-width="1.5"/>
             <text x="640" y="170">Lake Louise</text></a>
@@ -213,6 +215,7 @@ footer a{ color:var(--gold); }
       <div class="day-content">
         <p class="city">Vancouver</p>
         <p>Visita del centro città, per ambientarsi dopo il lungo viaggio.</p>
+        <span class="day-photo"><img src="https://wsrv.nl/?url=https://i.ibb.co/rKv2CMWx/IMG-2461.jpg&w=400&q=80&output=webp" alt="Vancouver"></span>
       </div>
     </div>
 
@@ -231,6 +234,7 @@ footer a{ color:var(--gold); }
         <p class="drive-tag">guida verso Jasper (fuso +1)</p>
         <p class="city">Jasper National Park</p>
         <p>Prima sosta al Mount Robson Provincial Park (5 ore di guida), poi arrivo a Jasper, con salita in <span class="highlight">Sky Tram</span> per la vista dall'alto sulle Rockies. Pernottamento in zona.</p>
+        <span class="day-photo"><img src="https://wsrv.nl/?url=https://i.ibb.co/5h05nNNM/DSC-0291.jpg&w=400&q=80&output=webp" alt="Jasper National Park"></span>
       </div>
     </div>
 
@@ -248,6 +252,7 @@ footer a{ color:var(--gold); }
         <p class="drive-tag">Icefields Parkway verso Lake Louise/Banff (4h46)</p>
         <p class="city">Icefields Parkway</p>
         <p>Una delle strade panoramiche più belle del mondo, con soste a <span class="highlight">Athabasca Falls</span>, Sunwapta Falls, il Glacier Skywalk, il Columbia Icefield, Parker Ridge, Weeping Wall, Saskatchewan River Crossing, Bow Lake e lo straordinario Peyto Lake.</p>
+        <span class="day-photo"><img src="https://wsrv.nl/?url=https://i.ibb.co/fVfsG28q/IMG-2144.jpg&w=400&q=80&output=webp" alt="Icefields Parkway"></span>
       </div>
     </div>
 
@@ -255,7 +260,8 @@ footer a{ color:var(--gold); }
       <div class="shield"><span class="m">DAY</span><span class="d">8</span></div>
       <div class="day-content">
         <p class="city">Lake Louise — Emerald e Moraine Lake</p>
-        <p><span class="highlight">Emerald Lake</span> (30 min), Moraine Lake (15 min) e infine Banff (1 ora). Per chi vuole il kayak: partenza da Moraine alle 9:30 (105$) o da Lake Louise alle 11:00 (125$).</p>
+        <p><span class="highlight">Emerald Lake</span> (30 min), Moraine Lake (15 min) e infine Banff (1 ora). Per chi vuole il kayak: partenza da Moraine alle 9:30 o da Lake Louise alle 11:00.</p>
+        <span class="day-photo"><img src="https://wsrv.nl/?url=https://i.ibb.co/GQCrJTvP/IMG-2162.jpg&w=400&q=80&output=webp" alt="Moraine Lake"></span>
         <p class="note">consiglio: per il miglior scatto della colorazione di Moraine Lake, arrampicarsi su "The Rocks" sul lato sinistro (fare attenzione, sono scivolose)</p>
       </div>
     </div>
@@ -274,6 +280,7 @@ footer a{ color:var(--gold); }
         <p class="drive-tag">guida verso Revelstoke (fuso -1, 3h31)</p>
         <p class="city">Revelstoke — rafting</p>
         <p>Discesa di <span class="highlight">rafting</span> sul fiume, partenza ore 13:00 e rientro alle 17:00. Prosecuzione verso Vernon (1h45) per il pernottamento.</p>
+        <span class="day-photo"><img src="https://wsrv.nl/?url=https://i.ibb.co/G3R2Jm0D/1-BA7-C6-C3-7645-4094-B020-D3-FCF6-DE53-F8.jpg&w=400&q=80&output=webp" alt="Revelstoke, rafting"></span>
       </div>
     </div>
 
@@ -300,6 +307,7 @@ footer a{ color:var(--gold); }
         <p class="drive-tag">guida verso nord (3h30, via 19A, sosta a Fanny Bay)</p>
         <p class="city">The Butchart Gardens → Campbell River</p>
         <p>Mattina ai celebri <span class="highlight">Butchart Gardens</span>, poi risalita lungo la costa est dell'isola con sosta a Fanny Bay per osservare le foche, fino al pernottamento a Campbell River.</p>
+        <span class="day-photo"><img src="https://wsrv.nl/?url=https://i.ibb.co/0jq9dM2Z/IMG-3572.jpg&w=400&q=80&output=webp" alt="The Butchart Gardens"></span>
       </div>
     </div>
 
