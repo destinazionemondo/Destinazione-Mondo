@@ -131,8 +131,12 @@ footer a{ color:var(--gold); }
             <text x="0" y="-30" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#211D18">N</text>
           </g>
 
-          <path d="M198 373 Q 300 320, 393 247 Q 460 190, 551 120 Q 620 150, 684 181 Q 705 192, 727 202 Q 635 210, 543 219 Q 505 250, 468 284 Q 320 370, 181 450 Q 115 380, 50 307 Q 95 345, 141 384 Q 170 379, 198 373"
+          <path id="routePath" d="M198 373 Q 300 320, 393 247 Q 460 190, 551 120 Q 620 150, 684 181 Q 705 192, 727 202 Q 635 210, 543 219 Q 505 250, 468 284 Q 320 370, 181 450 Q 115 380, 50 307 Q 95 345, 141 384 Q 170 379, 198 373"
                 fill="none" stroke="#1F4F55" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <g id="routeCar" opacity="0">
+            <circle r="15" fill="#F6F0E1" stroke="#A93826" stroke-width="3"/>
+            <text y="7" text-anchor="middle" font-size="19">🚗</text>
+          </g>
           <path d="M181 450 L50 307" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 7"/>
           <path d="M141 384 Q 175 370, 198 373" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 7"/>
 
@@ -368,6 +372,69 @@ footer a{ color:var(--gold); }
 
 <footer><div class="wrap footer-row">DESTINAZIONE MONDO — Itinerari on the road<a class="footer-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a><a class="footer-ig" href="mailto:destinazionemondo@etik.com" aria-label="Contattami"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 6 L12 13 L20.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></footer>
 
+<script>
+(function(){
+  var path = document.getElementById('routePath');
+  var car = document.getElementById('routeCar');
+  var pins = document.querySelectorAll('.map-pin-link');
+  if(!path || !car) return;
+
+  var len = path.getTotalLength();
+  var DURATION = 6000;
+  var started = false;
+
+  path.style.strokeDasharray = len + ' ' + len;
+  path.style.strokeDashoffset = len;
+  pins.forEach(function(p){ p.style.opacity = '0'; });
+
+  function animate(){
+    if(started) return;
+    started = true;
+    var t0 = null;
+
+    function step(ts){
+      if(!t0) t0 = ts;
+      var p = Math.min((ts - t0) / DURATION, 1);
+      var e = p < 0.5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2;
+
+      path.style.strokeDashoffset = len * (1 - e);
+
+      var pt = path.getPointAtLength(len * e);
+      car.setAttribute('transform', 'translate(' + pt.x + ',' + pt.y + ')');
+      car.setAttribute('opacity', e > 0 && e < 1 ? '1' : '0');
+
+      pins.forEach(function(pin, i){
+        if(e >= (i / pins.length) * 0.95){
+          pin.style.transition = 'opacity 0.45s ease';
+          pin.style.opacity = '1';
+        }
+      });
+
+      if(p < 1) requestAnimationFrame(step);
+      else pins.forEach(function(pin){ pin.style.opacity = '1'; });
+    }
+    requestAnimationFrame(step);
+  }
+
+  var frame = path.closest('.map-frame');
+  if('IntersectionObserver' in window && frame){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ animate(); obs.disconnect(); }
+      });
+    }, { threshold: 0.25 });
+    obs.observe(frame);
+  } else {
+    animate();
+  }
+
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    path.style.strokeDashoffset = '0';
+    pins.forEach(function(p){ p.style.opacity = '1'; });
+    started = true;
+  }
+})();
+</script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "61c36c7662aa44b88df191eaa9928a38"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

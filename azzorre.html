@@ -155,17 +155,20 @@ footer a{ color:var(--gold); }
           <ellipse cx="235" cy="195" rx="44" ry="19" fill="#C9DCC6" opacity="0.9"/>
           <path d="M800 -20 Q 750 -10, 720 10 Q 680 30, 650 65 Q 630 90, 660 95 Q 690 100, 655 135 Q 620 165, 605 185 Q 592 205, 585 235 Q 580 260, 605 265 Q 630 270, 610 295 Q 640 315, 800 320 Z" fill="#C9DCC6" opacity="0.9"/>
 
-          <!-- flight arcs -->
-          <path d="M235 195 Q 450 260, 688 88" fill="none" stroke="#A93826" stroke-width="2.5" stroke-dasharray="1 8"/>
-          <path d="M145 88 Q 420 10, 668 58" fill="none" stroke="#A93826" stroke-width="2.5" stroke-dasharray="1 8"/>
-
-          <!-- island hopping (voli interni tra le isole) -->
-          <path d="M70 80 Q 108 84, 145 88" fill="none" stroke="#A93826" stroke-width="2.5" stroke-dasharray="1 8"/>
-          <path d="M145 88 Q 190 140, 235 195" fill="none" stroke="#A93826" stroke-width="2.5" stroke-dasharray="1 8"/>
-          <!-- spostamento in auto sulla terraferma -->
-          <path d="M668 58 Q 700 70, 688 88 Q 650 150, 598 218 Q 615 226, 635 235" fill="none" stroke="#1F4F55" stroke-width="2.5" stroke-dasharray="2 7"/>
-          <path d="M635 235 L672 278" fill="none" stroke="#1F4F55" stroke-width="2" stroke-dasharray="2 6"/>
-          <path d="M635 235 L605 275" fill="none" stroke="#1F4F55" stroke-width="2" stroke-dasharray="2 6"/>
+          <!-- percorso in ordine cronologico -->
+          <path id="routeSeg1" data-type="drive" d="M688 88 Q 650 150, 598 218" fill="none" stroke="#1F4F55" stroke-width="2.5" stroke-dasharray="2 7"/>
+          <path id="routeSeg2" data-type="drive" d="M598 218 Q 615 226, 635 235" fill="none" stroke="#1F4F55" stroke-width="2.5" stroke-dasharray="2 7"/>
+          <path id="routeSeg3" data-type="drive" d="M635 235 L672 278" fill="none" stroke="#1F4F55" stroke-width="2" stroke-dasharray="2 6"/>
+          <path id="routeSeg4" data-type="drive" d="M635 235 L605 275" fill="none" stroke="#1F4F55" stroke-width="2" stroke-dasharray="2 6"/>
+          <path id="routeSeg5" data-type="drive" d="M605 275 Q 640 170, 668 58" fill="none" stroke="#1F4F55" stroke-width="2.5" stroke-dasharray="2 7"/>
+          <path id="routeSeg6" data-type="flight" d="M668 58 Q 450 120, 235 195" fill="none" stroke="#A93826" stroke-width="2.5" stroke-dasharray="1 8"/>
+          <path id="routeSeg7" data-type="flight" d="M235 195 Q 150 140, 70 80" fill="none" stroke="#A93826" stroke-width="2.5" stroke-dasharray="1 8"/>
+          <path id="routeSeg8" data-type="flight" d="M70 80 Q 108 84, 145 88" fill="none" stroke="#A93826" stroke-width="2.5" stroke-dasharray="1 8"/>
+          <path id="routeSeg9" data-type="flight" d="M145 88 Q 420 10, 688 88" fill="none" stroke="#A93826" stroke-width="2.5" stroke-dasharray="1 8"/>
+          <g id="routeIcon" opacity="0">
+            <circle r="15" fill="#F6F0E1" stroke="#A93826" stroke-width="3"/>
+            <text id="routeIconText" y="7" text-anchor="middle" font-size="17">🚗</text>
+          </g>
 
           <!-- pins -->
           <g font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#211D18">
@@ -430,6 +433,94 @@ footer a{ color:var(--gold); }
 
 <footer><div class="wrap footer-row">DESTINAZIONE MONDO — Itinerari on the road<a class="footer-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a><a class="footer-ig" href="mailto:destinazionemondo@etik.com" aria-label="Contattami"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 6 L12 13 L20.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></footer>
 
+<script>
+(function(){
+  var ids = ['routeSeg1','routeSeg2','routeSeg3','routeSeg4','routeSeg5','routeSeg6','routeSeg7','routeSeg8','routeSeg9'];
+  var segs = ids.map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  var icon = document.getElementById('routeIcon');
+  var iconText = document.getElementById('routeIconText');
+  var pins = document.querySelectorAll('.map-pin-link');
+  if(!segs.length || !icon) return;
+
+  var TOTAL_DURATION = 10500;
+  var lens = segs.map(function(s){ return s.getTotalLength(); });
+  var totalLen = lens.reduce(function(a,b){ return a+b; }, 0);
+  var durations = lens.map(function(l){ return TOTAL_DURATION * (l/totalLen); });
+  var origDash = segs.map(function(s){ return s.getAttribute('stroke-dasharray'); });
+  var started = false;
+
+  segs.forEach(function(s, i){
+    s.style.strokeDasharray = lens[i] + ' ' + lens[i];
+    s.style.strokeDashoffset = lens[i];
+  });
+  pins.forEach(function(p){ p.style.opacity = '0'; });
+
+  function animateSegment(i, onDone){
+    var s = segs[i];
+    var len = lens[i];
+    var dur = durations[i];
+    var type = s.getAttribute('data-type');
+    iconText.textContent = type === 'flight' ? '✈️' : '🚗';
+    icon.setAttribute('opacity', '1');
+    var t0 = null;
+
+    function step(ts){
+      if(!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      var e = p < 0.5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2;
+      s.style.strokeDashoffset = len * (1 - e);
+      var pt = s.getPointAtLength(len * e);
+      icon.setAttribute('transform', 'translate(' + pt.x + ',' + pt.y + ')');
+      if(p < 1) requestAnimationFrame(step);
+      else {
+        s.style.strokeDasharray = origDash[i];
+        s.style.strokeDashoffset = '0';
+        onDone();
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  function revealPinsUpTo(fraction){
+    pins.forEach(function(pin, i){
+      if(fraction >= (i / pins.length) * 0.95){
+        pin.style.transition = 'opacity 0.45s ease';
+        pin.style.opacity = '1';
+      }
+    });
+  }
+
+  function animate(){
+    if(started) return;
+    started = true;
+    var i = 0;
+    function next(){
+      revealPinsUpTo(i / segs.length);
+      if(i >= segs.length){ icon.setAttribute('opacity','0'); pins.forEach(function(p){ p.style.opacity='1'; }); return; }
+      animateSegment(i, function(){ i++; next(); });
+    }
+    next();
+  }
+
+  var frame = segs[0].closest('.map-frame');
+  if('IntersectionObserver' in window && frame){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ animate(); obs.disconnect(); }
+      });
+    }, { threshold: 0.25 });
+    obs.observe(frame);
+  } else {
+    animate();
+  }
+
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    segs.forEach(function(s,i){ s.style.strokeDasharray = origDash[i]; s.style.strokeDashoffset = '0'; });
+    pins.forEach(function(p){ p.style.opacity = '1'; });
+    started = true;
+  }
+})();
+</script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "61c36c7662aa44b88df191eaa9928a38"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

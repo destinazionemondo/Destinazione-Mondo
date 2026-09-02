@@ -127,8 +127,16 @@ footer a{ color:var(--gold); }
             <text x="0" y="-26" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#211D18">N</text>
           </g>
 
-          <path d="M266 60 L60 137 M266 60 L638 260 L641 168 L858 101 L266 60"
+          <path id="routeSeg1" d="M266 60 L60 137"
                 fill="none" stroke="#1F4F55" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <path id="routeSeg2" d="M60 137 L266 60"
+                fill="none" stroke="#1F4F55" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <path id="routeSeg3" d="M266 60 L638 260 L641 168 L858 101 L266 60"
+                fill="none" stroke="#1F4F55" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <g id="routeCar" opacity="0">
+            <circle r="15" fill="#F6F0E1" stroke="#A93826" stroke-width="3"/>
+            <text y="7" text-anchor="middle" font-size="19">🚗</text>
+          </g>
 
           <g font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#211D18">
             <a href="#day2" class="map-pin-link"><circle cx="266" cy="60" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
@@ -277,6 +285,91 @@ footer a{ color:var(--gold); }
 
 <footer><div class="wrap footer-row">DESTINAZIONE MONDO — Itinerari on the road<a class="footer-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a><a class="footer-ig" href="mailto:destinazionemondo@etik.com" aria-label="Contattami"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 6 L12 13 L20.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></footer>
 
+<script>
+(function(){
+  var ids = ['routeSeg1','routeSeg2','routeSeg3'];
+  var segs = ids.map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  var car = document.getElementById('routeCar');
+  var pins = document.querySelectorAll('.map-pin-link');
+  if(!segs.length || !car) return;
+
+  var TOTAL_DURATION = 6000;
+  var lens = segs.map(function(s){ return s.getTotalLength(); });
+  var totalLen = lens.reduce(function(a,b){ return a+b; }, 0);
+  var durations = lens.map(function(l){ return TOTAL_DURATION * (l/totalLen); });
+  var origDash = segs.map(function(s){ return s.getAttribute('stroke-dasharray'); });
+  var started = false;
+
+  segs.forEach(function(s, i){
+    s.style.strokeDasharray = lens[i] + ' ' + lens[i];
+    s.style.strokeDashoffset = lens[i];
+  });
+  pins.forEach(function(p){ p.style.opacity = '0'; });
+
+  function animateSegment(i, onDone){
+    var s = segs[i];
+    var len = lens[i];
+    var dur = durations[i];
+    car.setAttribute('opacity', '1');
+    var t0 = null;
+
+    function step(ts){
+      if(!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      var e = p < 0.5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2;
+      s.style.strokeDashoffset = len * (1 - e);
+      var pt = s.getPointAtLength(len * e);
+      car.setAttribute('transform', 'translate(' + pt.x + ',' + pt.y + ')');
+      if(p < 1) requestAnimationFrame(step);
+      else {
+        s.style.strokeDasharray = origDash[i];
+        s.style.strokeDashoffset = '0';
+        onDone();
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  function revealPinsUpTo(fraction){
+    pins.forEach(function(pin, i){
+      if(fraction >= (i / pins.length) * 0.95){
+        pin.style.transition = 'opacity 0.45s ease';
+        pin.style.opacity = '1';
+      }
+    });
+  }
+
+  function animate(){
+    if(started) return;
+    started = true;
+    var i = 0;
+    function next(){
+      revealPinsUpTo(i / segs.length);
+      if(i >= segs.length){ car.setAttribute('opacity','0'); pins.forEach(function(p){ p.style.opacity='1'; }); return; }
+      animateSegment(i, function(){ i++; next(); });
+    }
+    next();
+  }
+
+  var frame = segs[0].closest('.map-frame');
+  if('IntersectionObserver' in window && frame){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ animate(); obs.disconnect(); }
+      });
+    }, { threshold: 0.25 });
+    obs.observe(frame);
+  } else {
+    animate();
+  }
+
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    segs.forEach(function(s,i){ s.style.strokeDasharray = origDash[i]; s.style.strokeDashoffset = '0'; });
+    pins.forEach(function(p){ p.style.opacity = '1'; });
+    started = true;
+  }
+})();
+</script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "61c36c7662aa44b88df191eaa9928a38"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
