@@ -127,20 +127,8 @@ footer a{ color:var(--gold); }
             <text x="0" y="-27" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#211D18">N</text>
           </g>
 
-          <path id="routeSeg1" d="M150 330 L200 310" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path id="routeSeg2" d="M200 310 L640 190" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path id="routeSeg3" d="M640 190 L660 150" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 7"/>
-          <path id="routeSeg4" d="M660 150 L640 190" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 7"/>
-          <path id="routeSeg5" d="M640 190 L675 210" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 7"/>
-          <path id="routeSeg6" d="M675 210 L640 190" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 7"/>
-          <path id="routeSeg7" d="M640 190 L590 220" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path id="routeSeg8" d="M590 220 L520 240" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path id="routeSeg9" d="M520 240 L440 200" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path id="routeSeg10" d="M440 200 L340 175" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path id="routeSeg11" d="M340 175 L245 205" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path id="routeSeg12" d="M245 205 L190 260" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path id="routeSeg13" d="M190 260 L145 300 L110 350 L130 400" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 9"/>
-          <path id="routeSeg14" d="M130 400 L150 330" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <path id="routePath" d="M150 330 L200 310 L640 190 L660 150 L640 190 L675 210 L640 190 L590 220 L520 240 L440 200 L340 175 L245 205 L190 260 L145 300 L110 350 L130 400 L150 330"
+                fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 9"/>
           <g id="routeCar" opacity="0">
             <circle r="15" fill="#F6F0E1" stroke="#A93826" stroke-width="3"/>
             <text y="7" text-anchor="middle" font-size="19">🚗</text>
@@ -341,78 +329,54 @@ footer a{ color:var(--gold); }
 
 <script>
 (function(){
-  var ids = ['routeSeg1','routeSeg2','routeSeg3','routeSeg4','routeSeg5','routeSeg6','routeSeg7','routeSeg8','routeSeg9','routeSeg10','routeSeg11','routeSeg12','routeSeg13','routeSeg14'];
-  var segs = ids.map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  var path = document.getElementById('routePath');
   var car = document.getElementById('routeCar');
   var pins = document.querySelectorAll('.map-pin-link');
-  if(!segs.length || !car) return;
+  if(!path || !car) return;
 
-  var TOTAL_DURATION = 9500;
-  var lens = segs.map(function(s){ return s.getTotalLength(); });
-  var totalLen = lens.reduce(function(a,b){ return a+b; }, 0);
-  var durations = lens.map(function(l){ return TOTAL_DURATION * (l/totalLen); });
-  var origDash = segs.map(function(s){ return s.getAttribute('stroke-dasharray'); });
+  var len = path.getTotalLength();
+  var origDash = path.getAttribute('stroke-dasharray');
+  var DURATION = 9000;
   var started = false;
 
-  segs.forEach(function(s, i){
-    s.style.strokeDasharray = lens[i] + ' ' + lens[i];
-    s.style.strokeDashoffset = lens[i];
-  });
+  path.style.strokeDasharray = len + ' ' + len;
+  path.style.strokeDashoffset = len;
   pins.forEach(function(p){ p.style.opacity = '0'; });
 
-  function revealPinAt(x, y){
-    pins.forEach(function(pin){
-      var c = pin.querySelector('circle');
-      if(!c) return;
-      var cx = parseFloat(c.getAttribute('cx'));
-      var cy = parseFloat(c.getAttribute('cy'));
-      if(Math.abs(cx-x) < 4 && Math.abs(cy-y) < 4){
-        pin.style.transition = 'opacity 0.45s ease';
-        pin.style.opacity = '1';
-      }
-    });
-  }
-
-  function animateSegment(i, onDone){
-    var s = segs[i];
-    var len = lens[i];
-    var dur = durations[i];
-    car.setAttribute('opacity', '1');
+  function animate(){
+    if(started) return;
+    started = true;
     var t0 = null;
 
     function step(ts){
       if(!t0) t0 = ts;
-      var p = Math.min((ts - t0) / dur, 1);
+      var p = Math.min((ts - t0) / DURATION, 1);
       var e = p < 0.5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2;
-      s.style.strokeDashoffset = len * (1 - e);
-      var pt = s.getPointAtLength(len * e);
+
+      path.style.strokeDashoffset = len * (1 - e);
+
+      var pt = path.getPointAtLength(len * e);
       car.setAttribute('transform', 'translate(' + pt.x + ',' + pt.y + ')');
+      car.setAttribute('opacity', e > 0 && e < 1 ? '1' : '0');
+
+      pins.forEach(function(pin, i){
+        if(e >= (i / pins.length) * 0.95){
+          pin.style.transition = 'opacity 0.45s ease';
+          pin.style.opacity = '1';
+        }
+      });
+
       if(p < 1) requestAnimationFrame(step);
       else {
-        s.style.strokeDasharray = origDash[i];
-        s.style.strokeDashoffset = '0';
-        var endPt = s.getPointAtLength(len);
-        revealPinAt(endPt.x, endPt.y);
-        onDone();
+        path.style.strokeDasharray = origDash;
+        path.style.strokeDashoffset = '0';
+        pins.forEach(function(pin){ pin.style.opacity = '1'; });
       }
     }
     requestAnimationFrame(step);
   }
 
-  function animate(){
-    if(started) return;
-    started = true;
-    var i = 0;
-    var startPt0 = segs[0].getPointAtLength(0);
-    revealPinAt(startPt0.x, startPt0.y);
-    function next(){
-      if(i >= segs.length){ car.setAttribute('opacity','0'); pins.forEach(function(p){ p.style.opacity='1'; }); return; }
-      animateSegment(i, function(){ i++; next(); });
-    }
-    next();
-  }
-
-  var frame = segs[0].closest('.map-frame');
+  var frame = path.closest('.map-frame');
   if('IntersectionObserver' in window && frame){
     var obs = new IntersectionObserver(function(entries){
       entries.forEach(function(en){
@@ -425,7 +389,8 @@ footer a{ color:var(--gold); }
   }
 
   if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    segs.forEach(function(s,i){ s.style.strokeDasharray = origDash[i]; s.style.strokeDashoffset = '0'; });
+    path.style.strokeDasharray = origDash;
+    path.style.strokeDashoffset = '0';
     pins.forEach(function(p){ p.style.opacity = '1'; });
     started = true;
   }
