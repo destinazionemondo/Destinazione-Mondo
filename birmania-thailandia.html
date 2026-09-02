@@ -147,13 +147,13 @@ footer a{ color:var(--gold); }
           </g>
 
           <!-- spostamenti in ordine cronologico -->
-          <path id="routeSeg1" data-type="drive" d="M150 380 L170 390" fill="none" stroke="#1F4F55" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="2 7"/>
-          <path id="routeSeg2" data-type="flight" d="M150 380 L100 300" fill="none" stroke="#1F4F55" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="2 7"/>
-          <path id="routeSeg3" data-type="flight" d="M100 300 L130 230" fill="none" stroke="#1F4F55" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="2 7"/>
-          <path id="routeSeg4" data-type="flight" d="M130 230 L160 270" fill="none" stroke="#1F4F55" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="2 7"/>
-          <path id="routeSeg5" data-type="flight" d="M160 270 L150 380" fill="none" stroke="#1F4F55" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="2 7"/>
-          <path id="routeSeg6" data-type="flight" d="M150 380 Q 215 335, 280 430" fill="none" stroke="#A93826" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="1 7"/>
-          <path id="routeSeg7" data-type="drive" d="M280 430 L270 400" fill="none" stroke="#1F4F55" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="2 7"/>
+          <path id="routeSeg1" data-type="drive" d="M150 380 L170 390" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 7"/>
+          <path id="routeSeg2" data-type="flight" d="M150 380 L100 300" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 7"/>
+          <path id="routeSeg3" data-type="flight" d="M100 300 L130 230" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 7"/>
+          <path id="routeSeg4" data-type="flight" d="M130 230 L160 270" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 7"/>
+          <path id="routeSeg5" data-type="flight" d="M160 270 L150 380" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 7"/>
+          <path id="routeSeg6" data-type="flight" d="M150 380 Q 215 335, 280 430" fill="none" stroke="#A93826" stroke-width="2" stroke-linecap="round" stroke-dasharray="1 7"/>
+          <path id="routeSeg7" data-type="drive" d="M280 430 L270 400" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 7"/>
           <g id="routeIcon" opacity="0">
             <circle r="15" fill="#F6F0E1" stroke="#A93826" stroke-width="3"/>
             <text id="routeIconText" y="7" text-anchor="middle" font-size="17">✈️</text>
@@ -398,15 +398,21 @@ footer a{ color:var(--gold); }
       else {
         s.style.strokeDasharray = origDash[i];
         s.style.strokeDashoffset = '0';
+        var endPt = s.getPointAtLength(len);
+        revealPinAt(endPt.x, endPt.y);
         onDone();
       }
     }
     requestAnimationFrame(step);
   }
 
-  function revealPinsUpTo(fraction){
-    pins.forEach(function(pin, i){
-      if(fraction >= (i / pins.length) * 0.95){
+  function revealPinAt(x, y){
+    pins.forEach(function(pin){
+      var c = pin.querySelector('circle');
+      if(!c) return;
+      var cx = parseFloat(c.getAttribute('cx'));
+      var cy = parseFloat(c.getAttribute('cy'));
+      if(Math.abs(cx-x) < 4 && Math.abs(cy-y) < 4){
         pin.style.transition = 'opacity 0.45s ease';
         pin.style.opacity = '1';
       }
@@ -417,8 +423,9 @@ footer a{ color:var(--gold); }
     if(started) return;
     started = true;
     var i = 0;
+    var startPt0 = segs[0].getPointAtLength(0);
+    revealPinAt(startPt0.x, startPt0.y);
     function next(){
-      revealPinsUpTo(i / segs.length);
       if(i >= segs.length){ icon.setAttribute('opacity','0'); pins.forEach(function(p){ p.style.opacity='1'; }); return; }
       animateSegment(i, function(){ i++; next(); });
     }

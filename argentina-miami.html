@@ -141,14 +141,15 @@ footer a{ color:var(--gold); }
           <text x="225" y="410" font-family="'Big Shoulders Display',sans-serif" font-size="14" fill="#211D18" opacity="0.3" transform="rotate(10 225 410)">ARGENTINA</text>
 
           <!-- rotta di volo Miami -> Buenos Aires, sopra l'Atlantico -->
-          <path id="routeSeg1" data-type="flight" d="M238 80 Q 280 200, 270 395" fill="none" stroke="#A93826" stroke-width="2.4" stroke-dasharray="1 7"/>
-          <path id="routeSeg2" data-type="flight" d="M270 395 Q 240 470, 200 540" fill="none" stroke="#A93826" stroke-width="2.4" stroke-dasharray="1 7"/>
-          <path id="routeSeg4" data-type="flight" d="M215 555 Q 205 590, 195 630" fill="none" stroke="#A93826" stroke-width="2.4" stroke-dasharray="1 7"/>
+          <path id="routeSeg1" data-type="flight" d="M238 80 Q 280 200, 270 395" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 7"/>
+          <path id="routeSeg2" data-type="flight" d="M270 395 Q 240 470, 200 540" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 7"/>
+          <path id="routeSeg4" data-type="flight" d="M215 555 Q 205 590, 195 630" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 7"/>
+          <path id="routeSeg6" data-type="flight" d="M195 630 Q 250 520, 270 395" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 7"/>
+          <path id="routeSeg7" data-type="flight" d="M270 395 Q 260 220, 238 80" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 7"/>
 
           <!-- brevi spostamenti via terra / traghetto -->
-          <path id="routeSeg3" data-type="drive" d="M200 540 Q 208 548, 215 555" fill="none" stroke="#1F4F55" stroke-width="2.2" stroke-dasharray="2 6"/>
-          <path d="M238 80 Q 224 115, 210 150" fill="none" stroke="#1F4F55" stroke-width="2.2" stroke-dasharray="2 6"/>
-          <path d="M210 150 L190 168 L172 185" fill="none" stroke="#1F4F55" stroke-width="2" stroke-dasharray="2 6"/>
+          <path id="routeSeg3" data-type="drive" d="M200 540 Q 208 548, 215 555" fill="none" stroke="#1F4F55" stroke-width="2" stroke-dasharray="2 6"/>
+          <path id="routeSeg5" data-type="drive" d="M238 80 Q 224 115, 210 150 L190 168 L172 185" fill="none" stroke="#1F4F55" stroke-width="2" stroke-dasharray="2 6"/>
 
           <g id="routeIcon" opacity="0">
             <circle r="15" fill="#F6F0E1" stroke="#A93826" stroke-width="3"/>
@@ -404,17 +405,18 @@ footer a{ color:var(--gold); }
 
 <script>
 (function(){
-  var ids = ['routeSeg1','routeSeg2','routeSeg3','routeSeg4'];
+  var ids = ['routeSeg1','routeSeg2','routeSeg3','routeSeg4','routeSeg6','routeSeg7','routeSeg5'];
   var segs = ids.map(function(id){ return document.getElementById(id); }).filter(Boolean);
   var icon = document.getElementById('routeIcon');
   var iconText = document.getElementById('routeIconText');
   var pins = document.querySelectorAll('.map-pin-link');
   if(!segs.length || !icon) return;
 
-  var TOTAL_DURATION = 7000;
+  var TOTAL_DURATION = 10000;
   var lens = segs.map(function(s){ return s.getTotalLength(); });
   var totalLen = lens.reduce(function(a,b){ return a+b; }, 0);
   var durations = lens.map(function(l){ return TOTAL_DURATION * (l/totalLen); });
+  var origDash = segs.map(function(s){ return s.getAttribute('stroke-dasharray'); });
   var started = false;
 
   segs.forEach(function(s, i){
@@ -422,6 +424,19 @@ footer a{ color:var(--gold); }
     s.style.strokeDashoffset = lens[i];
   });
   pins.forEach(function(p){ p.style.opacity = '0'; });
+
+  function revealPinAt(x, y){
+    pins.forEach(function(pin){
+      var c = pin.querySelector('circle');
+      if(!c) return;
+      var cx = parseFloat(c.getAttribute('cx'));
+      var cy = parseFloat(c.getAttribute('cy'));
+      if(Math.abs(cx-x) < 4 && Math.abs(cy-y) < 4){
+        pin.style.transition = 'opacity 0.45s ease';
+        pin.style.opacity = '1';
+      }
+    });
+  }
 
   function animateSegment(i, onDone){
     var s = segs[i];
@@ -440,26 +455,24 @@ footer a{ color:var(--gold); }
       var pt = s.getPointAtLength(len * e);
       icon.setAttribute('transform', 'translate(' + pt.x + ',' + pt.y + ')');
       if(p < 1) requestAnimationFrame(step);
-      else onDone();
+      else {
+        s.style.strokeDasharray = origDash[i];
+        s.style.strokeDashoffset = '0';
+        var endPt = s.getPointAtLength(len);
+        revealPinAt(endPt.x, endPt.y);
+        onDone();
+      }
     }
     requestAnimationFrame(step);
-  }
-
-  function revealPinsUpTo(fraction){
-    pins.forEach(function(pin, i){
-      if(fraction >= (i / pins.length) * 0.95){
-        pin.style.transition = 'opacity 0.45s ease';
-        pin.style.opacity = '1';
-      }
-    });
   }
 
   function animate(){
     if(started) return;
     started = true;
     var i = 0;
+    var startPt0 = segs[0].getPointAtLength(0);
+    revealPinAt(startPt0.x, startPt0.y);
     function next(){
-      revealPinsUpTo(i / segs.length);
       if(i >= segs.length){ icon.setAttribute('opacity','0'); pins.forEach(function(p){ p.style.opacity='1'; }); return; }
       animateSegment(i, function(){ i++; next(); });
     }
@@ -479,7 +492,7 @@ footer a{ color:var(--gold); }
   }
 
   if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    segs.forEach(function(s,i){ s.style.strokeDashoffset = '0'; });
+    segs.forEach(function(s,i){ s.style.strokeDasharray = origDash[i]; s.style.strokeDashoffset = '0'; });
     pins.forEach(function(p){ p.style.opacity = '1'; });
     started = true;
   }

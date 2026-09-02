@@ -156,15 +156,15 @@ footer a{ color:var(--gold); }
           <path d="M800 -20 Q 750 -10, 720 10 Q 680 30, 650 65 Q 630 90, 660 95 Q 690 100, 655 135 Q 620 165, 605 185 Q 592 205, 585 235 Q 580 260, 605 265 Q 630 270, 610 295 Q 640 315, 800 320 Z" fill="#C9DCC6" opacity="0.9"/>
 
           <!-- percorso in ordine cronologico -->
-          <path id="routeSeg1" data-type="drive" d="M688 88 Q 650 150, 598 218" fill="none" stroke="#1F4F55" stroke-width="2.5" stroke-dasharray="2 7"/>
-          <path id="routeSeg2" data-type="drive" d="M598 218 Q 615 226, 635 235" fill="none" stroke="#1F4F55" stroke-width="2.5" stroke-dasharray="2 7"/>
+          <path id="routeSeg1" data-type="drive" d="M688 88 Q 650 150, 598 218" fill="none" stroke="#1F4F55" stroke-width="2" stroke-dasharray="2 7"/>
+          <path id="routeSeg2" data-type="drive" d="M598 218 Q 615 226, 635 235" fill="none" stroke="#1F4F55" stroke-width="2" stroke-dasharray="2 7"/>
           <path id="routeSeg3" data-type="drive" d="M635 235 L672 278" fill="none" stroke="#1F4F55" stroke-width="2" stroke-dasharray="2 6"/>
           <path id="routeSeg4" data-type="drive" d="M635 235 L605 275" fill="none" stroke="#1F4F55" stroke-width="2" stroke-dasharray="2 6"/>
-          <path id="routeSeg5" data-type="drive" d="M605 275 Q 640 170, 668 58" fill="none" stroke="#1F4F55" stroke-width="2.5" stroke-dasharray="2 7"/>
-          <path id="routeSeg6" data-type="flight" d="M668 58 Q 450 120, 235 195" fill="none" stroke="#A93826" stroke-width="2.5" stroke-dasharray="1 8"/>
-          <path id="routeSeg7" data-type="flight" d="M235 195 Q 150 140, 70 80" fill="none" stroke="#A93826" stroke-width="2.5" stroke-dasharray="1 8"/>
-          <path id="routeSeg8" data-type="flight" d="M70 80 Q 108 84, 145 88" fill="none" stroke="#A93826" stroke-width="2.5" stroke-dasharray="1 8"/>
-          <path id="routeSeg9" data-type="flight" d="M145 88 Q 420 10, 688 88" fill="none" stroke="#A93826" stroke-width="2.5" stroke-dasharray="1 8"/>
+          <path id="routeSeg5" data-type="drive" d="M605 275 Q 640 170, 668 58" fill="none" stroke="#1F4F55" stroke-width="2" stroke-dasharray="2 7"/>
+          <path id="routeSeg6" data-type="flight" d="M668 58 Q 450 120, 235 195" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 8"/>
+          <path id="routeSeg7" data-type="flight" d="M235 195 Q 150 140, 70 80" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 8"/>
+          <path id="routeSeg8" data-type="flight" d="M70 80 Q 108 84, 145 88" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 8"/>
+          <path id="routeSeg9" data-type="flight" d="M145 88 Q 420 10, 688 88" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 8"/>
           <g id="routeIcon" opacity="0">
             <circle r="15" fill="#F6F0E1" stroke="#A93826" stroke-width="3"/>
             <text id="routeIconText" y="7" text-anchor="middle" font-size="17">🚗</text>
@@ -475,15 +475,21 @@ footer a{ color:var(--gold); }
       else {
         s.style.strokeDasharray = origDash[i];
         s.style.strokeDashoffset = '0';
+        var endPt = s.getPointAtLength(len);
+        revealPinAt(endPt.x, endPt.y);
         onDone();
       }
     }
     requestAnimationFrame(step);
   }
 
-  function revealPinsUpTo(fraction){
-    pins.forEach(function(pin, i){
-      if(fraction >= (i / pins.length) * 0.95){
+  function revealPinAt(x, y){
+    pins.forEach(function(pin){
+      var c = pin.querySelector('circle');
+      if(!c) return;
+      var cx = parseFloat(c.getAttribute('cx'));
+      var cy = parseFloat(c.getAttribute('cy'));
+      if(Math.abs(cx-x) < 4 && Math.abs(cy-y) < 4){
         pin.style.transition = 'opacity 0.45s ease';
         pin.style.opacity = '1';
       }
@@ -494,8 +500,9 @@ footer a{ color:var(--gold); }
     if(started) return;
     started = true;
     var i = 0;
+    var startPt0 = segs[0].getPointAtLength(0);
+    revealPinAt(startPt0.x, startPt0.y);
     function next(){
-      revealPinsUpTo(i / segs.length);
       if(i >= segs.length){ icon.setAttribute('opacity','0'); pins.forEach(function(p){ p.style.opacity='1'; }); return; }
       animateSegment(i, function(){ i++; next(); });
     }

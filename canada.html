@@ -132,13 +132,12 @@ footer a{ color:var(--gold); }
           </g>
 
           <path id="routePath" d="M198 373 Q 300 320, 393 247 Q 460 190, 551 120 Q 620 150, 684 181 Q 705 192, 727 202 Q 635 210, 543 219 Q 505 250, 468 284 Q 320 370, 181 450 Q 115 380, 50 307 Q 95 345, 141 384 Q 170 379, 198 373"
-                fill="none" stroke="#1F4F55" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 9"/>
+                fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
           <g id="routeCar" opacity="0">
             <circle r="15" fill="#F6F0E1" stroke="#A93826" stroke-width="3"/>
             <text y="7" text-anchor="middle" font-size="19">🚗</text>
           </g>
-          <path d="M181 450 L50 307" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 7"/>
-          <path d="M141 384 Q 175 370, 198 373" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 7"/>
+          <path class="ferry-highlight" d="M141 384 Q 175 370, 198 373" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 7"/>
 
           <g font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="700" fill="#211D18">
             <a href="#day2" class="map-pin-link"><circle cx="198" cy="373" r="9" fill="#A93826" stroke="#F6F0E1" stroke-width="2"/>
@@ -377,15 +376,18 @@ footer a{ color:var(--gold); }
   var path = document.getElementById('routePath');
   var car = document.getElementById('routeCar');
   var pins = document.querySelectorAll('.map-pin-link');
+  var ferries = document.querySelectorAll('.ferry-highlight');
   if(!path || !car) return;
 
   var len = path.getTotalLength();
-  var DURATION = 6000;
+  var DURATION = 8000;
+  var origDash = path.getAttribute('stroke-dasharray');
   var started = false;
 
   path.style.strokeDasharray = len + ' ' + len;
   path.style.strokeDashoffset = len;
   pins.forEach(function(p){ p.style.opacity = '0'; });
+  ferries.forEach(function(f){ f.style.opacity = '0'; });
 
   function animate(){
     if(started) return;
@@ -411,7 +413,12 @@ footer a{ color:var(--gold); }
       });
 
       if(p < 1) requestAnimationFrame(step);
-      else pins.forEach(function(pin){ pin.style.opacity = '1'; });
+      else {
+        path.style.strokeDasharray = origDash;
+        path.style.strokeDashoffset = '0';
+        pins.forEach(function(pin){ pin.style.opacity = '1'; });
+        ferries.forEach(function(f){ f.style.transition = 'opacity 0.5s ease'; f.style.opacity = '1'; });
+      }
     }
     requestAnimationFrame(step);
   }
@@ -429,8 +436,10 @@ footer a{ color:var(--gold); }
   }
 
   if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    path.style.strokeDasharray = origDash;
     path.style.strokeDashoffset = '0';
     pins.forEach(function(p){ p.style.opacity = '1'; });
+    ferries.forEach(function(f){ f.style.opacity = '1'; });
     started = true;
   }
 })();

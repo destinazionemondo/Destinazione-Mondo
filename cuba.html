@@ -128,11 +128,11 @@ footer a{ color:var(--gold); }
           </g>
 
           <path id="routeSeg1" d="M266 60 L60 137"
-                fill="none" stroke="#1F4F55" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 9"/>
+                fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
           <path id="routeSeg2" d="M60 137 L266 60"
-                fill="none" stroke="#1F4F55" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 9"/>
+                fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
           <path id="routeSeg3" d="M266 60 L638 260 L641 168 L858 101 L266 60"
-                fill="none" stroke="#1F4F55" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 9"/>
+                fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
           <g id="routeCar" opacity="0">
             <circle r="15" fill="#F6F0E1" stroke="#A93826" stroke-width="3"/>
             <text y="7" text-anchor="middle" font-size="19">🚗</text>
@@ -324,15 +324,21 @@ footer a{ color:var(--gold); }
       else {
         s.style.strokeDasharray = origDash[i];
         s.style.strokeDashoffset = '0';
+        var endPt = s.getPointAtLength(len);
+        revealPinAt(endPt.x, endPt.y);
         onDone();
       }
     }
     requestAnimationFrame(step);
   }
 
-  function revealPinsUpTo(fraction){
-    pins.forEach(function(pin, i){
-      if(fraction >= (i / pins.length) * 0.95){
+  function revealPinAt(x, y){
+    pins.forEach(function(pin){
+      var c = pin.querySelector('circle');
+      if(!c) return;
+      var cx = parseFloat(c.getAttribute('cx'));
+      var cy = parseFloat(c.getAttribute('cy'));
+      if(Math.abs(cx-x) < 4 && Math.abs(cy-y) < 4){
         pin.style.transition = 'opacity 0.45s ease';
         pin.style.opacity = '1';
       }
@@ -343,8 +349,9 @@ footer a{ color:var(--gold); }
     if(started) return;
     started = true;
     var i = 0;
+    var startPt0 = segs[0].getPointAtLength(0);
+    revealPinAt(startPt0.x, startPt0.y);
     function next(){
-      revealPinsUpTo(i / segs.length);
       if(i >= segs.length){ car.setAttribute('opacity','0'); pins.forEach(function(p){ p.style.opacity='1'; }); return; }
       animateSegment(i, function(){ i++; next(); });
     }

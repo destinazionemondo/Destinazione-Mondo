@@ -134,21 +134,21 @@ footer a{ color:var(--gold); }
           <path d="M45 685 L75 680 L85 700 L65 715 L40 705 Z" fill="#C9DCC6" opacity="0.9"/>
 
           <!-- confine Vietnam / Cambogia -->
-          <path d="M170 300 Q 175 380, 170 480" fill="none" stroke="#7E2A1C" stroke-width="1.4" stroke-dasharray="4 4" opacity="0.6"/>
+          <path d="M170 300 Q 175 380, 170 480" fill="none" stroke="#5A4A3A" stroke-width="1" stroke-dasharray="1 4" opacity="0.5"/>
 
           <text x="330" y="180" font-family="'Big Shoulders Display',sans-serif" font-size="17" fill="#211D18" opacity="0.35" transform="rotate(75 330 180)">VIETNAM</text>
           <text x="110" y="400" font-family="'Big Shoulders Display',sans-serif" font-size="14" fill="#211D18" opacity="0.35">CAMBOGIA</text>
           <text x="90" y="740" font-family="'Big Shoulders Display',sans-serif" font-size="10" fill="#211D18" opacity="0.4">SINGAPORE</text>
 
           <!-- rotte in ordine cronologico -->
-          <path id="routeSeg1" data-type="flight" d="M60 700 Q 170 590, 296 468" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 8"/>
-          <path id="routeSeg2" data-type="flight" d="M296 468 Q 340 400, 377 243" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 8"/>
-          <path id="routeSeg3" data-type="drive" d="M377 243 L410 270" fill="none" stroke="#1F4F55" stroke-width="2.8" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path id="routeSeg4" data-type="flight" d="M410 270 Q 350 150, 230 60" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 8"/>
-          <path id="routeSeg5" data-type="drive" d="M230 60 L400 62" fill="none" stroke="#1F4F55" stroke-width="2.8" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path id="routeSeg6" data-type="flight" d="M230 60 Q 190 250, 152 439" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 8"/>
-          <path id="routeSeg7" data-type="drive" d="M152 439 Q 110 400, 63 367" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 8"/>
-          <path id="routeSeg8" data-type="flight" d="M63 367 Q 62 540, 60 700" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 8"/>
+          <path id="routeSeg1" data-type="flight" d="M60 700 Q 170 590, 296 468" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 8"/>
+          <path id="routeSeg2" data-type="flight" d="M296 468 Q 340 400, 377 243" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 8"/>
+          <path id="routeSeg3" data-type="drive" d="M377 243 L410 270" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <path id="routeSeg4" data-type="flight" d="M410 270 Q 350 150, 230 60" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 8"/>
+          <path id="routeSeg5" data-type="drive" d="M230 60 L400 62" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <path id="routeSeg6" data-type="flight" d="M230 60 Q 190 250, 152 439" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 8"/>
+          <path id="routeSeg7" data-type="drive" d="M152 439 Q 110 400, 63 367" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 8"/>
+          <path id="routeSeg8" data-type="flight" d="M63 367 Q 62 540, 60 700" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 8"/>
           <g id="routeIcon" opacity="0">
             <circle r="15" fill="#F6F0E1" stroke="#A93826" stroke-width="3"/>
             <text id="routeIconText" y="7" text-anchor="middle" font-size="17">✈️</text>
@@ -427,15 +427,21 @@ footer a{ color:var(--gold); }
       else {
         s.style.strokeDasharray = origDash[i];
         s.style.strokeDashoffset = '0';
+        var endPt = s.getPointAtLength(len);
+        revealPinAt(endPt.x, endPt.y);
         onDone();
       }
     }
     requestAnimationFrame(step);
   }
 
-  function revealPinsUpTo(fraction){
-    pins.forEach(function(pin, i){
-      if(fraction >= (i / pins.length) * 0.95){
+  function revealPinAt(x, y){
+    pins.forEach(function(pin){
+      var c = pin.querySelector('circle');
+      if(!c) return;
+      var cx = parseFloat(c.getAttribute('cx'));
+      var cy = parseFloat(c.getAttribute('cy'));
+      if(Math.abs(cx-x) < 4 && Math.abs(cy-y) < 4){
         pin.style.transition = 'opacity 0.45s ease';
         pin.style.opacity = '1';
       }
@@ -446,8 +452,9 @@ footer a{ color:var(--gold); }
     if(started) return;
     started = true;
     var i = 0;
+    var startPt0 = segs[0].getPointAtLength(0);
+    revealPinAt(startPt0.x, startPt0.y);
     function next(){
-      revealPinsUpTo(i / segs.length);
       if(i >= segs.length){ icon.setAttribute('opacity','0'); pins.forEach(function(p){ p.style.opacity='1'; }); return; }
       animateSegment(i, function(){ i++; next(); });
     }

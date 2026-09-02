@@ -141,16 +141,16 @@ footer a{ color:var(--gold); }
           <text x="20" y="80" font-family="'Caveat',cursive" font-size="18" fill="#A93826">verso Dubai</text>
 
           <!-- percorso in ordine cronologico -->
-          <path id="routeSeg1" data-type="flight" d="M465 585 Q 440 450, 420 300" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 8"/>
-          <path id="routeSeg2" data-type="drive" d="M465 585 L430 638" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path id="routeSeg3" data-type="drive" d="M420 300 Q 395 305, 370 310 Q 365 320, 360 330" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path id="routeSeg4" data-type="flight" d="M360 330 Q 500 220, 650 105" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 8"/>
-          <path id="routeSeg5" data-type="flight" d="M650 105 Q 700 290, 750 470" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 8"/>
-          <path id="routeSeg6" data-type="drive" d="M750 470 L720 458" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path id="routeSeg7" data-type="flight" d="M750 470 Q 700 540, 645 600" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 8"/>
-          <path id="routeSeg8" data-type="drive" d="M645 600 Q 610 630, 578 612" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path id="routeSeg9" data-type="flight" d="M645 600 Q 380 560, 120 460" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 8"/>
-          <path id="routeSeg10" data-type="drive" d="M120 460 L80 500" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <path id="routeSeg1" data-type="flight" d="M465 585 Q 440 450, 420 300" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 8"/>
+          <path id="routeSeg2" data-type="drive" d="M465 585 L430 638" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <path id="routeSeg3" data-type="drive" d="M420 300 Q 395 305, 370 310 Q 365 320, 360 330" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <path id="routeSeg4" data-type="flight" d="M360 330 Q 500 220, 650 105" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 8"/>
+          <path id="routeSeg5" data-type="flight" d="M650 105 Q 700 290, 750 470" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 8"/>
+          <path id="routeSeg6" data-type="drive" d="M750 470 L720 458" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <path id="routeSeg7" data-type="flight" d="M750 470 Q 700 540, 645 600" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 8"/>
+          <path id="routeSeg8" data-type="drive" d="M645 600 Q 610 630, 578 612" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <path id="routeSeg9" data-type="flight" d="M645 600 Q 380 560, 120 460" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 8"/>
+          <path id="routeSeg10" data-type="drive" d="M120 460 L80 500" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
           <g id="routeIcon" opacity="0">
             <circle r="15" fill="#F6F0E1" stroke="#A93826" stroke-width="3"/>
             <text id="routeIconText" y="7" text-anchor="middle" font-size="17">✈️</text>
@@ -511,15 +511,21 @@ footer a{ color:var(--gold); }
       else {
         s.style.strokeDasharray = origDash[i];
         s.style.strokeDashoffset = '0';
+        var endPt = s.getPointAtLength(len);
+        revealPinAt(endPt.x, endPt.y);
         onDone();
       }
     }
     requestAnimationFrame(step);
   }
 
-  function revealPinsUpTo(fraction){
-    pins.forEach(function(pin, i){
-      if(fraction >= (i / pins.length) * 0.95){
+  function revealPinAt(x, y){
+    pins.forEach(function(pin){
+      var c = pin.querySelector('circle');
+      if(!c) return;
+      var cx = parseFloat(c.getAttribute('cx'));
+      var cy = parseFloat(c.getAttribute('cy'));
+      if(Math.abs(cx-x) < 4 && Math.abs(cy-y) < 4){
         pin.style.transition = 'opacity 0.45s ease';
         pin.style.opacity = '1';
       }
@@ -530,8 +536,9 @@ footer a{ color:var(--gold); }
     if(started) return;
     started = true;
     var i = 0;
+    var startPt0 = segs[0].getPointAtLength(0);
+    revealPinAt(startPt0.x, startPt0.y);
     function next(){
-      revealPinsUpTo(i / segs.length);
       if(i >= segs.length){ icon.setAttribute('opacity','0'); pins.forEach(function(p){ p.style.opacity='1'; }); return; }
       animateSegment(i, function(){ i++; next(); });
     }

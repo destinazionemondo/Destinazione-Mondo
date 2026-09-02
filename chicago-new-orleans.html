@@ -154,7 +154,7 @@ footer a{ color:var(--gold); }
 
           <!-- route path (animato) -->
           <path id="routePath" d="M362 47 Q 300 110, 241 173 Q 220 210, 208 242 Q 340 230, 474 265 Q 450 330, 413 390 Q 320 420, 217 451 Q 200 480, 186 508 Q 175 565, 167 619 Q 150 645, 136 666 Q 140 700, 149 733 Q 185 750, 216 763"
-                fill="none" stroke="#A93826" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="2 10"/>
+                fill="none" stroke="#A93826" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 10"/>
 
           <!-- auto che percorre il tracciato -->
           <g id="routeCar" opacity="0">
@@ -446,6 +446,7 @@ footer a{ color:var(--gold); }
 
   var len = path.getTotalLength();
   var DURATION = 6000;
+  var origDash = path.getAttribute('stroke-dasharray');
   var started = false;
 
   // stato iniziale: percorso invisibile, pin nascosti
@@ -479,7 +480,11 @@ footer a{ color:var(--gold); }
       });
 
       if(p < 1) requestAnimationFrame(step);
-      else pins.forEach(function(pin){ pin.style.opacity = '1'; });
+      else {
+        path.style.strokeDasharray = origDash;
+        path.style.strokeDashoffset = '0';
+        pins.forEach(function(pin){ pin.style.opacity = '1'; });
+      }
     }
     requestAnimationFrame(step);
   }
@@ -499,6 +504,7 @@ footer a{ color:var(--gold); }
 
   // rispetta chi preferisce meno animazioni
   if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    path.style.strokeDasharray = origDash;
     path.style.strokeDashoffset = '0';
     pins.forEach(function(p){ p.style.opacity = '1'; });
     started = true;

@@ -125,12 +125,12 @@ footer a{ color:var(--gold); }
             <text x="0" y="-26" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#211D18">N</text>
           </g>
 
-          <path id="routeSeg1" d="M60 204 Q 200 100, 385 60" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path id="routeSeg2" d="M385 60 Q 300 200, 198 330" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path id="routeSeg3" d="M60 204 Q 350 80, 635 150" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path id="routeSeg4" d="M60 204 Q 200 280, 348 330" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path id="routeSeg5" d="M60 204 Q 230 130, 323 186" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <path id="routeSeg6" d="M323 186 L398 186" fill="none" stroke="#1F4F55" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <path id="routeSeg1" d="M60 204 Q 200 100, 385 60" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <path id="routeSeg2" d="M385 60 Q 300 200, 198 330" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <path id="routeSeg3" d="M60 204 Q 350 80, 635 150" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <path id="routeSeg4" d="M60 204 Q 200 280, 348 330" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <path id="routeSeg5" d="M60 204 Q 230 130, 323 186" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <path id="routeSeg6" d="M323 186 L398 186" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 9"/>
           <g id="routeCar" opacity="0">
             <circle r="15" fill="#F6F0E1" stroke="#A93826" stroke-width="3"/>
             <text y="7" text-anchor="middle" font-size="19">🚗</text>
@@ -277,15 +277,21 @@ footer a{ color:var(--gold); }
       else {
         s.style.strokeDasharray = origDash[i];
         s.style.strokeDashoffset = '0';
+        var endPt = s.getPointAtLength(len);
+        revealPinAt(endPt.x, endPt.y);
         onDone();
       }
     }
     requestAnimationFrame(step);
   }
 
-  function revealPinsUpTo(fraction){
-    pins.forEach(function(pin, i){
-      if(fraction >= (i / pins.length) * 0.95){
+  function revealPinAt(x, y){
+    pins.forEach(function(pin){
+      var c = pin.querySelector('circle');
+      if(!c) return;
+      var cx = parseFloat(c.getAttribute('cx'));
+      var cy = parseFloat(c.getAttribute('cy'));
+      if(Math.abs(cx-x) < 4 && Math.abs(cy-y) < 4){
         pin.style.transition = 'opacity 0.45s ease';
         pin.style.opacity = '1';
       }
@@ -296,8 +302,9 @@ footer a{ color:var(--gold); }
     if(started) return;
     started = true;
     var i = 0;
+    var startPt0 = segs[0].getPointAtLength(0);
+    revealPinAt(startPt0.x, startPt0.y);
     function next(){
-      revealPinsUpTo(i / segs.length);
       if(i >= segs.length){ car.setAttribute('opacity','0'); pins.forEach(function(p){ p.style.opacity='1'; }); return; }
       animateSegment(i, function(){ i++; next(); });
     }

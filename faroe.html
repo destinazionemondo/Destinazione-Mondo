@@ -132,17 +132,17 @@ footer a{ color:var(--gold); }
           </g>
 
           <!-- percorsi in ordine cronologico (giorno per giorno) -->
-          <path id="routeSeg1" data-type="drive" d="M220 270 L475 305" fill="none" stroke="#1F4F55" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="2 8"/>
-          <path id="routeSeg2" data-type="drive" d="M475 305 L565 151" fill="none" stroke="#1F4F55" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="2 8"/>
-          <path id="routeSeg3" data-type="ferry" d="M565 151 L510 81" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 7"/>
-          <path id="routeSeg4" data-type="drive" d="M475 305 Q 400 200, 345 102" fill="none" stroke="#1F4F55" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="2 8"/>
-          <path id="routeSeg5" data-type="drive" d="M345 102 L295 137" fill="none" stroke="#1F4F55" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="2 8"/>
-          <path id="routeSeg6" data-type="drive" d="M475 305 Q 550 180, 595 60" fill="none" stroke="#1F4F55" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="2 8"/>
-          <path id="routeSeg7" data-type="drive" d="M475 305 L185 256" fill="none" stroke="#1F4F55" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="2 8"/>
-          <path id="routeSeg8" data-type="ferry" d="M185 256 L60 242" fill="none" stroke="#A93826" stroke-width="2.6" stroke-dasharray="1 7"/>
-          <path id="routeSeg9" data-type="drive" d="M475 305 Q 350 260, 160 242" fill="none" stroke="#1F4F55" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="2 8"/>
-          <path id="routeSeg10" data-type="drive" d="M160 242 L200 256" fill="none" stroke="#1F4F55" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="2 8"/>
-          <path id="routeSeg11" data-type="drive" d="M475 305 L410 361" fill="none" stroke="#1F4F55" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="2 8"/>
+          <path id="routeSeg1" data-type="drive" d="M220 270 L475 305" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 8"/>
+          <path id="routeSeg2" data-type="drive" d="M475 305 L565 151" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 8"/>
+          <path id="routeSeg3" data-type="ferry" d="M565 151 L510 81" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 7"/>
+          <path id="routeSeg4" data-type="drive" d="M475 305 Q 400 200, 345 102" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 8"/>
+          <path id="routeSeg5" data-type="drive" d="M345 102 L295 137" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 8"/>
+          <path id="routeSeg6" data-type="drive" d="M475 305 Q 550 180, 595 60" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 8"/>
+          <path id="routeSeg7" data-type="drive" d="M475 305 L185 256" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 8"/>
+          <path id="routeSeg8" data-type="ferry" d="M185 256 L60 242" fill="none" stroke="#A93826" stroke-width="2" stroke-dasharray="1 7"/>
+          <path id="routeSeg9" data-type="drive" d="M475 305 Q 350 260, 160 242" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 8"/>
+          <path id="routeSeg10" data-type="drive" d="M160 242 L200 256" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 8"/>
+          <path id="routeSeg11" data-type="drive" d="M475 305 L410 361" fill="none" stroke="#1F4F55" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 8"/>
           <g id="routeIcon" opacity="0">
             <circle r="15" fill="#F6F0E1" stroke="#A93826" stroke-width="3"/>
             <text id="routeIconText" y="7" text-anchor="middle" font-size="17">🚗</text>
@@ -342,15 +342,21 @@ footer a{ color:var(--gold); }
       else {
         s.style.strokeDasharray = origDash[i];
         s.style.strokeDashoffset = '0';
+        var endPt = s.getPointAtLength(len);
+        revealPinAt(endPt.x, endPt.y);
         onDone();
       }
     }
     requestAnimationFrame(step);
   }
 
-  function revealPinsUpTo(fraction){
-    pins.forEach(function(pin, i){
-      if(fraction >= (i / pins.length) * 0.95){
+  function revealPinAt(x, y){
+    pins.forEach(function(pin){
+      var c = pin.querySelector('circle');
+      if(!c) return;
+      var cx = parseFloat(c.getAttribute('cx'));
+      var cy = parseFloat(c.getAttribute('cy'));
+      if(Math.abs(cx-x) < 4 && Math.abs(cy-y) < 4){
         pin.style.transition = 'opacity 0.45s ease';
         pin.style.opacity = '1';
       }
@@ -361,8 +367,9 @@ footer a{ color:var(--gold); }
     if(started) return;
     started = true;
     var i = 0;
+    var startPt0 = segs[0].getPointAtLength(0);
+    revealPinAt(startPt0.x, startPt0.y);
     function next(){
-      revealPinsUpTo(i / segs.length);
       if(i >= segs.length){ icon.setAttribute('opacity','0'); pins.forEach(function(p){ p.style.opacity='1'; }); return; }
       animateSegment(i, function(){ i++; next(); });
     }
