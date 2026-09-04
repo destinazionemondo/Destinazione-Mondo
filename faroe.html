@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Isole Faroe — Destinazione Mondo</title>
+<meta name="description" content="Traghetti verso isole minuscole, laghi sospesi sull'oceano e villaggi di poche case tra le Faroe.">
 <link rel="canonical" href="https://destinazionemondo.it/faroe.html">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Caveat:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
@@ -79,6 +80,48 @@ footer a{ color:var(--gold); }
 .map-pin-link circle{ transition:r 0.15s ease; }
 .map-pin-link:hover circle{ r:9; }
 .map-pin-link:hover text{ text-decoration:underline; }
+.back-home-small{ padding:8px 16px; font-size:0.72rem; gap:7px; }
+.next-section{ max-width:900px; margin:0 auto; padding:20px 24px 20px; text-align:center; }
+.next-eyebrow{ font-family:'JetBrains Mono', monospace; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); margin-bottom:8px; }
+.next-title{ font-family:'Big Shoulders Display', sans-serif; font-weight:900; font-size:clamp(1.6rem, 4vw, 2.2rem); margin:0 0 34px; text-transform:uppercase; }
+.next-row{ display:flex; gap:20px; justify-content:center; flex-wrap:wrap; }
+.next-card{ width:110px; text-decoration:none; color:var(--ink); display:block; transition:transform 0.25s ease; }
+.next-card:hover{ transform:translateY(-8px) scale(1.18); z-index:2; position:relative; }
+.next-photo{ width:100%; aspect-ratio:4/5; overflow:hidden; border:4px solid var(--cream); outline:1px solid var(--paper-line); box-shadow:0 8px 20px rgba(33,29,24,0.22); transition:box-shadow 0.25s ease; transform:rotate(-1.5deg); }
+.next-card:nth-child(2) .next-photo{ transform:rotate(1deg); }
+.next-card:nth-child(3) .next-photo{ transform:rotate(-0.5deg); }
+.next-card:hover .next-photo{ box-shadow:0 16px 32px rgba(33,29,24,0.3); }
+.next-photo img{ width:100%; height:100%; object-fit:cover; display:block; filter:sepia(0.3) saturate(1.15) contrast(1.03); transition:transform 0.4s ease; }
+.next-card:hover .next-photo img{ transform:scale(1.06); }
+.next-name{ font-family:'JetBrains Mono', monospace; font-size:0.78rem; letter-spacing:0.02em; margin-top:12px; font-weight:600; line-height:1.3; }
+.next-arrow{ color:var(--rust); opacity:0; transition:opacity 0.25s ease; margin-left:4px; }
+.next-card:hover .next-arrow{ opacity:1; }
+@media (max-width:640px){
+  .next-row{ flex-wrap:nowrap; overflow-x:auto; justify-content:flex-start; padding-bottom:10px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
+  .next-card{ flex:0 0 auto; width:98px; scroll-snap-align:center; }
+  .next-photo{ transform:none !important; }
+}
+.ads-section{ margin:10px 0 40px; }
+.ads-label{ font-family:'JetBrains Mono', monospace; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:10px; }
+.ads-row{ display:flex; gap:12px; flex-wrap:wrap; }
+.ads-banner{ flex:1 1 200px; display:flex; align-items:center; gap:12px; background:var(--cream); border:1px solid var(--paper-line); border-radius:2px; padding:14px 16px; text-decoration:none; color:var(--ink); transition:border-color 0.2s ease, transform 0.2s ease; }
+.ads-banner:hover{ border-color:var(--gold); transform:translateY(-2px); }
+.ads-banner svg{ flex-shrink:0; color:var(--rust); }
+.ads-banner-text{ display:flex; flex-direction:column; }
+.ads-banner-title{ font-family:'JetBrains Mono', monospace; font-size:0.8rem; font-weight:600; text-transform:uppercase; letter-spacing:0.03em; }
+.ads-banner-sub{ font-size:0.82rem; opacity:0.6; font-family:'Source Serif 4', Georgia, serif; }
+.cf-stage{
+  position:relative; width:100%; max-width:1000px; height:280px; margin:0 auto;
+  perspective:1200px; overflow:hidden; border-radius:6px; background:var(--ink);
+  box-shadow:0 20px 45px rgba(33,29,24,0.35);
+}
+.cf-track{ position:absolute; top:0; left:50%; height:100%; display:flex; align-items:center; will-change:transform; }
+.cf-cover{ position:relative; flex:0 0 auto; width:130px; height:130px; margin:0 -12px; text-decoration:none; color:var(--cream); will-change:transform, opacity; }
+.cf-art{ width:100%; height:100%; border-radius:4px; overflow:hidden; box-shadow:0 14px 30px rgba(0,0,0,0.55); border:2px solid rgba(246,240,225,0.15); position:relative; }
+.cf-art img{ width:100%; height:100%; object-fit:cover; display:block; filter:sepia(0.2) saturate(1.1) contrast(1.03); }
+.cf-art::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.75) 100%); }
+.cf-name{ position:absolute; left:8px; right:8px; bottom:8px; font-family:'JetBrains Mono', monospace; font-size:0.6rem; font-weight:600; letter-spacing:0.02em; line-height:1.25; text-transform:uppercase; color:var(--cream); text-shadow:0 2px 6px rgba(0,0,0,0.6); }
+.cf-hint{ text-align:center; font-family:'JetBrains Mono', monospace; font-size:0.7rem; letter-spacing:0.05em; opacity:0.45; margin-top:14px; }
 </style>
 </head>
 <body>
@@ -280,23 +323,145 @@ footer a{ color:var(--gold); }
 
   </section>
 
+  <div class="next-section">
+    <p class="next-eyebrow">e adesso?</p>
+    <h2 class="next-title">Dove si va la prossima volta</h2>
+    <div class="cf-stage" id="cfStage">
+      <div class="cf-track" id="cfTrack"></div>
+    </div>
+    <p class="cf-hint">muovi il mouse, oppure trascina con il dito</p>
+  </div>
+
+  <div style="text-align:center; padding-bottom:50px;">
+    <a class="back-home back-home-small" href="index.html">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M14 8H3M8 3L3 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Torna a tutti gli itinerari
+    </a>
+  </div>
+
   <div class="wrap">
-    <div class="gyg-box">
-      <span class="gyg-label">Esperienze consigliate</span>
-      <div class="gyg-widget-wrap">
-        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-locale-code="it-IT" data-gyg-widget="city" data-gyg-partner-id="TDCBQRE"></div>
-        <script async defer src="https://widget.getyourguide.com/dist/pa.umd.production.min.js" data-gyg-partner-id="TDCBQRE"></script>
+    <div class="ads-section">
+      <span class="ads-label">Organizza il viaggio</span>
+      <div class="ads-row">
+        <a class="ads-banner" href="https://www.skyscanner.it/" target="_blank" rel="noopener sponsored">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M10.5 3.5 L10.5 10 L2.5 13.5 L2.5 15.5 L10.5 13.5 L10.5 19 L7.5 21 L7.5 22.5 L12 21.3 L16.5 22.5 L16.5 21 L13.5 19 L13.5 13.5 L21.5 15.5 L21.5 13.5 L13.5 10 L13.5 3.5 C13.5 2.7 12.8 2 12 2 C11.2 2 10.5 2.7 10.5 3.5 Z" fill="currentColor"/></svg>
+          <span class="ads-banner-text"><span class="ads-banner-title">Voli</span><span class="ads-banner-sub">Cerca su Skyscanner</span></span>
+        </a>
+        <a class="ads-banner" href="https://www.booking.com/" target="_blank" rel="noopener sponsored">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 11.5 L12 4 L21 11.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10 L5 20.5 L19 20.5 L19 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.5 20.5 L9.5 14.5 L14.5 14.5 L14.5 20.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="ads-banner-text"><span class="ads-banner-title">Alloggi</span><span class="ads-banner-sub">Prenota su Booking.com</span></span>
+        </a>
+        <a class="ads-banner" href="https://www.getyourguide.com/?partner_id=TDCBQRE" target="_blank" rel="noopener sponsored">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.8"/><path d="M15.5 8.5 L13.2 13.2 L8.5 15.5 L10.8 10.8 Z" fill="currentColor"/></svg>
+          <span class="ads-banner-text"><span class="ads-banner-title">Tour</span><span class="ads-banner-sub">Esperienze su GetYourGuide</span></span>
+        </a>
       </div>
     </div>
   </div>
 
-  <div style="text-align:center; padding-bottom:80px;">
-    <a class="back-home" href="index.html">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 8H3M8 3L3 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Torna a tutti gli itinerari
-    </a>
-  </div>
 </main>
+
+<script>
+(function(){
+  var trips = [
+    {href:"francia.html", img:"https://i.ibb.co/Fk2D12vT/DSC-0391.jpg", name:"Normandia &amp; Bretagna"},
+    {href:"islanda.html", img:"https://i.ibb.co/1ft6pBWW/IMG-3610.jpg", name:"Circolo d'Oro &amp; Ghiacciai"},
+    {href:"canada.html", img:"https://i.ibb.co/hR1xRRFB/IMG-2233.jpg", name:"Canada"},
+    {href:"azzorre.html", img:"https://i.ibb.co/Qvh2bvxX/IMG-2658.jpg", name:"Azzorre, Lisbona &amp; Algarve"},
+    {href:"madeira.html", img:"https://i.ibb.co/20P579Ln/267-EBE22-E9-CF-4931-9-BDD-39-F42-A1-A7-E84.jpg", name:"Madeira"},
+    {href:"west-usa.html", img:"https://i.ibb.co/BYL1dxt/DSC-0835.jpg", name:"West USA"},
+    {href:"chicago-new-orleans.html", img:"https://i.ibb.co/SXkv2Nrb/IMG-0627.jpg", name:"Blues Highway"},
+    {href:"cuba.html", img:"https://i.ibb.co/XxVCbkXt/DSC-1173.jpg", name:"Cuba"},
+    {href:"argentina-miami.html", img:"https://i.ibb.co/4gYm9QRF/IMG-4759.jpg", name:"Patagonia &amp; Miami"},
+    {href:"francia-2026.html", img:"https://i.ibb.co/JjxSf1yb/IMG-7612.jpg", name:"Bordeaux &amp; Loira"},
+    {href:"sudafrica.html", img:"https://i.ibb.co/tPzczMDw/P1100162.jpg", name:"Sudafrica: Safari &amp; Garden Route"},
+    {href:"lapponia.html", img:"https://i.ibb.co/9k9VgWmb/IMG-1356.jpg", name:"Lapponia"},
+    {href:"asia-2015.html", img:"https://i.ibb.co/MkqN6FVR/IMG-7238.jpg", name:"Singapore, Vietnam &amp; Cambogia"},
+    {href:"australia.html", img:"https://i.ibb.co/hRrGdhVH/IMG-0642.jpg", name:"Australia"},
+    {href:"israele.html", img:"https://i.ibb.co/tMgtkFdr/IMG-3248.jpg", name:"Israele"},
+    {href:"birmania-thailandia.html", img:"https://i.ibb.co/pvdc95Zp/IMG-4098.jpg", name:"Birmania &amp; Thailandia"}
+  ];
+
+  var stage = document.getElementById('cfStage');
+  var track = document.getElementById('cfTrack');
+  if(!stage || !track) return;
+
+  trips.forEach(function(t){
+    var a = document.createElement('a');
+    a.className = 'cf-cover';
+    a.href = t.href;
+    a.innerHTML = '<div class="cf-art"><img src="https://wsrv.nl/?url=' + encodeURIComponent(t.img) + '&w=280&q=80&output=webp" alt="' + t.name + '" loading="lazy"><div class="cf-name">' + t.name + '</div></div>';
+    track.appendChild(a);
+  });
+
+  var CARD_SPACING = 120;
+  function recalcSpacing(){
+    if(track.children.length > 1){
+      CARD_SPACING = track.children[1].offsetLeft - track.children[0].offsetLeft;
+    }
+  }
+
+  var currentOffset = 0, targetOffset = 0, dragging = false, dragStartX = 0, dragStartOffset = 0;
+
+  function computeMaxShift(){
+    var totalWidth = trips.length * CARD_SPACING;
+    return Math.max(0, (totalWidth - stage.clientWidth) / 2 + 140);
+  }
+
+  stage.addEventListener('mousemove', function(e){
+    if(dragging) return;
+    var rect = stage.getBoundingClientRect();
+    var x = e.clientX - rect.left;
+    var mouseNorm = (x / rect.width) * 2 - 1;
+    targetOffset = -mouseNorm * computeMaxShift();
+  });
+  stage.addEventListener('mouseleave', function(){ if(!dragging) targetOffset = 0; });
+
+  stage.addEventListener('touchstart', function(e){
+    dragging = true;
+    dragStartX = e.touches[0].clientX;
+    dragStartOffset = currentOffset;
+  }, { passive:true });
+  stage.addEventListener('touchmove', function(e){
+    if(!dragging) return;
+    var dx = e.touches[0].clientX - dragStartX;
+    var maxShift = computeMaxShift();
+    var newOffset = Math.max(-maxShift, Math.min(maxShift, dragStartOffset + dx));
+    targetOffset = newOffset;
+    currentOffset = newOffset;
+  }, { passive:true });
+  stage.addEventListener('touchend', function(){ dragging = false; });
+
+  function updateCovers(offset){
+    var focusIndex = -offset / CARD_SPACING;
+    var covers = track.children;
+    for(var i = 0; i < covers.length; i++){
+      var delta = i - focusIndex;
+      var absDelta = Math.min(Math.abs(delta), 6);
+      var rotateY = Math.max(-58, Math.min(58, delta * -22));
+      var translateZ = -absDelta * 40;
+      var scale = 1 - Math.min(absDelta * 0.09, 0.5);
+      var opacity = 1 - Math.min(absDelta * 0.14, 0.75);
+      var el = covers[i];
+      el.style.transform = 'translateZ(' + translateZ + 'px) rotateY(' + rotateY + 'deg) scale(' + scale + ')';
+      el.style.opacity = opacity;
+      el.style.zIndex = Math.round(100 - absDelta);
+    }
+  }
+
+  function loop(){
+    if(!dragging){ currentOffset += (targetOffset - currentOffset) * 0.08; }
+    track.style.transform = 'translateX(calc(-50% + ' + currentOffset + 'px))';
+    updateCovers(currentOffset);
+    requestAnimationFrame(loop);
+  }
+
+  window.addEventListener('load', function(){ recalcSpacing(); updateCovers(0); });
+  window.addEventListener('resize', recalcSpacing);
+  recalcSpacing();
+  requestAnimationFrame(loop);
+})();
+</script>
 
 <footer><div class="wrap footer-row">DESTINAZIONE MONDO — Itinerari on the road<a class="footer-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a><a class="footer-ig" href="mailto:destinazionemondo@etik.com" aria-label="Contattami"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 6 L12 13 L20.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></footer>
 
