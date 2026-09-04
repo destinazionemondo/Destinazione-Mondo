@@ -113,7 +113,7 @@ footer a{ color:var(--gold); }
 .cf-stage{
   position:relative; width:100%; max-width:1000px; height:320px; margin:0 auto;
   perspective:1200px; overflow:hidden; border-radius:6px;
-  background:radial-gradient(ellipse 70% 100% at center, var(--ink) 55%, rgba(33,29,24,0) 100%);
+  background:radial-gradient(ellipse 70% 100% at center, var(--teal) 55%, rgba(31,79,85,0) 100%);
 }
 .cf-track{ position:absolute; top:0; left:50%; height:100%; display:flex; align-items:center; will-change:transform; }
 .cf-cover{ position:relative; flex:0 0 auto; width:180px; height:180px; margin:0 -20px; text-decoration:none; color:var(--cream); will-change:transform, opacity; }
@@ -444,7 +444,7 @@ footer a{ color:var(--gold); }
       var absDelta = Math.min(Math.abs(delta), 6);
       var rotateY = Math.max(-58, Math.min(58, delta * -22));
       var translateZ = -absDelta * 40;
-      var scale = 1 - Math.min(absDelta * 0.09, 0.5);
+      var scale = 1.4 - Math.min(absDelta * 0.17, 0.6);
       var opacity = 1 - Math.min(absDelta * 0.14, 0.75);
       var el = covers[i];
       el.style.transform = 'translateZ(' + translateZ + 'px) rotateY(' + rotateY + 'deg) scale(' + scale + ')';
