@@ -111,17 +111,21 @@ footer a{ color:var(--gold); }
 .ads-banner-title{ font-family:'JetBrains Mono', monospace; font-size:0.8rem; font-weight:600; text-transform:uppercase; letter-spacing:0.03em; }
 .ads-banner-sub{ font-size:0.82rem; opacity:0.6; font-family:'Source Serif 4', Georgia, serif; }
 .cf-stage{
-  position:relative; width:100%; max-width:1000px; height:280px; margin:0 auto;
-  perspective:1200px; overflow:hidden; border-radius:6px; background:var(--ink);
-  box-shadow:0 20px 45px rgba(33,29,24,0.35);
+  position:relative; width:100%; max-width:1000px; height:320px; margin:0 auto;
+  perspective:1200px; overflow:hidden; border-radius:6px;
+  background:radial-gradient(ellipse 70% 100% at center, var(--ink) 55%, rgba(33,29,24,0) 100%);
 }
 .cf-track{ position:absolute; top:0; left:50%; height:100%; display:flex; align-items:center; will-change:transform; }
-.cf-cover{ position:relative; flex:0 0 auto; width:130px; height:130px; margin:0 -12px; text-decoration:none; color:var(--cream); will-change:transform, opacity; }
-.cf-art{ width:100%; height:100%; border-radius:4px; overflow:hidden; box-shadow:0 14px 30px rgba(0,0,0,0.55); border:2px solid rgba(246,240,225,0.15); position:relative; }
+.cf-cover{ position:relative; flex:0 0 auto; width:180px; height:180px; margin:0 -20px; text-decoration:none; color:var(--cream); will-change:transform, opacity; }
+.cf-art{ width:100%; height:100%; border-radius:5px; overflow:hidden; box-shadow:0 18px 36px rgba(0,0,0,0.55); border:2px solid rgba(246,240,225,0.15); position:relative; }
 .cf-art img{ width:100%; height:100%; object-fit:cover; display:block; filter:sepia(0.2) saturate(1.1) contrast(1.03); }
 .cf-art::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.75) 100%); }
-.cf-name{ position:absolute; left:8px; right:8px; bottom:8px; font-family:'JetBrains Mono', monospace; font-size:0.6rem; font-weight:600; letter-spacing:0.02em; line-height:1.25; text-transform:uppercase; color:var(--cream); text-shadow:0 2px 6px rgba(0,0,0,0.6); }
+.cf-name{ position:absolute; left:10px; right:10px; bottom:10px; font-family:'JetBrains Mono', monospace; font-size:0.7rem; font-weight:600; letter-spacing:0.02em; line-height:1.25; text-transform:uppercase; color:var(--cream); text-shadow:0 2px 6px rgba(0,0,0,0.6); }
 .cf-hint{ text-align:center; font-family:'JetBrains Mono', monospace; font-size:0.7rem; letter-spacing:0.05em; opacity:0.45; margin-top:14px; }
+@media (max-width:640px){
+  .cf-stage{ height:260px; }
+  .cf-cover{ width:140px; height:140px; margin:0 -16px; }
+}
 </style>
 </head>
 <body>
@@ -433,7 +437,7 @@ footer a{ color:var(--gold); }
   stage.addEventListener('touchend', function(){ dragging = false; });
 
   function updateCovers(offset){
-    var focusIndex = -offset / CARD_SPACING;
+    var focusIndex = (trips.length - 1) / 2 - (offset / CARD_SPACING);
     var covers = track.children;
     for(var i = 0; i < covers.length; i++){
       var delta = i - focusIndex;
