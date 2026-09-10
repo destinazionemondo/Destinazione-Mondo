@@ -45,13 +45,8 @@ a{ color:var(--teal); }
 .postmark{ font-family:'JetBrains Mono', monospace; font-size:0.8rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold); border-radius:30px; padding:5px 16px; display:inline-block; margin-bottom:22px; }
 .hero h1{ font-family:'Big Shoulders Display', sans-serif; font-weight:900; font-size:clamp(2.8rem, 9vw, 6rem); line-height:0.94; margin:0 0 20px; text-transform:uppercase; max-width:900px; }
 .hero .lede{ max-width:600px; font-size:1.15rem; color:rgba(246,240,225,0.82); }
-.song-dropdown{ position:relative; display:inline-flex; margin:0 auto 0 14px; }
-.song-btn{ background:none; border:none; cursor:pointer; padding:0; }
-.song-embed{ position:absolute; top:calc(100% + 12px); left:-10px; display:none; width:280px; border-radius:4px; overflow:hidden; box-shadow:0 12px 28px rgba(0,0,0,0.35); z-index:200; }
-.song-embed.open{ display:block; }
-.song-embed iframe{ display:block; width:100%; height:70px; border:none; }
-.song-embed.open{ display:block; }
-.song-embed iframe{ display:block; width:100%; height:70px; border:none; }
+
+
 .stats-row{ display:flex; flex-wrap:wrap; gap:28px; margin-top:34px; font-family:'JetBrains Mono', monospace; }
 .stat b{ display:block; font-size:1.6rem; color:#D9A94D; font-weight:700; }
 .stat span{ font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(246,240,225,0.65); }
@@ -104,12 +99,6 @@ footer a{ color:var(--gold); }
 <nav class="topnav">
   <div class="wrap">
     <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 400 340" aria-hidden="true"><polygon points="200,40 310,84.4 310,235.6 200,280 90,235.6 90,84.4" fill="#A93826" stroke="#F6F0E1" stroke-width="10"/><path d="M135 250 L195 250 L135 190 L195 190 L135 130 L195 130 L235 88" fill="none" stroke="#F6F0E1" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><circle cx="238" cy="82" r="22" fill="#F6F0E1"/><circle cx="238" cy="82" r="9" fill="#A93826"/></svg><span class="brand-word">Destinazione <span class="accent">Mondo</span></span></a>
-    <div class="song-dropdown">
-      <button class="nav-ig song-btn" id="songBtn" aria-expanded="false" aria-label="Play">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-      </button>
-      <div class="song-embed" id="songEmbed"></div>
-    </div>
     <div class="navlinks">
       <a class="nav-ig" href="https://www.getyourguide.com/?partner_id=TDCBQRE" target="_blank" rel="noopener sponsored" aria-label="GetYourGuide" title="Trova esperienze"><img class="brand-icon" src="https://www.google.com/s2/favicons?domain=getyourguide.com&sz=64" alt="GetYourGuide" width="16" height="16"></a><a class="nav-ig" href="https://www.amazon.it/?tag=vivelbar-21" target="_blank" rel="noopener sponsored" aria-label="Amazon" title="Amazon"><img class="brand-icon" src="https://www.google.com/s2/favicons?domain=amazon.it&sz=64" alt="Amazon" width="16" height="16"></a><a class="nav-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a><a class="nav-ig" href="mailto:destinazionemondo@etik.com" aria-label="Contattami"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 6 L12 13 L20.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
@@ -120,7 +109,7 @@ footer a{ color:var(--gold); }
   <div class="wrap">
     <span class="postmark">on the road — quaderno di bordo</span>
     <h1>Ogni strada<br>è stata percorsa. Davvero.</h1>
-    <p class="lede">Itinerari on the road chilometro dopo chilometro: strade, soste, alloggi ed escursioni. Un diario di viaggio snello da seguire o modificare a piacere.</p>
+    <p class="lede">Itinerari on the road chilometro dopo chilometro: strade, soste, alloggi ed escursioni.</p>
     <div class="stats-row">
       <div class="stat"><b>17</b><span>viaggi raccontati</span></div>
       <div class="stat"><b>6</b><span>continenti</span></div>
@@ -543,26 +532,6 @@ footer a{ color:var(--gold); }
     pins.forEach(function(p){ p.style.opacity = '1'; });
     started = true;
   }
-})();
-</script>
-<script>
-(function(){
-  var btn = document.getElementById('songBtn');
-  var embed = document.getElementById('songEmbed');
-  if(!btn || !embed) return;
-  var loaded = false;
-  btn.addEventListener('click', function(){
-    var open = embed.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if(open && !loaded){
-      loaded = true;
-      var iframe = document.createElement('iframe');
-      iframe.src = 'https://www.youtube.com/embed/bjcA4ARNwAE?start=17&autoplay=1';
-      iframe.allow = 'autoplay; encrypted-media';
-      iframe.title = 'Mondo — Cesare Cremonini';
-      embed.appendChild(iframe);
-    }
-  });
 })();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "61c36c7662aa44b88df191eaa9928a38"}'></script><!-- End Cloudflare Web Analytics -->
