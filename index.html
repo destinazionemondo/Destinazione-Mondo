@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Destinazione Mondo — Diari di viaggio</title>
+<meta name="description" content="17 itinerari on the road raccontati giorno per giorno: strade, soste, alloggi ed escursioni da tutto il mondo, con mappe interattive e consigli pratici.">
 <link rel="canonical" href="https://destinazionemondo.it/">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500;600&display=swap');
@@ -25,6 +26,7 @@ a{ color:var(--teal); }
 
 .topnav{ position:sticky; top:0; z-index:80; background:var(--ink); border-bottom:4px solid var(--rust); }
 .topnav .wrap{ display:flex; align-items:center; justify-content:space-between; padding:14px 28px; }
+@media (max-width:480px){ .topnav .wrap{ padding:14px 14px; } }
 .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
 .brand-mark{ width:28px; height:auto; flex-shrink:0; display:block; }
 .brand-word{ font-family:'Big Shoulders Display', sans-serif; font-weight:800; font-size:1.35rem; letter-spacing:0.02em; color:var(--cream); white-space:nowrap; }
@@ -33,14 +35,23 @@ a{ color:var(--teal); }
 .topnav .wrap{ flex-wrap:nowrap; }
 .brand-word{ overflow:hidden; text-overflow:ellipsis; }
 .navlinks a:hover{ border-color:var(--gold); }
-.navlinks{ display:flex; align-items:center; gap:22px; }
+.navlinks{ display:flex; align-items:center; gap:12px; }
 .nav-ig{ display:inline-flex; color:var(--cream); transition:color 0.2s ease; }
 .nav-ig:hover{ color:var(--gold); }
+@media (max-width:380px){  .navlinks{ gap:8px; } }
+@media (max-width:480px){  }
 
 .hero{ background:linear-gradient(180deg, rgba(33,29,24,0) 60%, var(--paper) 100%), var(--ink); color:var(--cream); padding:70px 0 46px; }
 .postmark{ font-family:'JetBrains Mono', monospace; font-size:0.8rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold); border-radius:30px; padding:5px 16px; display:inline-block; margin-bottom:22px; }
 .hero h1{ font-family:'Big Shoulders Display', sans-serif; font-weight:900; font-size:clamp(2.8rem, 9vw, 6rem); line-height:0.94; margin:0 0 20px; text-transform:uppercase; max-width:900px; }
 .hero .lede{ max-width:600px; font-size:1.15rem; color:rgba(246,240,225,0.82); }
+.song-dropdown{ position:relative; display:inline-flex; margin:0 auto 0 14px; }
+.song-btn{ background:none; border:none; cursor:pointer; padding:0; }
+.song-embed{ position:absolute; top:calc(100% + 12px); left:-10px; display:none; width:280px; border-radius:4px; overflow:hidden; box-shadow:0 12px 28px rgba(0,0,0,0.35); z-index:200; }
+.song-embed.open{ display:block; }
+.song-embed iframe{ display:block; width:100%; height:70px; border:none; }
+.song-embed.open{ display:block; }
+.song-embed iframe{ display:block; width:100%; height:70px; border:none; }
 .stats-row{ display:flex; flex-wrap:wrap; gap:28px; margin-top:34px; font-family:'JetBrains Mono', monospace; }
 .stat b{ display:block; font-size:1.6rem; color:#D9A94D; font-weight:700; }
 .stat span{ font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(246,240,225,0.65); }
@@ -85,6 +96,7 @@ footer a{ color:var(--gold); }
   .trip-thumb-row{ flex-direction:column; }
   .trip-thumb{ transform:rotate(0deg); }
 }
+.brand-icon{ border-radius:4px; display:block; background:var(--cream); padding:2px; box-sizing:content-box; }
 </style>
 </head>
 <body>
@@ -92,7 +104,15 @@ footer a{ color:var(--gold); }
 <nav class="topnav">
   <div class="wrap">
     <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 400 340" aria-hidden="true"><polygon points="200,40 310,84.4 310,235.6 200,280 90,235.6 90,84.4" fill="#A93826" stroke="#F6F0E1" stroke-width="10"/><path d="M135 250 L195 250 L135 190 L195 190 L135 130 L195 130 L235 88" fill="none" stroke="#F6F0E1" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><circle cx="238" cy="82" r="22" fill="#F6F0E1"/><circle cx="238" cy="82" r="9" fill="#A93826"/></svg><span class="brand-word">Destinazione <span class="accent">Mondo</span></span></a>
-    <div class="navlinks"><a class="nav-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a><a class="nav-ig" href="mailto:destinazionemondo@etik.com" aria-label="Contattami"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 6 L12 13 L20.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+    <div class="song-dropdown">
+      <button class="nav-ig song-btn" id="songBtn" aria-expanded="false" aria-label="Play">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="song-embed" id="songEmbed"></div>
+    </div>
+    <div class="navlinks">
+      <a class="nav-ig" href="https://www.getyourguide.com/?partner_id=TDCBQRE" target="_blank" rel="noopener sponsored" aria-label="GetYourGuide" title="Trova esperienze"><img class="brand-icon" src="https://www.google.com/s2/favicons?domain=getyourguide.com&sz=64" alt="GetYourGuide" width="16" height="16"></a><a class="nav-ig" href="https://www.amazon.it/?tag=vivelbar-21" target="_blank" rel="noopener sponsored" aria-label="Amazon" title="Amazon"><img class="brand-icon" src="https://www.google.com/s2/favicons?domain=amazon.it&sz=64" alt="Amazon" width="16" height="16"></a><a class="nav-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a><a class="nav-ig" href="mailto:destinazionemondo@etik.com" aria-label="Contattami"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 6 L12 13 L20.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
   </div>
 </nav>
 
@@ -452,7 +472,7 @@ footer a{ color:var(--gold); }
   </section>
 </main>
 
-<footer><div class="wrap footer-row">DESTINAZIONE MONDO — Itinerari on the road<a class="footer-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a><a class="footer-ig" href="mailto:destinazionemondo@etik.com" aria-label="Contattami"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 6 L12 13 L20.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></footer>
+<footer><div class="wrap footer-row">DESTINAZIONE MONDO — Itinerari on the road<a class="footer-ig" href="https://www.getyourguide.com/?partner_id=TDCBQRE" target="_blank" rel="noopener sponsored" aria-label="GetYourGuide" title="Trova esperienze"><img class="brand-icon" src="https://www.google.com/s2/favicons?domain=getyourguide.com&sz=64" alt="GetYourGuide" width="17" height="17"></a><a class="footer-ig" href="https://www.amazon.it/?tag=vivelbar-21" target="_blank" rel="noopener sponsored" aria-label="Amazon" title="Amazon"><img class="brand-icon" src="https://www.google.com/s2/favicons?domain=amazon.it&sz=64" alt="Amazon" width="17" height="17"></a><a class="footer-ig" href="https://www.instagram.com/vivaelbarca" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/></svg></a><a class="footer-ig" href="mailto:destinazionemondo@etik.com" aria-label="Contattami"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 6 L12 13 L20.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></footer>
 
 <script>
 (function(){
@@ -523,6 +543,26 @@ footer a{ color:var(--gold); }
     pins.forEach(function(p){ p.style.opacity = '1'; });
     started = true;
   }
+})();
+</script>
+<script>
+(function(){
+  var btn = document.getElementById('songBtn');
+  var embed = document.getElementById('songEmbed');
+  if(!btn || !embed) return;
+  var loaded = false;
+  btn.addEventListener('click', function(){
+    var open = embed.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if(open && !loaded){
+      loaded = true;
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/bjcA4ARNwAE?start=17&autoplay=1';
+      iframe.allow = 'autoplay; encrypted-media';
+      iframe.title = 'Mondo — Cesare Cremonini';
+      embed.appendChild(iframe);
+    }
+  });
 })();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "61c36c7662aa44b88df191eaa9928a38"}'></script><!-- End Cloudflare Web Analytics -->
